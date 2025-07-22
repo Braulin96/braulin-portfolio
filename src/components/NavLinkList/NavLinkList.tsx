@@ -1,18 +1,20 @@
 import { useState } from "react";
 
-import NavLink from "../NavLink/NavLink";
-
-import { NAV_LINK_DATA } from "constants/NavLinkData";
+import NavLink from "components/NavLink/NavLink";
 
 import "./NavLinkList.styles.scss";
 
 type NavLinkListProps = {
-  children?: React.ReactNode;
+  list: string[];
   onNavClick?: (section: string) => void;
   activeNav?: string;
 };
 
-const NavLinkList = ({ onNavClick, activeNav = "home" }: NavLinkListProps) => {
+const NavLinkList = ({
+  onNavClick,
+  activeNav = "home",
+  list,
+}: NavLinkListProps) => {
   const [currentActiveNav, setCurrentActiveNav] = useState(activeNav);
 
   const handleNavClick = (section: string) => {
@@ -33,7 +35,7 @@ const NavLinkList = ({ onNavClick, activeNav = "home" }: NavLinkListProps) => {
 
   return (
     <div data-testid="NavLinkList" className="NavLinkList flex space-x-[40px]">
-      {NAV_LINK_DATA.map((item) => (
+      {list.map((item) => (
         <NavLink
           key={item}
           onClick={() => handleNavClick(item)}

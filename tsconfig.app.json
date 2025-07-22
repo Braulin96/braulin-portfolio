@@ -17,11 +17,27 @@
 
     /* Linting */
     "strict": true,
+    "noEmitOnError": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    "baseUrl": "src",
+    "paths": {
+      "components/*": ["components/*"],
+      "constants/*": ["constants/*"],
+      "hooks/*": ["hooks/*"],
+      "utils/*": ["utils/*"],
+      "assets/*": ["assets/*"],
+      "types/*": ["types/*"],
+      "styles/*": ["styles/*"],
+      "pages/*": ["pages/*"]
+    }
+
   },
+
+
   "include": ["src"]
 }

@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 
+import DesktopNavbar from "components/DesktopNavbar/DesktopNavbar";
+
+import { NAV_LINK_DATA } from "constants/NavLinkData";
+
 import NavLinkList from "../NavLinkList/NavLinkList";
 
 const PortfolioTest = () => {
@@ -114,21 +118,7 @@ const PortfolioTest = () => {
       <div className="fixed top-0 right-0 w-96 h-96 bg-gradient-to-br from-indigo-500/10 to-purple-600/10 rounded-full blur-3xl -translate-y-48 translate-x-48 z-0"></div>
       <div className="fixed bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-indigo-500/10 to-purple-600/10 rounded-full blur-3xl translate-y-48 -translate-x-48 z-0"></div>
 
-      {/* Navigation */}
-      <nav className="fixed w-full z-50 bg-slate-800/80 backdrop-blur-sm py-4 border-b border-indigo-500/20">
-        <div className="container mx-auto px-4 flex justify-between items-center">
-          <div className="text-2xl font-bold">
-            <span className="primary-blue">Dev</span>PortfolioTest
-          </div>
-          <div>
-            <NavLinkList />
-          </div>
-
-          <button className="md:hidden text-white">
-            <i className="fas fa-bars text-2xl"></i>
-          </button>
-        </div>
-      </nav>
+      <DesktopNavbar />
 
       {/* Hero Section */}
       <section

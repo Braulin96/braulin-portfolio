@@ -39,9 +39,12 @@ const MobileNavbar = () => {
       </nav>
 
       <motion.div
-        initial={{ x: "200%" }}
-        animate={{ x: isMenuOpen ? "0%" : "200%" }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
+        initial={{ x: "200%", opacity: 0 }}
+        animate={{
+          x: isMenuOpen ? "0%" : "200%",
+          opacity: isMenuOpen ? 1 : 0,
+        }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
         className="fixed top-0 left-0 h-full w-full bg-slate-900 text-white z-40 flex flex-col px-6 py-20 backdrop-blur-sm justify-center">
         <NavLinkList
           list={NAV_LINK_DATA}

@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 
+import NavLinkList from "../NavLinkList/NavLinkList";
+
 const PortfolioTest = () => {
   const [activeNav, setActiveNav] = useState("home");
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -117,20 +120,8 @@ const PortfolioTest = () => {
           <div className="text-2xl font-bold">
             <span className="primary-blue">Dev</span>PortfolioTest
           </div>
-
-          <div className="hidden md:flex space-x-8">
-            {["home", "about", "skills", "projects", "contact"].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(item)}
-                className={`relative font-medium transition-colors duration-300 ${
-                  activeNav === item
-                    ? "text-white after:w-full"
-                    : "text-gray-300 hover:text-white after:w-0 hover:after:w-full"
-                } after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-primary-blue after:transition-all after:duration-300`}>
-                {item.charAt(0).toUpperCase() + item.slice(1)}
-              </button>
-            ))}
+          <div>
+            <NavLinkList />
           </div>
 
           <button className="md:hidden text-white">

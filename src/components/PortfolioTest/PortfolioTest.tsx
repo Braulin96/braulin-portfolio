@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import DesktopNavbar from "components/DesktopNavbar/DesktopNavbar";
+import Navbar from "components/Navbar/Navbar";
 
 import { NAV_LINK_DATA } from "constants/NavLinkData";
 
@@ -118,7 +119,7 @@ const PortfolioTest = () => {
       <div className="fixed top-0 right-0 w-96 h-96 bg-gradient-to-br from-indigo-500/10 to-purple-600/10 rounded-full blur-3xl -translate-y-48 translate-x-48 z-0"></div>
       <div className="fixed bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-indigo-500/10 to-purple-600/10 rounded-full blur-3xl translate-y-48 -translate-x-48 z-0"></div>
 
-      <DesktopNavbar />
+      <Navbar />
 
       {/* Hero Section */}
       <section

@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import NavLink from "../NavLink/NavLink";
 
-import { NAV_LINK_DATA } from "../../constants/NavLinkData";
+import { NAV_LINK_DATA } from "constants/NavLinkData";
 
 import "./NavLinkList.styles.scss";
 
@@ -37,7 +37,7 @@ const NavLinkList = ({ onNavClick, activeNav = "home" }: NavLinkListProps) => {
         <NavLink
           key={item}
           onClick={() => handleNavClick(item)}
-          link={item.charAt(0).toUpperCase() + item.slice(1)}
+          link={item}
           isActive={currentActiveNav === item}
         />
       ))}

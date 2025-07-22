@@ -11,7 +11,7 @@ const NavLink = ({ onClick, link, isActive = false }: NavLinkProps) => {
     <button
       data-testid="NavLink"
       onClick={onClick}
-      className={`NavLink relative font-medium transition-colors duration-300 ${
+      className={`NavLink relative font-medium transition-colors duration-300 cursor-pointer ${
         isActive
           ? "text-white after:w-full"
           : "text-gray-300 hover:text-white after:w-0 hover:after:w-full"

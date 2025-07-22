@@ -8,12 +8,14 @@ type NavLinkListProps = {
   list: string[];
   onNavClick?: (section: string) => void;
   activeNav?: string;
+  isMobile?: boolean;
 };
 
 const NavLinkList = ({
   onNavClick,
   activeNav = "home",
   list,
+  isMobile = false,
 }: NavLinkListProps) => {
   const [currentActiveNav, setCurrentActiveNav] = useState(activeNav);
 
@@ -22,19 +24,22 @@ const NavLinkList = ({
 
     const element = document.getElementById(section);
     if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-      });
+      element.scrollIntoView({ behavior: "smooth" });
     }
 
-    // Call parent callback if provided
     if (onNavClick) {
       onNavClick(section);
     }
   };
 
   return (
-    <div data-testid="NavLinkList" className="NavLinkList flex space-x-[40px]">
+    <div
+      data-testid="NavLinkList"
+      className={`NavLinkList ${
+        isMobile
+          ? "flex flex-col space-y-[40px] w-fit mx-auto"
+          : "flex space-x-[40px]"
+      }`}>
       {list.map((item) => (
         <NavLink
           key={item}
@@ -46,5 +51,4 @@ const NavLinkList = ({
     </div>
   );
 };
-
 export default NavLinkList;

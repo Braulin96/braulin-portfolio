@@ -177,16 +177,7 @@ const PortfolioTest = () => {
 
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/3 mb-10 md:mb-0 flex justify-center">
-              <div className="relative">
-                <div className="w-64 h-64 rounded-lg overflow-hidden border-4 border-indigo-500/20 transform rotate-3">
-                  <div className="w-full h-full bg-gray-200 border-2 border-dashed rounded-lg flex items-center justify-center text-gray-500">
-                    <i className="fas fa-user text-8xl"></i>
-                  </div>
-                </div>
-                <div className="absolute -bottom-4 -right-4 bg-indigo-500 px-4 py-1 rounded-full font-bold text-sm">
-                  <i className="fab fa-react mr-1"></i> React Specialist
-                </div>
-              </div>
+              <Asset image={Profile} />
             </div>
 
             <div className="md:w-2/3 md:pl-12">

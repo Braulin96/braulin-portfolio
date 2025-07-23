@@ -6,8 +6,12 @@ import Paragraph from "components/Paragraph/Paragraph";
 import Button from "components/Button/Button";
 import Asset from "components/Asset/Asset";
 import Subtitle from "components/Subtitle/Subtitle";
+import ToolsCardList from "components/ToolsCardList/ToolsCardList";
+
+import { TollsCardData } from "constants/TollsCardData";
 
 import Profile from "assets/images/profile2.jpg";
+import ReactIcon from "assets/images/tools/react.svg";
 
 const PortfolioTest = () => {
   const [activeNav, setActiveNav] = useState("home");
@@ -102,17 +106,6 @@ const PortfolioTest = () => {
       technologies: ["React", "OpenWeather API", "Geolocation", "Chart.js"],
       gradient: "from-blue-500 to-indigo-500",
     },
-  ];
-
-  const tools = [
-    { icon: "fab fa-react", name: "React", color: "text-blue-500" },
-    { icon: "fab fa-js", name: "JavaScript", color: "text-yellow-400" },
-    { icon: "fab fa-css3-alt", name: "CSS3", color: "text-blue-500" },
-    { icon: "fab fa-html5", name: "HTML5", color: "text-orange-500" },
-    { icon: "fab fa-git-alt", name: "Git", color: "text-red-500" },
-    { icon: "fab fa-figma", name: "Figma", color: "text-purple-500" },
-    { icon: "fab fa-npm", name: "NPM", color: "text-red-500" },
-    { icon: "fab fa-sass", name: "SASS", color: "text-pink-500" },
   ];
 
   return (
@@ -305,16 +298,8 @@ const PortfolioTest = () => {
             <h3 className="text-2xl font-bold mb-8 text-center">
               Tools & Technologies
             </h3>
-            <div className="flex flex-wrap justify-center gap-6">
-              {tools.map((tool, index) => (
-                <div
-                  key={index}
-                  className="w-24 h-24 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl flex flex-col items-center justify-center p-4 border border-indigo-500/20 hover:border-indigo-500/40 transition-all">
-                  <i className={`${tool.icon} text-4xl ${tool.color} mb-2`}></i>
-                  <span className="text-sm">{tool.name}</span>
-                </div>
-              ))}
-            </div>
+
+            <ToolsCardList tools={TollsCardData} />
           </div>
         </div>
       </section>

@@ -4,6 +4,9 @@ import Navbar from "components/Navbar/Navbar";
 import Title from "components/Title/Title";
 import Paragraph from "components/Paragraph/Paragraph";
 import Button from "components/Button/Button";
+import Asset from "components/Asset/Asset";
+
+import Profile from "assets/images/profile2.jpg";
 
 const PortfolioTest = () => {
   const [activeNav, setActiveNav] = useState("home");
@@ -153,19 +156,11 @@ const PortfolioTest = () => {
           </div>
 
           <div className="md:w-1/2 flex justify-center">
-            <div className="relative">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-indigo-500/20">
-                <div className="w-full h-full bg-gray-200 border-2 border-dashed rounded-full flex items-center justify-center text-gray-500">
-                  <i className="fas fa-user text-8xl"></i>
-                </div>
-              </div>
-              <div className="absolute -bottom-4 -right-4 bg-indigo-500 px-6 py-2 rounded-full font-bold">
-                React Developer
-              </div>
-              <div className="absolute -top-4 -left-4 bg-purple-600 px-6 py-2 rounded-full font-bold">
-                <i className="fab fa-react mr-2"></i>TailwindCSS
-              </div>
-            </div>
+            <Asset
+              image={Profile}
+              variant="fullRounded"
+              specialization="React Developer"
+            />
           </div>
         </div>
       </section>

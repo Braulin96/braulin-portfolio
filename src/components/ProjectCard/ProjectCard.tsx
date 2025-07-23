@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import TechList from "components/TechList/TechList";
 import Paragraph from "components/Paragraph/Paragraph";
 import Modal from "components/Modal/Modal";
+import Carousel from "components/Carousel/Carousel";
 
 import "./ProjectCard.styles.scss";
+import Title from "components/Title/Title";
 
 type ProjectCardProps = {
   project: {
@@ -27,7 +29,6 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
   const handleCloseModal = () => setIsModalOpen(false);
   const handlePlusClick = () => {
     setIsModalOpen(true);
-    console;
   };
 
   return (
@@ -78,7 +79,13 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         </div>
       </div>
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-        <div>Modal Content</div>
+        <Carousel
+          slides={project.moreImages?.map((image) => ({ url: image })) || []}
+          customClasses="w-full h-[400px]"
+          displayArrows={true}
+          currentSlide={0}
+          title={project.title}
+        />
       </Modal>
     </div>
   );

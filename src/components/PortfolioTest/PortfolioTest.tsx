@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 import Navbar from "components/Navbar/Navbar";
 import Title from "components/Title/Title";
+import Paragraph from "components/Paragraph/Paragraph";
 
 const PortfolioTest = () => {
   const [activeNav, setActiveNav] = useState("home");
@@ -122,19 +123,21 @@ const PortfolioTest = () => {
         id="home"
         className="min-h-screen flex items-center pt-16 relative z-10">
         <div className="container mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 mb-12 md:mb-0 space-y-[12px]">
+          <div className="md:w-1/2 mb-12 md:mb-0 md:space-y-[12px] space-y-[8px]">
             <Title size="lg" firstText="Hi, I'm" secondText="Braulin" />
             <Title
               size="md"
               firstText="Front-End"
               secondText="React Developer"
             />
+            <div className="mb-8 max-w-lg">
+              <Paragraph
+                text="I build modern, responsive web applications with React and
+                TailwindCSS. Passionate about creating intuitive user
+                experiences with clean, efficient code."
+              />
+            </div>
 
-            <p className="text-gray-300 mb-8 text-lg max-w-lg">
-              I build modern, responsive web applications with React and
-              TailwindCSS. Passionate about creating intuitive user experiences
-              with clean, efficient code.
-            </p>
             <div className="flex space-x-4">
               <button
                 onClick={() => scrollToSection("projects")}

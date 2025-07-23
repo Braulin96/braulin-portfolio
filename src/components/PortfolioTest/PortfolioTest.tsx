@@ -5,6 +5,7 @@ import Title from "components/Title/Title";
 import Paragraph from "components/Paragraph/Paragraph";
 import Button from "components/Button/Button";
 import Asset from "components/Asset/Asset";
+import Subtitle from "components/Subtitle/Subtitle";
 
 import Profile from "assets/images/profile2.jpg";
 
@@ -168,11 +169,8 @@ const PortfolioTest = () => {
       {/* About Section */}
       <section id="about" className="py-20 relative z-10">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">
-              About <span className="primary-blue">Me</span>
-            </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto"></div>
+          <div className="mb-16 flex justify-center">
+            <Subtitle firstText="About" secondText="Me" />
           </div>
 
           <div className="flex flex-col md:flex-row items-center">
@@ -181,22 +179,28 @@ const PortfolioTest = () => {
             </div>
 
             <div className="md:w-2/3 md:pl-12">
-              <h3 className="text-2xl font-bold mb-4">
-                Front-End Developer & UI/UX Enthusiast
-              </h3>
-              <p className="text-gray-300 mb-6">
-                With over 5 years of experience in front-end development, I
+              <Title
+                size="sm"
+                firstText="Front-End Developer & UI/UX Enthusiast"
+                customClass="mb-4"
+              />
+
+              <Paragraph
+                text="With over 5 years of experience in front-end development, I
                 specialize in creating responsive web applications using
                 React.js and modern CSS frameworks like TailwindCSS. I'm
                 passionate about building intuitive user interfaces that provide
-                exceptional user experiences.
-              </p>
-              <p className="text-gray-300 mb-6">
-                My approach combines technical expertise with creative
-                problem-solving. I stay updated with the latest web technologies
-                and best practices to deliver high-quality, maintainable code.
-              </p>
+                exceptional user experiences."
+                customClass="mb-6 !text-[16px]"
+              />
 
+              <Paragraph
+                text="My approach combines technical expertise with creative
+                problem-solving. I stay updated with the latest web technologies
+                and best practices to deliver high-quality, maintainable code."
+                customClass="mb-6 !text-[16px]"
+              />
+              {/* 
               <div className="grid grid-cols-2 gap-4 mt-8">
                 {[
                   {
@@ -230,7 +234,7 @@ const PortfolioTest = () => {
                     </div>
                   </div>
                 ))}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

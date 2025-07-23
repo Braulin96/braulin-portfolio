@@ -1,5 +1,6 @@
-import "./ProfissionalSkills.styles.scss";
 import Title from "components/Title/Title";
+
+import "./ProfissionalSkills.styles.scss";
 
 type ProfissionalSkillsProps = {
   skills: {

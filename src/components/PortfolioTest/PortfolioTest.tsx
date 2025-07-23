@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-import DesktopNavbar from "components/DesktopNavbar/DesktopNavbar";
 import Navbar from "components/Navbar/Navbar";
-
-import { NAV_LINK_DATA } from "constants/NavLinkData";
-
-import NavLinkList from "../NavLinkList/NavLinkList";
+import Title from "components/Title/Title";
 
 const PortfolioTest = () => {
   const [activeNav, setActiveNav] = useState("home");
@@ -126,16 +122,14 @@ const PortfolioTest = () => {
         id="home"
         className="min-h-screen flex items-center pt-16 relative z-10">
         <div className="container mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 mb-12 md:mb-0">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              Hi, I'm <span className="primary-blue">Alex</span>
-            </h1>
-            <h2 className="text-2xl md:text-4xl font-bold mb-6">
-              Front-End{" "}
-              <span className="bg-gradient-to-r from-indigo-500 to-purple-600 text-transparent bg-clip-text">
-                React Developer
-              </span>
-            </h2>
+          <div className="md:w-1/2 mb-12 md:mb-0 space-y-[12px]">
+            <Title size="lg" firstText="Hi, I'm" secondText="Braulin" />
+            <Title
+              size="md"
+              firstText="Front-End"
+              secondText="React Developer"
+            />
+
             <p className="text-gray-300 mb-8 text-lg max-w-lg">
               I build modern, responsive web applications with React and
               TailwindCSS. Passionate about creating intuitive user experiences

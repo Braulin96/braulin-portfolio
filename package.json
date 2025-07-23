@@ -11,6 +11,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.5",
     "@tailwindcss/vite": "^4.1.11",
     "framer-motion": "^12.23.6",
     "generate-react-cli": "^8.4.9",

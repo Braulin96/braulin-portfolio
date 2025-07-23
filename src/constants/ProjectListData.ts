@@ -8,6 +8,7 @@ export const PROJECT_LIST_DATA = [
     technologies: ["React", "Redux", "TailwindCSS", "Chart.js"],
     gradient: "from-indigo-500 to-purple-600",
     mainImage: Profile,
+    moreImages: [Profile, Profile, Profile],
   },
   {
     mainImage: Profile,
@@ -16,6 +17,7 @@ export const PROJECT_LIST_DATA = [
       "A Kanban-style task management application with drag-and-drop functionality, team collaboration features, and deadline tracking.",
     technologies: ["React", "Context API", "React DnD", "Firebase"],
     gradient: "from-purple-600 to-purple-700",
+     moreImages: [Profile, Profile, Profile],
   },
   {
     mainImage: Profile,
@@ -24,6 +26,7 @@ export const PROJECT_LIST_DATA = [
       "A weather application that provides current conditions, 7-day forecasts, and location-based weather alerts with a clean, intuitive interface.",
     technologies: ["React", "OpenWeather API", "Geolocation", "Chart.js"],
     gradient: "from-blue-500 to-indigo-500",
+    moreImages: [Profile, Profile, Profile],
   },
   {
     title: "E-Commerce Dashboard",
@@ -32,6 +35,7 @@ export const PROJECT_LIST_DATA = [
     technologies: ["React", "Redux", "TailwindCSS", "Chart.js"],
     gradient: "from-indigo-500 to-purple-600",
     mainImage: Profile,
+    moreImages: [Profile, Profile, Profile],
   },
   {
     mainImage: Profile,
@@ -40,6 +44,7 @@ export const PROJECT_LIST_DATA = [
       "A Kanban-style task management application with drag-and-drop functionality, team collaboration features, and deadline tracking.",
     technologies: ["React", "Context API", "React DnD", "Firebase"],
     gradient: "from-purple-600 to-purple-700",
+    moreImages: [Profile, Profile, Profile],
   },
   {
     mainImage: Profile,
@@ -48,5 +53,6 @@ export const PROJECT_LIST_DATA = [
       "A weather application that provides current conditions, 7-day forecasts, and location-based weather alerts with a clean, intuitive interface.",
     technologies: ["React", "OpenWeather API", "Geolocation", "Chart.js"],
     gradient: "from-blue-500 to-indigo-500",
+    moreImages: [Profile, Profile, Profile],
   },
 ];

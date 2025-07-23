@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 
 import TechList from "components/TechList/TechList";
 import Paragraph from "components/Paragraph/Paragraph";
+import Modal from "components/Modal/Modal";
 
 import "./ProjectCard.styles.scss";
 
@@ -13,17 +14,20 @@ type ProjectCardProps = {
     technologies: string[];
     gradient: string;
     mainImage?: string;
+    moreImages?: string[];
   };
 };
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [showAllProjects, setShowAllProjects] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
 
+  const handleCloseModal = () => setIsModalOpen(false);
   const handlePlusClick = () => {
-    setShowAllProjects(!showAllProjects);
+    setIsModalOpen(true);
+    console;
   };
 
   return (
@@ -73,6 +77,9 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           )}
         </div>
       </div>
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+        <div>Modal Content</div>
+      </Modal>
     </div>
   );
 };

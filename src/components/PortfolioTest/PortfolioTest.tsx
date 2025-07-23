@@ -7,11 +7,13 @@ import Button from "components/Button/Button";
 import Asset from "components/Asset/Asset";
 import Subtitle from "components/Subtitle/Subtitle";
 import ToolsCardList from "components/ToolsCardList/ToolsCardList";
+import ToolsBlock from "components/ToolsBlock/ToolsBlock";
 
 import { TollsCardData } from "constants/TollsCardData";
 
 import Profile from "assets/images/profile2.jpg";
 import ReactIcon from "assets/images/tools/react.svg";
+import ProfissionalSkills from "components/ProfissionalSkills/ProfissionalSkills";
 
 const PortfolioTest = () => {
   const [activeNav, setActiveNav] = useState("home");
@@ -244,63 +246,11 @@ const PortfolioTest = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Technical Skills */}
-            <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 shadow-xl border border-indigo-500/20">
-              <h3 className="text-xl font-bold mb-6 flex items-center">
-                <i className="fas fa-laptop-code mr-3 primary-blue"></i>{" "}
-                Technical Skills
-              </h3>
-
-              <div className="space-y-6">
-                {skills.technical.map((skill, index) => (
-                  <div key={index}>
-                    <div className="flex justify-between mb-2">
-                      <span>{skill.name}</span>
-                      <span>{skill.level}%</span>
-                    </div>
-                    <div className="h-2 bg-indigo-500/20 rounded-full">
-                      <div
-                        className="h-full bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full transition-all duration-1000"
-                        style={{ width: `${skill.level}%` }}></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Professional Skills */}
-            <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 shadow-xl border border-indigo-500/20">
-              <h3 className="text-xl font-bold mb-6 flex items-center">
-                <i className="fas fa-user-tie mr-3 primary-blue"></i>{" "}
-                Professional Skills
-              </h3>
-
-              <div className="space-y-6">
-                {skills.professional.map((skill, index) => (
-                  <div key={index}>
-                    <div className="flex justify-between mb-2">
-                      <span>{skill.name}</span>
-                      <span>{skill.level}%</span>
-                    </div>
-                    <div className="h-2 bg-indigo-500/20 rounded-full">
-                      <div
-                        className="h-full bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full transition-all duration-1000"
-                        style={{ width: `${skill.level}%` }}></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <ToolsBlock tools={TollsCardData} />
+            <ProfissionalSkills skills={skills.professional} />
           </div>
 
-          {/* Tools & Technologies */}
-          <div className="mt-16">
-            <h3 className="text-2xl font-bold mb-8 text-center">
-              Tools & Technologies
-            </h3>
-
-            <ToolsCardList tools={TollsCardData} />
-          </div>
+  
         </div>
       </section>
 

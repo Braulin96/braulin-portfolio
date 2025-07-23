@@ -21,7 +21,7 @@ const ToolsCard = ({ tool }: ToolsCardProps) => {
           alt={tool.name}
         />
       )}
-      <span className={`text-sm text-${tool.color}`}>{tool.name}</span>
+      <span className={`text-sm ${tool.color}`}>{tool.name}</span>
     </div>
   );
 };

@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import Navbar from "components/Navbar/Navbar";
 import Title from "components/Title/Title";
@@ -10,6 +11,7 @@ import ToolsBlock from "components/ToolsBlock/ToolsBlock";
 import ProjectCard from "components/ProjectCard/ProjectCard";
 
 import { TollsCardData } from "constants/TollsCardData";
+import { PROJECT_LIST_DATA } from "constants/ProjectListData";
 
 import Profile from "assets/images/profile2.jpg";
 import ReactIcon from "assets/images/tools/react.svg";
@@ -17,7 +19,33 @@ import ProfissionalSkills from "components/ProfissionalSkills/ProfissionalSkills
 
 const PortfolioTest = () => {
   const [activeNav, setActiveNav] = useState("home");
+  const [showMoreProjects, setShowMoreProjects] = useState(false);
+  const sectionRef = useRef(null);
 
+  const handleShowMoreClick = () => {
+    setShowMoreProjects(!showMoreProjects);
+
+    // Add a small delay to allow the animation to start
+    setTimeout(() => {
+      if (sectionRef.current) {
+        if (!showMoreProjects) {
+          // Expanding: scroll to bottom of section
+          const sectionBottom =
+            sectionRef.current.offsetTop + sectionRef.current.offsetHeight;
+          window.scrollTo({
+            top: sectionBottom - window.innerHeight + 60,
+            behavior: "smooth",
+          });
+        } else {
+          // Collapsing: scroll to top of section
+          window.scrollTo({
+            top: sectionRef.current.offsetTop - 60,
+            behavior: "smooth",
+          });
+        }
+      }
+    }, 100);
+  };
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -86,29 +114,9 @@ const PortfolioTest = () => {
     ],
   };
 
-  const projects = [
-    {
-      title: "E-Commerce Dashboard",
-      description:
-        "A comprehensive admin dashboard for e-commerce platforms with real-time analytics, inventory management, and customer insights.",
-      technologies: ["React", "Redux", "TailwindCSS", "Chart.js"],
-      gradient: "from-indigo-500 to-purple-600",
-    },
-    {
-      title: "Task Management App",
-      description:
-        "A Kanban-style task management application with drag-and-drop functionality, team collaboration features, and deadline tracking.",
-      technologies: ["React", "Context API", "React DnD", "Firebase"],
-      gradient: "from-purple-600 to-purple-700",
-    },
-    {
-      title: "Weather Forecast App",
-      description:
-        "A weather application that provides current conditions, 7-day forecasts, and location-based weather alerts with a clean, intuitive interface.",
-      technologies: ["React", "OpenWeather API", "Geolocation", "Chart.js"],
-      gradient: "from-blue-500 to-indigo-500",
-    },
-  ];
+  const projects = showMoreProjects
+    ? PROJECT_LIST_DATA
+    : PROJECT_LIST_DATA.slice(0, 3);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-slate-50 font-['Poppins',sans-serif]">
@@ -195,41 +203,6 @@ const PortfolioTest = () => {
                 and best practices to deliver high-quality, maintainable code."
                 customClass="mb-6 !text-[16px]"
               />
-              {/* 
-              <div className="grid grid-cols-2 gap-4 mt-8">
-                {[
-                  {
-                    icon: "fas fa-code",
-                    title: "Front-End",
-                    desc: "React, JavaScript, HTML5, CSS3",
-                  },
-                  {
-                    icon: "fas fa-paint-brush",
-                    title: "UI/UX Design",
-                    desc: "Figma, Responsive Design",
-                  },
-                  {
-                    icon: "fas fa-mobile-alt",
-                    title: "Mobile First",
-                    desc: "Responsive Development",
-                  },
-                  {
-                    icon: "fas fa-tools",
-                    title: "Tools",
-                    desc: "Git, Webpack, Vite",
-                  },
-                ].map((item, index) => (
-                  <div key={index} className="flex items-center">
-                    <div className="w-10 h-10 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mr-3">
-                      <i className={item.icon}></i>
-                    </div>
-                    <div>
-                      <h4 className="font-bold">{item.title}</h4>
-                      <p className="text-sm text-gray-400">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div> */}
             </div>
           </div>
         </div>
@@ -253,7 +226,7 @@ const PortfolioTest = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 relative z-10">
+      <section ref={sectionRef} id="projects" className="py-20 relative z-10">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold mb-4">
@@ -265,17 +238,62 @@ const PortfolioTest = () => {
               and modern web development.
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <ProjectCard key={index} project={project} />
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            layout>
+            {PROJECT_LIST_DATA.slice(0, 3).map((project, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.1,
+                  ease: "easeOut",
+                }}
+                layout>
+                <ProjectCard project={project} />
+              </motion.div>
             ))}
-          </div>
+
+            <AnimatePresence>
+              {showMoreProjects &&
+                PROJECT_LIST_DATA.slice(3).map((project, index) => (
+                  <motion.div
+                    key={`extra-${index + 3}`}
+                    initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                      scale: 1,
+                      transition: {
+                        duration: 0.5,
+                        delay: index * 0.1,
+                        ease: "easeOut",
+                      },
+                    }}
+                    exit={{
+                      opacity: 0,
+                      y: -30,
+                      scale: 0.9,
+                      transition: {
+                        duration: 0.3,
+                        ease: "easeIn",
+                      },
+                    }}
+                    layout>
+                    <ProjectCard project={project} />
+                  </motion.div>
+                ))}
+            </AnimatePresence>
+          </motion.div>
 
           <div className="text-center mt-12">
-            <button className="px-8 py-3 border-2 border-indigo-500 rounded-lg font-semibold text-white hover:bg-indigo-500/10 transition-all">
-              View All Projects
-            </button>
+            <Button
+              onClick={handleShowMoreClick}
+              variant="secondary"
+              text={showMoreProjects ? "Show Less" : "Show More"}
+            />
           </div>
         </div>
       </section>

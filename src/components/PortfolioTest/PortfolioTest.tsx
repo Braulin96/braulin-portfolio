@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Navbar from "components/Navbar/Navbar";
 import Title from "components/Title/Title";
 import Paragraph from "components/Paragraph/Paragraph";
+import Button from "components/Button/Button";
 
 const PortfolioTest = () => {
   const [activeNav, setActiveNav] = useState("home");
@@ -139,16 +140,15 @@ const PortfolioTest = () => {
             </div>
 
             <div className="flex space-x-4">
-              <button
+              <Button
                 onClick={() => scrollToSection("projects")}
-                className="px-8 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg font-semibold text-white shadow-lg hover:shadow-indigo-500/30 transition-all">
-                View Projects
-              </button>
-              <button
+                text="View Projects"
+              />
+              <Button
                 onClick={() => scrollToSection("contact")}
-                className="px-8 py-3 bg-transparent border-2 border-indigo-500 rounded-lg font-semibold text-white hover:bg-indigo-500/10 transition-all">
-                Contact Me
-              </button>
+                variant="secondary"
+                text="Contact Me"
+              />
             </div>
           </div>
 

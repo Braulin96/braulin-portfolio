@@ -1,7 +1,6 @@
-// src/components/Button.tsx
 type ButtonProps = {
   onClick: () => void;
-  children?: React.ReactNode;
+  text: string;
   variant?: "primary" | "secondary";
   disabled?: boolean;
   className?: string;
@@ -9,17 +8,19 @@ type ButtonProps = {
 
 const Button = ({
   onClick,
-  children = "Click here",
+  text,
   variant = "primary",
   disabled = false,
   className = "",
 }: ButtonProps) => {
   const baseClasses =
-    "px-4 py-2 rounded font-medium transition-colors duration-200";
+    "px-8 py-3 rounded-lg font-semibold transition-all text-white cursor-pointer";
+
   const variantClasses = {
-    primary: "bg-blue-500 hover:bg-blue-600 text-white disabled:bg-blue-300",
+    primary:
+      "bg-gradient-to-r from-indigo-500 to-purple-600 shadow-lg hover:shadow-indigo-500/30",
     secondary:
-      "bg-gray-200 hover:bg-gray-300 text-gray-800 disabled:bg-gray-100",
+      "bg-transparent border-2 border-indigo-500 hover:bg-indigo-500/10",
   };
 
   const buttonClasses = `${baseClasses} ${variantClasses[variant]} ${className}`;
@@ -30,7 +31,7 @@ const Button = ({
       onClick={onClick}
       disabled={disabled}
       className={buttonClasses}>
-      {children}
+      {text}
     </button>
   );
 };

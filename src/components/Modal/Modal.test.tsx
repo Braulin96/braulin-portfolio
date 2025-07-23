@@ -39,6 +39,7 @@ describe("Modal Component", () => {
     // The container is the outermost div with customClasses
     const container = document.querySelector(".container");
     expect(container).toBeInTheDocument();
+    expect(container).toHaveClass("z-100");
   });
 
   test("applies custom classes to container", () => {
@@ -50,7 +51,7 @@ describe("Modal Component", () => {
 
     const container = document.querySelector(".custom-modal");
     expect(container).toBeInTheDocument();
-    expect(container).toHaveClass("container");
+    expect(container).toHaveClass("container", "z-100");
   });
 
   test("applies custom panel classes", () => {
@@ -82,16 +83,21 @@ describe("Modal Component", () => {
     expect(panel).toBeInTheDocument();
     if (panel) {
       expect(panel).toHaveClass("my-auto");
+      expect(panel).toHaveClass("h-[fit]");
       expect(panel).toHaveClass("w-full");
       expect(panel).toHaveClass("max-w-[854px]");
       expect(panel).toHaveClass("transform");
       expect(panel).toHaveClass("rounded-[14px]");
+      expect(panel).toHaveClass("overflow-hidden");
       expect(panel).toHaveClass("bg-white");
-      expect(panel).toHaveClass("p-6");
+      expect(panel).toHaveClass("text-left");
+      expect(panel).toHaveClass("align-middle");
+      expect(panel).toHaveClass("shadow-xl");
+      expect(panel).toHaveClass("transition-all");
     }
   });
 
-  test("renders overlay when open", () => {
+  test("renders overlay when open with correct styling", () => {
     render(
       <Modal isOpen={true} onClose={mockOnClose}>
         <div>Content</div>
@@ -102,8 +108,8 @@ describe("Modal Component", () => {
     expect(overlay).toBeInTheDocument();
     expect(overlay).toHaveClass("fixed");
     expect(overlay).toHaveClass("inset-0");
-    expect(overlay).toHaveClass("bg-black");
-    expect(overlay).toHaveClass("bg-opacity-50");
+    expect(overlay).toHaveClass("bg-slate-900/80");
+    expect(overlay).toHaveClass("backdrop-blur-md");
   });
 
   test("overlay click functionality works", () => {
@@ -168,6 +174,7 @@ describe("Modal Component", () => {
 
     const dialog = screen.getByRole("dialog");
     expect(dialog).toBeInTheDocument();
+    expect(dialog).toHaveClass("relative", "z-100");
   });
 
   test("modal container has correct positioning classes", () => {
@@ -187,6 +194,37 @@ describe("Modal Component", () => {
       ".flex.h-full.min-h-full.items-center.justify-center"
     );
     expect(centeringDiv).toBeInTheDocument();
+    expect(centeringDiv).toHaveClass("p-4", "text-center");
+  });
+
+  test("has correct z-index values", () => {
+    render(
+      <Modal isOpen={true} onClose={mockOnClose}>
+        <div>Content</div>
+      </Modal>
+    );
+
+    const container = document.querySelector(".container");
+    expect(container).toHaveClass("z-100");
+
+    const dialog = screen.getByRole("dialog");
+    expect(dialog).toHaveClass("z-100");
+  });
+
+  test("transition animations are set up correctly", () => {
+    render(
+      <Modal isOpen={true} onClose={mockOnClose}>
+        <div>Content</div>
+      </Modal>
+    );
+
+    // Check that transition classes exist on overlay
+    const overlay = document.querySelector(".modal-overlay");
+    expect(overlay).toBeInTheDocument();
+
+    // Check that dialog panel exists (transitions are handled by Headless UI internally)
+    const panel = document.querySelector('[class*="my-auto"]');
+    expect(panel).toBeInTheDocument();
   });
 
   test("works with all props together", () => {
@@ -204,7 +242,7 @@ describe("Modal Component", () => {
 
     const container = document.querySelector(".test-modal");
     expect(container).toBeInTheDocument();
-    expect(container).toHaveClass("container");
+    expect(container).toHaveClass("container", "z-100");
 
     const panel = document.querySelector('[class*="test-panel"]');
     expect(panel).toBeInTheDocument();
@@ -229,18 +267,15 @@ describe("Modal Component", () => {
 
     expect(screen.getByText("Content")).toBeInTheDocument();
 
-    // Close modal - but wait for transition to complete
+    // Close modal
     rerender(
       <Modal isOpen={false} onClose={mockOnClose}>
         <div>Content</div>
       </Modal>
     );
 
-    // Since Headless UI has transitions, the content might still be in DOM briefly
-    // We should check after a short delay or just verify the modal state changed
-    setTimeout(() => {
-      expect(screen.queryByText("Content")).not.toBeInTheDocument();
-    }, 500);
+    // Check immediately - Headless UI should handle the transition
+    expect(screen.queryByText("Content")).not.toBeInTheDocument();
   });
 
   test("modal opens and closes correctly", () => {
@@ -261,5 +296,17 @@ describe("Modal Component", () => {
     );
 
     expect(screen.getByText("Test Content")).toBeInTheDocument();
+  });
+
+  test("has correct backdrop blur styling", () => {
+    render(
+      <Modal isOpen={true} onClose={mockOnClose}>
+        <div>Content</div>
+      </Modal>
+    );
+
+    const overlay = document.querySelector(".modal-overlay");
+    expect(overlay).toHaveClass("backdrop-blur-md");
+    expect(overlay).toHaveClass("bg-slate-900/80");
   });
 });

@@ -35,8 +35,8 @@ const NextArrow = ({ onClick, currentSlide, slideCount }: any) => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className={`ease absolute right-0 top-1/2 z-20 flex h-[55px] w-[63px] -translate-y-1/2 text-center text-black transition-all duration-700 ${
-        isLast ? "opacity-0" : "cursor-pointer opacity-100"
+      className={`absolute right-4 top-1/2 z-30 flex h-[55px] w-[63px] -translate-y-1/2 text-center text-black transition-all duration-700 ease-in-out ${
+        isLast ? "opacity-0 pointer-events-none" : "cursor-pointer opacity-100"
       }`}
       onClick={isLast ? undefined : onClick}>
       <img src={Arrow} alt="next arrow" className="m-auto" />
@@ -56,8 +56,8 @@ const PrevArrow = ({ onClick, currentSlide }: any) => {
 
   return (
     <div
-      className={`ease absolute left-0 top-1/2 z-20 flex h-[55px] w-[63px] -translate-y-1/2 text-center text-black transition-all duration-700 ${
-        isFirst ? "opacity-0" : "cursor-pointer opacity-100"
+      className={`absolute left-4 top-1/2 z-30 flex h-[55px] w-[63px] -translate-y-1/2 text-center text-black transition-all duration-700 ease-in-out ${
+        isFirst ? "opacity-0 pointer-events-none" : "cursor-pointer opacity-100"
       }`}
       onClick={handlePrevClick}
       style={{
@@ -74,27 +74,26 @@ const Carousel = ({
   slides,
   onSlideChange,
   customClasses,
-  displayArrows,
+  displayArrows = true, // Default to true
   onMouseOver,
   onMouseOut,
   currentSlide,
   title,
 }: CarouselProps) => {
-  // Internal state to track the current slide
   const [internalCurrentSlide, setInternalCurrentSlide] = useState(
     currentSlide || 0
   );
 
   const settings = {
     infinite: true,
-    arrows: slides.length > 1,
+    arrows: slides.length > 1 && displayArrows,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     nextArrow: slides.length > 1 && displayArrows ? <NextArrow /> : null,
     prevArrow: slides.length > 1 && displayArrows ? <PrevArrow /> : null,
     beforeChange: (currentSlide: number, nextSlide: number) => {
-      setInternalCurrentSlide(nextSlide); // Update internal state
+      setInternalCurrentSlide(nextSlide);
       if (onSlideChange) onSlideChange(nextSlide);
     },
   };
@@ -112,52 +111,57 @@ const Carousel = ({
       onMouseOver={onMouseOver}
       onMouseOut={onMouseOut}
       data-testid="Carousel"
-      className={`Carousel relative flex w-full lg:overflow-hidden ${
+      className={`Carousel relative w-full md:max-h-[600px] md:h-[600px] ${
         customClasses || ""
       }`}>
       {slides?.length === 1 ? (
-        <div className="relative w-full">
+        <div className="relative w-full h-full">
           {slides?.map((slide, index) => (
-            <div key={index} className="mx-auto w-full">
+            <div key={index} className="relative w-full h-full">
               <img
                 src={slide.url}
                 alt={`Slide ${index}`}
-                className="mx-auto h-full w-full transform object-cover transition-all duration-[4000ms] ease-in-out hover:scale-105 hover:opacity-90"
+                className="w-full h-full max-h-[700px] object-cover transition-all duration-[4000ms] ease-in-out hover:scale-105 hover:opacity-90 rounded-[14px]"
               />
+              {/* Overlay for single slide */}
+              <div className="absolute bottom-0 left-0 right-0 px-4 pb-2 pt-10 z-10 bg-gradient-to-b from-transparent via-black/20 to-black/50 rounded-b-[14px]">
+                <div className="flex justify-between w-full">
+                  <Paragraph text={title} customClass="!text-white" />
+                  <Paragraph
+                    text="1/1"
+                    customClass="!text-white !text-sm !font-bold"
+                  />
+                </div>
+              </div>
             </div>
           ))}
-          {/* Overlay for single slide */}
-          <div className="absolute bottom-0 left-0 right-0 px-4 pb-2 z-10">
-            <div className="flex justify-between w-full">
-              <Paragraph text={title} customClass="!text-white" />
-              <Paragraph text="1/1" customClass="!text-white" />
-            </div>
-          </div>
         </div>
       ) : (
-        <div className="relative w-full">
+        <div className="relative w-full h-full">
           <Slider
             {...settings}
             ref={(slider) => {
               sliderRef.current = slider;
             }}
-            className="mx-auto w-full transform transition-all">
+            className="w-full h-full [&_.slick-list]:h-full [&_.slick-track]:h-full [&_.slick-slide]:h-full [&_.slick-slide>div]:h-full">
             {slides.map((slide, index) => (
-              <div key={index} className="mx-auto w-auto">
+              <div key={index} className="w-full h-full">
                 <img
                   src={slide.url}
                   alt={`Slide ${index}`}
-                  className="h-[350px] w-full transform rounded-[14px] bg-cover transition-all duration-[4000ms] ease-in-out hover:scale-105 hover:opacity-90 md:h-[544px] object-cover"
+                  className="w-full h-full max-h-[700px] object-cover transition-all duration-[4000ms] ease-in-out hover:scale-105 hover:opacity-90 rounded-[14px]"
                 />
               </div>
             ))}
           </Slider>
-          <div className="absolute bottom-0 left-0 right-0 px-4 pb-2 pt-10 z-10 bg-gradient-to-b from-transparent via-black/20 to-black/50">
+
+          {/* Text overlay */}
+          <div className="absolute bottom-0 left-0 right-0 px-4 pb-2 pt-10 z-20 bg-gradient-to-b from-transparent via-black/20 to-black/50 rounded-b-[14px]">
             <div className="flex justify-between w-full">
               <Paragraph text={title} customClass="!text-white" />
               <Paragraph
                 text={`${internalCurrentSlide + 1}/${slides.length}`}
-                customClass="!text-white !text-sm  !font-bold"
+                customClass="!text-white !text-sm !font-bold"
               />
             </div>
           </div>

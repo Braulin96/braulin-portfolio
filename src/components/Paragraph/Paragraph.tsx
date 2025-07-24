@@ -5,7 +5,7 @@ type ParagraphProps = {
   customClass?: string;
 };
 
-const Paragraph = ({ text, customClass }: ParagraphProps) => {
+const Paragraph = ({ text, customClass,  }: ParagraphProps) => {
   return (
     <p
       data-testid="Paragraph"

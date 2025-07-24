@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import ProjectCard from "components/ProjectCard/ProjectCard";
 import Button from "components/Button/Button";
+import Subtitle from "components/Subtitle/Subtitle";
+import Paragraph from "components/Paragraph/Paragraph";
 
 import "./Projects.styles.scss";
 
@@ -40,14 +42,17 @@ const Projects = () => {
     <section ref={sectionRef} id="projects" className="py-20 relative">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4">
-            My <span className="primary-blue">Projects</span>
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto"></div>
-          <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-            Here are some of my recent projects showcasing my skills in React
-            and modern web development.
-          </p>
+          <Subtitle
+            firstText="My"
+            secondText="Projects"
+            customClass="mx-auto"
+          />
+
+          <Paragraph
+            text="Here are some of my recent projects showcasing my skills in React
+            and modern web development."
+            customClass="mt-4 mx-auto !text-gray-400 !text-[16px] max-w-2xl"
+          />
         </div>
 
         <motion.div

@@ -9,7 +9,7 @@ import Asset from "components/Asset/Asset";
 import Subtitle from "components/Subtitle/Subtitle";
 import ToolsBlock from "components/ToolsBlock/ToolsBlock";
 import ProjectCard from "components/ProjectCard/ProjectCard";
-import Input from "components/Input/Input";
+import InputForm from "components/InputForm/InputForm";
 
 import { TollsCardData } from "constants/TollsCardData";
 import { PROJECT_LIST_DATA } from "constants/ProjectListData";
@@ -20,6 +20,7 @@ import ProfissionalSkills from "components/ProfissionalSkills/ProfissionalSkills
 const PortfolioTest = () => {
   const [activeNav, setActiveNav] = useState("home");
   const [showMoreProjects, setShowMoreProjects] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const sectionRef = useRef(null);
 
   const handleShowMoreClick = () => {
@@ -46,6 +47,7 @@ const PortfolioTest = () => {
       }
     }, 100);
   };
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -84,8 +86,8 @@ const PortfolioTest = () => {
     setActiveNav(sectionId);
   };
 
-  const handleContactSubmit = (e) => {
-    e.preventDefault();
+  const handleContactSubmit = () => {
+    setIsLoading(true);
     alert("Thank you for your message! I will get back to you soon.");
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
@@ -310,41 +312,12 @@ const PortfolioTest = () => {
 
           <div className="flex flex-col lg:flex-row gap-12">
             <div className="lg:w-1/2">
-              <div className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Input
-                    isRequired
-                    label="Name"
-                    formData={formData}
-                    handleInputChange={handleInputChange}
-                  />
-                  <Input
-                    isRequired
-                    label="Email"
-                    formData={formData}
-                    handleInputChange={handleInputChange}
-                  />
-                </div>
-
-                <Input
-                  label="Subject"
-                  formData={formData}
-                  handleInputChange={handleInputChange}
-                />
-                <Input
-                  isRequired
-                  label="Message"
-                  formData={formData}
-                  handleInputChange={handleInputChange}
-                  type="textarea"
-                />
-
-                <button
-                  onClick={handleContactSubmit}
-                  className="px-8 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg font-semibold text-white shadow-lg hover:shadow-indigo-500/30 transition-all">
-                  Send Message
-                </button>
-              </div>
+              <InputForm
+                formData={formData}
+                handleInputChange={handleInputChange}
+                handleContactSubmit={handleContactSubmit}
+                isLoading={isLoading}
+              />
             </div>
 
             <div className="lg:w-1/2">

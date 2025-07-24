@@ -15,12 +15,12 @@ const About = () => {
           <Subtitle firstText="About" secondText="Me" />
         </div>
 
-        <div className="flex flex-col md:flex-row items-center">
-          <div className="md:w-1/3 mb-10 md:mb-0 flex justify-center">
+        <div className="flex flex-col md:flex-row items-center order gap-x-[20px]">
+          <div className="md:w-1/3 mb-10 md:mb-0 md:mt-0 mt-10 flex justify-center md:order-1 order-2">
             <Asset image={Profile} />
           </div>
 
-          <div className="md:w-2/3 md:pl-12">
+          <div className="md:w-2/3 md:pl-12 order-1 md:order-2">
             <Title
               size="sm"
               firstText="Front-End Developer & UI/UX Enthusiast"

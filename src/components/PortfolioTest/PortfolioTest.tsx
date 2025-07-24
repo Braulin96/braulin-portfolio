@@ -9,8 +9,8 @@ import Asset from "components/Asset/Asset";
 import Subtitle from "components/Subtitle/Subtitle";
 import ToolsBlock from "components/ToolsBlock/ToolsBlock";
 import ProjectCard from "components/ProjectCard/ProjectCard";
-import InputForm from "components/InputForm/InputForm";
 import InputFormBlock from "components/InputFormBlock/InputFormBlock";
+import ContactDetailsList from "components/ContactDetailsList/ContactDetailsList";
 
 import { TollsCardData } from "constants/TollsCardData";
 import { PROJECT_LIST_DATA } from "constants/ProjectListData";
@@ -313,48 +313,17 @@ const PortfolioTest = () => {
 
           <div className="flex flex-col lg:flex-row gap-12">
             <div className="lg:w-1/2">
-              {/* <InputForm
-                formData={formData}
-                handleInputChange={handleInputChange}
-                handleContactSubmit={handleContactSubmit}
-                isLoading={isLoading}
-              /> */}
               <InputFormBlock />
             </div>
 
             <div className="lg:w-1/2">
               <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 h-full border border-indigo-500/20">
-                <h3 className="text-xl font-bold mb-6">Contact Information</h3>
-
-                <div className="space-y-6">
-                  {[
-                    {
-                      icon: "fas fa-map-marker-alt",
-                      title: "Location",
-                      info: "San Francisco, California",
-                    },
-                    {
-                      icon: "fas fa-envelope",
-                      title: "Email",
-                      info: "hello@example.com",
-                    },
-                    {
-                      icon: "fas fa-phone",
-                      title: "Phone",
-                      info: "+1 (123) 456-7890",
-                    },
-                  ].map((contact, index) => (
-                    <div key={index} className="flex items-start">
-                      <div className="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center mr-4">
-                        <i className={contact.icon}></i>
-                      </div>
-                      <div>
-                        <h4 className="font-bold mb-1">{contact.title}</h4>
-                        <p className="text-gray-400">{contact.info}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                <Title
+                  firstText="Contact Information"
+                  customClass="mb-6"
+                  size="xs"
+                />
+                <ContactDetailsList />
 
                 <div className="mt-12">
                   <h4 className="font-bold mb-4">Follow Me</h4>

@@ -4,10 +4,11 @@ type TitleProps = {
   firstText: string;
   secondText?: string;
   customClass?: string;
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg";
 };
 
 const defaultClasses = {
+  xs: "md:text-xl text-lg",
   sm: "md:text-2xl text-xl",
   md: "text-2xl md:text-4xl ",
   lg: "text-4xl md:text-6xl ",

@@ -44,10 +44,7 @@ const InputFormBlock = () => {
       setStatusMessage("Email is required");
       return false;
     }
-    if (!formData.subject.trim()) {
-      setStatusMessage("Subject is required");
-      return false;
-    }
+
     if (!formData.message.trim()) {
       setStatusMessage("Message is required");
       return false;
@@ -144,7 +141,7 @@ const InputFormBlock = () => {
     <div
       data-testid="InputFormBlock"
       className="InputFormBlock flex flex-col lg:flex-row gap-12">
-      <div>
+      <div className="w-full">
         {/* Status Messages */}
         {status === "success" && (
           <div className="bg-accent-green/20 border border-accent-green text-accent-green rounded-lg p-4 mb-6">

@@ -24,7 +24,7 @@ const InputForm = ({
   isLoading = false,
 }: InputFormProps) => {
   return (
-    <div data-testid="InputForm" className="InputForm space-y-6">
+    <div data-testid="InputForm" className="InputForm space-y-6  w-full">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Input
           isRequired
@@ -43,7 +43,6 @@ const InputForm = ({
       </div>
 
       <Input
-        isRequired
         label="Subject"
         type="text"
         formData={formData}

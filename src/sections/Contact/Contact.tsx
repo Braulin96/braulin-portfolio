@@ -4,6 +4,7 @@ import Paragraph from "components/Paragraph/Paragraph";
 import InputFormBlock from "components/InputFormBlock/InputFormBlock";
 import ContactDetailsList from "components/ContactDetailsList/ContactDetailsList";
 import SocialNetworkList from "components/SocialNetworkList/SocialNetworkList";
+import FadeOnScroll from "utils/FadeOnScroll";
 
 import "./Contact.styles.scss";
 
@@ -11,7 +12,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 bg-slate-800/50 relative">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <FadeOnScroll delay={100} className="text-center mb-16">
           <Subtitle
             firstText="Get In"
             secondText="Touch"
@@ -23,14 +24,14 @@ const Contact = () => {
             Feel free to reach out!"
             customClass="mt-4 mx-auto !text-gray-400 !text-[16px] max-w-2xl"
           />
-        </div>
+        </FadeOnScroll>
 
         <div className="flex flex-col lg:flex-row gap-12">
-          <div className="lg:w-1/2">
+          <FadeOnScroll delay={500} className="lg:w-1/2">
             <InputFormBlock />
-          </div>
+          </FadeOnScroll>
 
-          <div className="lg:w-1/2">
+          <FadeOnScroll delay={800} className="lg:w-1/2">
             <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 h-full border border-indigo-500/20">
               <Title
                 firstText="Contact Information"
@@ -46,7 +47,7 @@ const Contact = () => {
                 <SocialNetworkList />
               </div>
             </div>
-          </div>
+          </FadeOnScroll>
         </div>
       </div>
     </section>

@@ -11,6 +11,7 @@ import ToolsBlock from "components/ToolsBlock/ToolsBlock";
 import ProjectCard from "components/ProjectCard/ProjectCard";
 import InputFormBlock from "components/InputFormBlock/InputFormBlock";
 import ContactDetailsList from "components/ContactDetailsList/ContactDetailsList";
+import SocialNetworkList from "components/SocialNetworkList/SocialNetworkList";
 
 import { TollsCardData } from "constants/TollsCardData";
 import { PROJECT_LIST_DATA } from "constants/ProjectListData";
@@ -21,13 +22,11 @@ import ProfissionalSkills from "components/ProfissionalSkills/ProfissionalSkills
 const PortfolioTest = () => {
   const [activeNav, setActiveNav] = useState("home");
   const [showMoreProjects, setShowMoreProjects] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const sectionRef = useRef(null);
 
   const handleShowMoreClick = () => {
     setShowMoreProjects(!showMoreProjects);
 
-    // Add a small delay to allow the animation to start
     setTimeout(() => {
       if (sectionRef.current) {
         if (!showMoreProjects) {
@@ -48,13 +47,6 @@ const PortfolioTest = () => {
       }
     }, 100);
   };
-
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
 
   useEffect(() => {
     // Smooth scrolling for anchor links
@@ -85,19 +77,6 @@ const PortfolioTest = () => {
       behavior: "smooth",
     });
     setActiveNav(sectionId);
-  };
-
-  const handleContactSubmit = () => {
-    setIsLoading(true);
-    alert("Thank you for your message! I will get back to you soon.");
-    setFormData({ name: "", email: "", subject: "", message: "" });
-  };
-
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
   };
 
   const skills = {
@@ -326,23 +305,11 @@ const PortfolioTest = () => {
                 <ContactDetailsList />
 
                 <div className="mt-12">
-                  <h4 className="font-bold mb-4">Follow Me</h4>
-                  <div className="flex space-x-4">
-                    {[
-                      "fab fa-github",
-                      "fab fa-linkedin-in",
-                      "fab fa-twitter",
-                      "fab fa-dribbble",
-                    ].map((icon, index) => (
-                      <a
-                        target="_blank"
-                        key={index}
-                        href="#"
-                        className="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center hover:opacity-90 transition-opacity">
-                        <i className={icon}></i>
-                      </a>
-                    ))}
-                  </div>
+                  <Paragraph
+                    text="Follow Me"
+                    customClass="!font-bold !text-white  mb-4"
+                  />
+                  <SocialNetworkList />
                 </div>
               </div>
             </div>
@@ -360,22 +327,6 @@ const PortfolioTest = () => {
 
             <div className="text-gray-400 text-center mb-4 md:mb-0">
               &copy; 2023 Alex Johnson. All Rights Reserved.
-            </div>
-
-            <div className="flex space-x-4">
-              {[
-                "fab fa-github",
-                "fab fa-linkedin-in",
-                "fab fa-twitter",
-                "fab fa-dribbble",
-              ].map((icon, index) => (
-                <a
-                  key={index}
-                  href="#"
-                  className="text-gray-400 hover:primary-blue transition-colors">
-                  <i className={icon}></i>
-                </a>
-              ))}
             </div>
           </div>
         </div>

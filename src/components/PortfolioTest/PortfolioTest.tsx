@@ -1,52 +1,18 @@
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
 import Navbar from "components/Navbar/Navbar";
-import Title from "components/Title/Title";
-import Paragraph from "components/Paragraph/Paragraph";
-import Button from "components/Button/Button";
-import Asset from "components/Asset/Asset";
-import Subtitle from "components/Subtitle/Subtitle";
-import ToolsBlock from "components/ToolsBlock/ToolsBlock";
-import ProjectCard from "components/ProjectCard/ProjectCard";
-import InputFormBlock from "components/InputFormBlock/InputFormBlock";
-import ContactDetailsList from "components/ContactDetailsList/ContactDetailsList";
-import SocialNetworkList from "components/SocialNetworkList/SocialNetworkList";
 
-import { TollsCardData } from "constants/TollsCardData";
-import { PROJECT_LIST_DATA } from "constants/ProjectListData";
-
-import Profile from "assets/images/profile2.jpg";
-import ProfissionalSkills from "components/ProfissionalSkills/ProfissionalSkills";
+// Section imports
+import Hero from "../../sections/Hero/Hero";
+import About from "../../sections/About/About";
+import Skills from "../../sections/Skills/Skills";
+import Projects from "../../sections/Projects/Projects";
+import Contact from "../../sections/Contact/Contact";
+import Footer from "../../sections/Footer/Footer";
+import OverlayHeader from "components/OverlayHeader/OverlayHeader";
 
 const PortfolioTest = () => {
   const [activeNav, setActiveNav] = useState("home");
-  const [showMoreProjects, setShowMoreProjects] = useState(false);
-  const sectionRef = useRef(null);
-
-  const handleShowMoreClick = () => {
-    setShowMoreProjects(!showMoreProjects);
-
-    setTimeout(() => {
-      if (sectionRef.current) {
-        if (!showMoreProjects) {
-          // Expanding: scroll to bottom of section
-          const sectionBottom =
-            sectionRef.current.offsetTop + sectionRef.current.offsetHeight;
-          window.scrollTo({
-            top: sectionBottom - window.innerHeight + 60,
-            behavior: "smooth",
-          });
-        } else {
-          // Collapsing: scroll to top of section
-          window.scrollTo({
-            top: sectionRef.current.offsetTop - 60,
-            behavior: "smooth",
-          });
-        }
-      }
-    }, 100);
-  };
 
   useEffect(() => {
     // Smooth scrolling for anchor links
@@ -72,265 +38,29 @@ const PortfolioTest = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId) => {
-    document.getElementById(sectionId).scrollIntoView({
-      behavior: "smooth",
-    });
-    setActiveNav(sectionId);
-  };
-
-  const skills = {
-    technical: [
-      { name: "React.js", level: 95 },
-      { name: "JavaScript/ES6+", level: 90 },
-      { name: "Tailwind CSS", level: 92 },
-      { name: "HTML5 & CSS3", level: 88 },
-      { name: "Redux/State Mgmt", level: 85 },
-    ],
-    professional: [
-      { name: "Problem Solving", level: 90 },
-      { name: "Communication", level: 88 },
-      { name: "Team Collaboration", level: 87 },
-      { name: "Project Management", level: 82 },
-      { name: "Adaptability", level: 93 },
-    ],
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+      });
+      setActiveNav(sectionId);
+    }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-slate-50 font-['Poppins',sans-serif]">
-      {/* Background Blobs */}
-      <div className="fixed top-0 right-0 w-96 h-96 bg-gradient-to-br from-indigo-500/10 to-purple-600/10 rounded-full blur-3xl -translate-y-48 translate-x-48 z-0"></div>
-      <div className="fixed bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-indigo-500/10 to-purple-600/10 rounded-full blur-3xl translate-y-48 -translate-x-48 z-0"></div>
-
+      <OverlayHeader />
       <Navbar />
-
-      {/* Hero Section */}
-      <section
-        id="home"
-        className="min-h-screen flex items-center pt-16 relative z-10">
-        <div className="container mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 mb-12 md:mb-0 md:space-y-[12px] space-y-[8px]">
-            <Title size="lg" firstText="Hi, I'm" secondText="Braulin" />
-            <Title
-              size="md"
-              firstText="Front-End"
-              secondText="React Developer"
-            />
-            <div className="mb-8 max-w-lg">
-              <Paragraph
-                text="I build modern, responsive web applications with React and
-                TailwindCSS. Passionate about creating intuitive user
-                experiences with clean, efficient code."
-              />
-            </div>
-
-            <div className="flex space-x-4">
-              <Button
-                onClick={() => scrollToSection("projects")}
-                text="View Projects"
-              />
-              <Button
-                onClick={() => scrollToSection("contact")}
-                variant="secondary"
-                text="Contact Me"
-              />
-            </div>
-          </div>
-
-          <div className="md:w-1/2 flex justify-center">
-            <Asset
-              image={Profile}
-              variant="fullRounded"
-              specialization="React Developer"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-20 relative z-10">
-        <div className="container mx-auto px-4">
-          <div className="mb-16 flex justify-center">
-            <Subtitle firstText="About" secondText="Me" />
-          </div>
-
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-1/3 mb-10 md:mb-0 flex justify-center">
-              <Asset image={Profile} />
-            </div>
-
-            <div className="md:w-2/3 md:pl-12">
-              <Title
-                size="sm"
-                firstText="Front-End Developer & UI/UX Enthusiast"
-                customClass="mb-4"
-              />
-
-              <Paragraph
-                text="With over 5 years of experience in front-end development, I
-                specialize in creating responsive web applications using
-                React.js and modern CSS frameworks like TailwindCSS. I'm
-                passionate about building intuitive user interfaces that provide
-                exceptional user experiences."
-                customClass="mb-6 !text-[16px]"
-              />
-
-              <Paragraph
-                text="My approach combines technical expertise with creative
-                problem-solving. I stay updated with the latest web technologies
-                and best practices to deliver high-quality, maintainable code."
-                customClass="mb-6 !text-[16px]"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section id="skills" className="py-20 bg-slate-800/50 relative z-10">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">
-              My <span className="primary-blue">Skills</span>
-            </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <ToolsBlock tools={TollsCardData} />
-            <ProfissionalSkills skills={skills.professional} />
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section ref={sectionRef} id="projects" className="py-20 relative z-10">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">
-              My <span className="primary-blue">Projects</span>
-            </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto"></div>
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-              Here are some of my recent projects showcasing my skills in React
-              and modern web development.
-            </p>
-          </div>
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            layout>
-            {PROJECT_LIST_DATA.slice(0, 3).map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1,
-                  ease: "easeOut",
-                }}
-                layout>
-                <ProjectCard project={project} />
-              </motion.div>
-            ))}
-
-            <AnimatePresence>
-              {showMoreProjects &&
-                PROJECT_LIST_DATA.slice(3).map((project, index) => (
-                  <motion.div
-                    key={`extra-${index + 3}`}
-                    initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                      scale: 1,
-                      transition: {
-                        duration: 0.5,
-                        delay: index * 0.1,
-                        ease: "easeOut",
-                      },
-                    }}
-                    exit={{
-                      opacity: 0,
-                      y: -30,
-                      scale: 0.9,
-                      transition: {
-                        duration: 0.3,
-                        ease: "easeIn",
-                      },
-                    }}
-                    layout>
-                    <ProjectCard project={project} />
-                  </motion.div>
-                ))}
-            </AnimatePresence>
-          </motion.div>
-
-          <div className="text-center mt-12">
-            <Button
-              onClick={handleShowMoreClick}
-              variant="secondary"
-              text={showMoreProjects ? "Show Less" : "Show More"}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-slate-800/50 relative z-10">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">
-              Get In <span className="primary-blue">Touch</span>
-            </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto"></div>
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-              Have a project in mind or want to discuss potential opportunities?
-              Feel free to reach out!
-            </p>
-          </div>
-
-          <div className="flex flex-col lg:flex-row gap-12">
-            <div className="lg:w-1/2">
-              <InputFormBlock />
-            </div>
-
-            <div className="lg:w-1/2">
-              <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 h-full border border-indigo-500/20">
-                <Title
-                  firstText="Contact Information"
-                  customClass="mb-6"
-                  size="xs"
-                />
-                <ContactDetailsList />
-
-                <div className="mt-12">
-                  <Paragraph
-                    text="Follow Me"
-                    customClass="!font-bold !text-white  mb-4"
-                  />
-                  <SocialNetworkList />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-10 border-t border-gray-800 relative z-10">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-2xl font-bold mb-4 md:mb-0">
-              <span className="primary-blue">Dev</span>PortfolioTest
-            </div>
-
-            <div className="text-gray-400 text-center mb-4 md:mb-0">
-              &copy; 2023 Alex Johnson. All Rights Reserved.
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Hero
+        onProjectsClick={() => scrollToSection("projects")}
+        onContactClick={() => scrollToSection("contact")}
+      />
+      <About />
+      <Skills />
+      <Projects />
+      <Contact />
+      <Footer />
     </div>
   );
 };

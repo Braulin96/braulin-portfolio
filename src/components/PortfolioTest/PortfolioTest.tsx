@@ -9,6 +9,7 @@ import Asset from "components/Asset/Asset";
 import Subtitle from "components/Subtitle/Subtitle";
 import ToolsBlock from "components/ToolsBlock/ToolsBlock";
 import ProjectCard from "components/ProjectCard/ProjectCard";
+import Input from "components/Input/Input";
 
 import { TollsCardData } from "constants/TollsCardData";
 import { PROJECT_LIST_DATA } from "constants/ProjectListData";
@@ -311,52 +312,32 @@ const PortfolioTest = () => {
             <div className="lg:w-1/2">
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-gray-300 mb-2">Name</label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="w-full bg-slate-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-primary-blue transition-colors"
-                      placeholder="Your Name"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-gray-300 mb-2">Email</label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="w-full bg-slate-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-primary-blue transition-colors"
-                      placeholder="Your Email"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-gray-300 mb-2">Subject</label>
-                  <input
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    className="w-full bg-slate-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-primary-blue transition-colors"
-                    placeholder="Subject"
+                  <Input
+                    isRequired
+                    label="Name"
+                    formData={formData}
+                    handleInputChange={handleInputChange}
+                  />
+                  <Input
+                    isRequired
+                    label="Email"
+                    formData={formData}
+                    handleInputChange={handleInputChange}
                   />
                 </div>
 
-                <div>
-                  <label className="block text-gray-300 mb-2">Message</label>
-                  <textarea
-                    rows="5"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    className="w-full bg-slate-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-primary-blue transition-colors"
-                    placeholder="Your Message"></textarea>
-                </div>
+                <Input
+                  label="Subject"
+                  formData={formData}
+                  handleInputChange={handleInputChange}
+                />
+                <Input
+                  isRequired
+                  label="Message"
+                  formData={formData}
+                  handleInputChange={handleInputChange}
+                  type="textarea"
+                />
 
                 <button
                   onClick={handleContactSubmit}

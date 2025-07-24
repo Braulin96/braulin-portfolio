@@ -335,6 +335,7 @@ const PortfolioTest = () => {
                       "fab fa-dribbble",
                     ].map((icon, index) => (
                       <a
+                        target="_blank"
                         key={index}
                         href="#"
                         className="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center hover:opacity-90 transition-opacity">

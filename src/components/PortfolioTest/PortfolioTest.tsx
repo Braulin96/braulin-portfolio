@@ -10,6 +10,7 @@ import Subtitle from "components/Subtitle/Subtitle";
 import ToolsBlock from "components/ToolsBlock/ToolsBlock";
 import ProjectCard from "components/ProjectCard/ProjectCard";
 import InputForm from "components/InputForm/InputForm";
+import InputFormBlock from "components/InputFormBlock/InputFormBlock";
 
 import { TollsCardData } from "constants/TollsCardData";
 import { PROJECT_LIST_DATA } from "constants/ProjectListData";
@@ -312,12 +313,13 @@ const PortfolioTest = () => {
 
           <div className="flex flex-col lg:flex-row gap-12">
             <div className="lg:w-1/2">
-              <InputForm
+              {/* <InputForm
                 formData={formData}
                 handleInputChange={handleInputChange}
                 handleContactSubmit={handleContactSubmit}
                 isLoading={isLoading}
-              />
+              /> */}
+              <InputFormBlock />
             </div>
 
             <div className="lg:w-1/2">

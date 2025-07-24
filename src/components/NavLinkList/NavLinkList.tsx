@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import NavLink from "components/NavLink/NavLink";
-
 import "./NavLinkList.styles.scss";
 
 type NavLinkListProps = {
@@ -19,16 +18,20 @@ const NavLinkList = ({
 }: NavLinkListProps) => {
   const [currentActiveNav, setCurrentActiveNav] = useState(activeNav);
 
+  useEffect(() => {
+    setCurrentActiveNav(activeNav);
+  }, [activeNav]);
+
   const handleNavClick = (section: string) => {
     setCurrentActiveNav(section);
 
-    const element = document.getElementById(section);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-
     if (onNavClick) {
       onNavClick(section);
+    } else {
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
@@ -51,4 +54,5 @@ const NavLinkList = ({
     </div>
   );
 };
+
 export default NavLinkList;

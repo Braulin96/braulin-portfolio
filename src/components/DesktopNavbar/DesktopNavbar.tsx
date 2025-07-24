@@ -4,7 +4,12 @@ import { NAV_LINK_DATA } from "constants/NavLinkData";
 
 import "./DesktopNavbar.styles.scss";
 
-const DesktopNavbar = () => {
+type DesktopNavbarProps = {
+  activeNav: string;
+  onNavClick: (sectionId: string) => void;
+};
+
+const DesktopNavbar = ({ activeNav, onNavClick }: DesktopNavbarProps) => {
   return (
     <nav
       data-testid="DesktopNavbar"
@@ -14,7 +19,11 @@ const DesktopNavbar = () => {
           <span className="primary-blue">Dev</span>PortfolioTest
         </div>
         <div>
-          <NavLinkList list={NAV_LINK_DATA} />
+          <NavLinkList
+            list={NAV_LINK_DATA}
+            activeNav={activeNav}
+            onNavClick={onNavClick}
+          />
         </div>
       </div>
     </nav>

@@ -51,7 +51,7 @@ const PortfolioTest = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-slate-50 font-['Poppins',sans-serif]">
       <OverlayHeader />
-      <Navbar />
+      <Navbar activeNav={activeNav} onNavClick={scrollToSection} />
       <Hero
         onProjectsClick={() => scrollToSection("projects")}
         onContactClick={() => scrollToSection("contact")}

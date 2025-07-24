@@ -14,7 +14,6 @@ import { TollsCardData } from "constants/TollsCardData";
 import { PROJECT_LIST_DATA } from "constants/ProjectListData";
 
 import Profile from "assets/images/profile2.jpg";
-import ReactIcon from "assets/images/tools/react.svg";
 import ProfissionalSkills from "components/ProfissionalSkills/ProfissionalSkills";
 
 const PortfolioTest = () => {
@@ -113,10 +112,6 @@ const PortfolioTest = () => {
       { name: "Adaptability", level: 93 },
     ],
   };
-
-  const projects = showMoreProjects
-    ? PROJECT_LIST_DATA
-    : PROJECT_LIST_DATA.slice(0, 3);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-slate-50 font-['Poppins',sans-serif]">

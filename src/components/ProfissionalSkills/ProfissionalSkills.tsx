@@ -17,9 +17,9 @@ const ProfissionalSkills = ({ skills }: ProfissionalSkillsProps) => {
       <Title firstText="Professional Skills" customClass="mb-6" size="sm" />
       <ul className="space-y-4 ml-[20px]">
         {skills.map((skill, index) => (
-          <li key={index} className="flex items-center">
+          <li key={index} className="flex items-center ">
             <div className="w-3 h-3 bg-primary-blue rounded-full mr-4 flex-shrink-0"></div>
-            <span className="text-white">{skill.name}</span>
+            <span className="text-slate-300">{skill.name}</span>
           </li>
         ))}
       </ul>

@@ -14,7 +14,6 @@ const PortfolioTest = () => {
   const [activeNav, setActiveNav] = useState("home");
 
   useEffect(() => {
-    // Smooth scrolling for anchor links
     const handleScroll = () => {
       const sections = ["home", "about", "skills", "projects", "contact"];
       const scrollPosition = window.scrollY + 100;

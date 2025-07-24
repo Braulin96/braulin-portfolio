@@ -6,9 +6,9 @@ import Button from "components/Button/Button";
 import Subtitle from "components/Subtitle/Subtitle";
 import Paragraph from "components/Paragraph/Paragraph";
 
-import "./Projects.styles.scss";
-
 import { PROJECT_LIST_DATA } from "constants/ProjectListData";
+
+import "./Projects.styles.scss";
 
 const Projects = () => {
   const [showMoreProjects, setShowMoreProjects] = useState(false);

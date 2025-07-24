@@ -35,11 +35,15 @@ const NextArrow = ({ onClick, currentSlide, slideCount }: any) => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className={`absolute right-4 top-1/2 z-30 flex h-[55px] w-[63px] -translate-y-1/2 text-center text-black transition-all duration-700 ease-in-out ${
+      className={`absolute right-1 md:right-2 top-1/2 z-30 flex -translate-y-1/2 text-center p-[12px] rounded-full bg-black/50 transition-all duration-700 ease-in-out ${
         isLast ? "opacity-0 pointer-events-none" : "cursor-pointer opacity-100"
       }`}
       onClick={isLast ? undefined : onClick}>
-      <img src={Arrow} alt="next arrow" className="m-auto" />
+      <img
+        src={Arrow}
+        alt="next arrow"
+        className="m-auto md:size-[30px] size-[20px]"
+      />
     </div>
   );
 };
@@ -56,7 +60,7 @@ const PrevArrow = ({ onClick, currentSlide }: any) => {
 
   return (
     <div
-      className={`absolute left-4 top-1/2 z-30 flex h-[55px] w-[63px] -translate-y-1/2 text-center text-black transition-all duration-700 ease-in-out ${
+      className={`absolute left-1 md:left-2 top-1/2 z-30 flex -translate-y-1/2 text-center rounded-full p-[12px] bg-black/50 transition-all duration-700 ease-in-out ${
         isFirst ? "opacity-0 pointer-events-none" : "cursor-pointer opacity-100"
       }`}
       onClick={handlePrevClick}
@@ -65,7 +69,11 @@ const PrevArrow = ({ onClick, currentSlide }: any) => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}>
-      <img src={Arrow} alt="previous arrow" className="m-auto rotate-180" />
+      <img
+        src={Arrow}
+        alt="previous arrow"
+        className="m-auto rotate-180  md:size-[30px] size-[20px]"
+      />
     </div>
   );
 };

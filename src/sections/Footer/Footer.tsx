@@ -23,9 +23,8 @@ const Footer = () => {
           </div>
 
           <div className="text-gray-400 text-center mb-4 md:mb-0">
-            &copy; {currentYear} Alex Johnson. All Rights Reserved.
+            &copy; {currentYear} Braulin Pires. All Rights Reserved.
           </div>
-
           <button
             onClick={scrollToTop}
             className="cursor-pointer group px-[4px] py-[12px] bg-slate-900 rounded-full shadow-lg hover:shadow-xl">

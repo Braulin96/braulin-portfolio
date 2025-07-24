@@ -17,12 +17,12 @@
       "withStory": false,
       "withLazy": false
     },
-    "page": {
+    "section": {
       "customTemplates": {
-        "component": "grc/page/TemplateName.tsx",
-        "style": "grc/page/TemplateName.styles.scss"
+        "component": "grc/section/TemplateName.tsx",
+        "style": "grc/section/TemplateName.styles.scss"
       },
-      "path": "src/pages",
+      "path": "src/sections",
       "withStyle": true,
       "withTest": false,
       "withStory": false,

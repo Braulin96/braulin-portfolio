@@ -2,9 +2,9 @@ import "./TemplateName.styles.scss";
 
 const TemplateName = () => {
   return (
-    <div data-testid="TemplateName" className="TemplateName">
+    <section id="TemplateName" className="py-20">
       TemplateName
-    </div>
+    </section>
   );
 };
 

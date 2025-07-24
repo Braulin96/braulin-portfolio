@@ -1,3 +1,5 @@
+import { getCurrentYear } from "utils/getCurrentYear";
+
 import GoUp from "assets/images/go_up.svg";
 
 import "./Footer.styles.scss";
@@ -10,6 +12,8 @@ const Footer = () => {
     });
   };
 
+  const currentYear = getCurrentYear();
+
   return (
     <footer className="py-10 border-t border-gray-800 relative ">
       <div className="container mx-auto px-4">
@@ -19,7 +23,7 @@ const Footer = () => {
           </div>
 
           <div className="text-gray-400 text-center mb-4 md:mb-0">
-            &copy; 2023 Alex Johnson. All Rights Reserved.
+            &copy; {currentYear} Alex Johnson. All Rights Reserved.
           </div>
 
           <button

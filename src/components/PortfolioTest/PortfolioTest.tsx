@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 
 import Navbar from "components/Navbar/Navbar";
 
-// Section imports
 import Hero from "../../sections/Hero/Hero";
 import About from "../../sections/About/About";
 import Skills from "../../sections/Skills/Skills";

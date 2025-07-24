@@ -1,9 +1,11 @@
-import "./Skills.styles.scss";
-
 import ToolsBlock from "components/ToolsBlock/ToolsBlock";
 import ProfissionalSkills from "components/ProfissionalSkills/ProfissionalSkills";
+import Subtitle from "components/Subtitle/Subtitle";
+import FadeOnScroll from "utils/FadeOnScroll";
 
 import { TollsCardData } from "constants/TollsCardData";
+
+import "./Skills.styles.scss";
 
 const Skills = () => {
   const professionalSkills = [
@@ -17,16 +19,16 @@ const Skills = () => {
   return (
     <section id="skills" className="py-20 bg-slate-800/50 relative">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4">
-            My <span className="primary-blue">Skills</span>
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto"></div>
-        </div>
-
+        <FadeOnScroll delay={100} className="text-center mb-16">
+          <Subtitle firstText="My" secondText="Skills" customClass="mx-auto" />
+        </FadeOnScroll>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <ToolsBlock tools={TollsCardData} />
-          <ProfissionalSkills skills={professionalSkills} />
+          <FadeOnScroll delay={500}>
+            <ToolsBlock tools={TollsCardData} />
+          </FadeOnScroll>
+          <FadeOnScroll delay={800}>
+            <ProfissionalSkills skills={professionalSkills} />
+          </FadeOnScroll>
         </div>
       </div>
     </section>

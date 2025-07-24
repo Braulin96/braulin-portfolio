@@ -2,6 +2,7 @@ import Title from "components/Title/Title";
 import Paragraph from "components/Paragraph/Paragraph";
 import Asset from "components/Asset/Asset";
 import Subtitle from "components/Subtitle/Subtitle";
+import FadeOnScroll from "utils/FadeOnScroll";
 
 import "./About.styles.scss";
 
@@ -11,17 +12,20 @@ const About = () => {
   return (
     <section id="about" className="py-20 relative">
       <div className="container mx-auto px-4">
-        
-        <div className="mb-16 flex justify-center">
+        <FadeOnScroll delay={100} className="mb-16 flex justify-center">
           <Subtitle firstText="About" secondText="Me" />
-        </div>
+        </FadeOnScroll>
 
         <div className="flex flex-col md:flex-row items-center order gap-x-[20px]">
-          <div className="md:w-1/3 mb-10 md:mb-0 md:mt-0 mt-10 flex justify-center md:order-1 order-2">
+          <FadeOnScroll
+            delay={500}
+            className="md:w-1/3 mb-10 md:mb-0 md:mt-0 mt-10 flex justify-center md:order-1 order-2">
             <Asset image={Profile} />
-          </div>
+          </FadeOnScroll>
 
-          <div className="md:w-2/3 md:pl-12 order-1 md:order-2">
+          <FadeOnScroll
+            delay={800}
+            className="md:w-2/3 md:pl-12 order-1 md:order-2">
             <Title
               size="sm"
               firstText="Front-End Developer & UI/UX Enthusiast"
@@ -43,7 +47,7 @@ const About = () => {
               and best practices to deliver high-quality, maintainable code."
               customClass="mb-6 !text-[16px]"
             />
-          </div>
+          </FadeOnScroll>
         </div>
       </div>
     </section>

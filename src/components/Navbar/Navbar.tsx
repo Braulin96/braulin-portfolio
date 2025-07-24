@@ -12,7 +12,6 @@ type NavbarProps = {
 
 const Navbar = ({ activeNav, onNavClick }: NavbarProps) => {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
-
   return (
     <div data-testid="Navbar" className="Navbar">
       {isMobile ? (

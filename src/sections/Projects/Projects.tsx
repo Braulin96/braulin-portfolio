@@ -1,10 +1,11 @@
-import { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import AOS from "aos";
 
 import ProjectCard from "components/ProjectCard/ProjectCard";
 import Button from "components/Button/Button";
 import Subtitle from "components/Subtitle/Subtitle";
 import Paragraph from "components/Paragraph/Paragraph";
+import FadeOnScroll from "utils/FadeOnScroll";
 
 import { PROJECT_LIST_DATA } from "constants/ProjectListData";
 
@@ -38,10 +39,15 @@ const Projects = () => {
     }, 100);
   };
 
+  // Reinitialize AOS when showMoreProjects changes to animate new items
+  useEffect(() => {
+    AOS.refresh();
+  }, [showMoreProjects]);
+
   return (
     <section ref={sectionRef} id="projects" className="py-20 relative">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <FadeOnScroll delay={100} className="text-center mb-16">
           <Subtitle
             firstText="My"
             secondText="Projects"
@@ -53,65 +59,45 @@ const Projects = () => {
             and modern web development."
             customClass="mt-4 mx-auto !text-gray-400 !text-[16px] max-w-2xl"
           />
-        </div>
+        </FadeOnScroll>
 
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          layout>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Initial 3 projects - always visible */}
           {PROJECT_LIST_DATA.slice(0, 3).map((project, index) => (
-            <motion.div
+            <FadeOnScroll
               key={index}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.1,
-                ease: "easeOut",
-              }}
-              layout>
+              data="fade-up"
+              duration={600}
+              delay={200 + index * 100}
+              offset={150}>
               <ProjectCard project={project} />
-            </motion.div>
+            </FadeOnScroll>
           ))}
 
-          <AnimatePresence>
-            {showMoreProjects &&
-              PROJECT_LIST_DATA.slice(3).map((project, index) => (
-                <motion.div
-                  key={`extra-${index + 3}`}
-                  initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    transition: {
-                      duration: 0.5,
-                      delay: index * 0.1,
-                      ease: "easeOut",
-                    },
-                  }}
-                  exit={{
-                    opacity: 0,
-                    y: -30,
-                    scale: 0.9,
-                    transition: {
-                      duration: 0.3,
-                      ease: "easeIn",
-                    },
-                  }}
-                  layout>
-                  <ProjectCard project={project} />
-                </motion.div>
-              ))}
-          </AnimatePresence>
-        </motion.div>
+          {/* Additional projects - conditionally rendered */}
+          {showMoreProjects &&
+            PROJECT_LIST_DATA.slice(3).map((project, index) => (
+              <FadeOnScroll
+                key={`extra-${index + 3}`}
+                data="fade-up"
+                duration={500}
+                delay={index * 100}
+                offset={100}
+                className={`transition-all duration-300 ${
+                  showMoreProjects ? "opacity-100" : "opacity-0"
+                }`}>
+                <ProjectCard project={project} />
+              </FadeOnScroll>
+            ))}
+        </div>
 
-        <div className="text-center mt-12">
+        <FadeOnScroll offset={-100} delay={800} className="text-center mt-12">
           <Button
             onClick={handleShowMoreClick}
             variant="secondary"
             text={showMoreProjects ? "Show Less" : "Show More"}
           />
-        </div>
+        </FadeOnScroll>
       </div>
     </section>
   );

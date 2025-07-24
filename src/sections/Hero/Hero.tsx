@@ -2,6 +2,7 @@ import Title from "components/Title/Title";
 import Paragraph from "components/Paragraph/Paragraph";
 import Button from "components/Button/Button";
 import Asset from "components/Asset/Asset";
+import FadeOnScroll from "utils/FadeOnScroll";
 
 import "./Hero.styles.scss";
 
@@ -18,7 +19,10 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
       id="home"
       className="min-h-screen flex items-center pt-16 relative">
       <div className="container mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
-        <div className="md:w-1/2 mb-12 md:mb-0 md:space-y-[12px] space-y-[8px]">
+        <FadeOnScroll
+          data="fade-up"
+          delay={100}
+          className="md:w-1/2 mb-12 md:mb-0 md:space-y-[12px] space-y-[8px]">
           <Title size="lg" firstText="Hi, I'm" secondText="Braulin" />
           <Title size="md" firstText="Front-End" secondText="React Developer" />
           <div className="mb-8 max-w-lg">
@@ -37,15 +41,17 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
               text="Contact Me"
             />
           </div>
-        </div>
-
-        <div className="md:w-1/2 flex justify-center">
+        </FadeOnScroll>
+        <FadeOnScroll
+          data="fade-up"
+          delay={500}
+          className="w-full md:w-1/2 flex justify-center">
           <Asset
             image={Profile}
             variant="fullRounded"
             specialization="React Developer"
           />
-        </div>
+        </FadeOnScroll>
       </div>
     </section>
   );

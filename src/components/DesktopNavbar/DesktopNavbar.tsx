@@ -17,7 +17,7 @@ const DesktopNavbar = ({ activeNav, onNavClick }: DesktopNavbarProps) => {
       role="navigation"
       aria-label="Main navigation">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <div className="text-[22px] font-bold">
+        <div className="text-[22px] font-bold" role="banner">
           <span className="primary-blue">Dev</span>Portfolio
         </div>
         <div>

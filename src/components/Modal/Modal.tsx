@@ -9,6 +9,8 @@ type ModalProps = {
   onClose: () => void;
   customClasses?: string;
   customPanelClasses?: string;
+  ariaLabel?: string;
+  ariaDescribedBy?: string;
 };
 
 const Modal = ({
@@ -17,11 +19,18 @@ const Modal = ({
   children,
   customClasses,
   customPanelClasses,
+  ariaLabel,
+  ariaDescribedBy,
 }: ModalProps) => {
   return (
     <div className={`${customClasses} container z-100`}>
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-100 " onClose={onClose}>
+        <Dialog
+          as="div"
+          className="relative z-100"
+          onClose={onClose}
+          aria-label={ariaLabel || "Modal dialog"}
+          aria-describedby={ariaDescribedBy}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -30,7 +39,10 @@ const Modal = ({
             leave="ease-in duration-200"
             leaveFrom="opacity-100"
             leaveTo="opacity-0">
-            <div className="modal-overlay fixed inset-0 bg-slate-900/80 backdrop-blur-md" />
+            <div
+              className="modal-overlay fixed inset-0 bg-slate-900/80 backdrop-blur-md"
+              aria-hidden="true"
+            />
           </Transition.Child>
           <div className="fixed inset-0 overflow-y-auto">
             <div className="flex h-full min-h-full items-center justify-center p-4 text-center">
@@ -43,7 +55,17 @@ const Modal = ({
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95">
                 <Dialog.Panel
-                  className={`my-auto h-[fit] w-full max-w-[854px] transform rounded-[14px] overflow-hidden bg-white text-left align-middle shadow-xl transition-all ${customPanelClasses}`}>
+                  className={`my-auto h-[fit] w-full max-w-[854px] transform rounded-[14px] overflow-hidden bg-white text-left align-middle shadow-xl transition-all ${customPanelClasses}`}
+                  role="dialog"
+                  aria-modal="true"
+                  aria-label={ariaLabel || "Modal content"}
+                  aria-describedby={ariaDescribedBy}>
+                  <div
+                    className="sr-only"
+                    id="modal-instructions"
+                    aria-live="polite">
+                    Press Escape key to close modal
+                  </div>
                   {children}
                 </Dialog.Panel>
               </Transition.Child>

@@ -1,4 +1,4 @@
-import PortfolioTest from "components/PortfolioTest/PortfolioTest";
+import PortfolioTest from "./components/PortfolioTest/PortfolioTest";
 
 import "./App.css";
 

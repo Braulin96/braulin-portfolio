@@ -50,14 +50,18 @@ const PortfolioTest = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-slate-50 font-['Poppins',sans-serif]">
       <OverlayHeader />
       <Navbar activeNav={activeNav} onNavClick={scrollToSection} />
-      <Hero
-        onProjectsClick={() => scrollToSection("projects")}
-        onContactClick={() => scrollToSection("contact")}
-      />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
+
+      <main id="main-content" tabIndex={-1}>
+        <Hero
+          onProjectsClick={() => scrollToSection("projects")}
+          onContactClick={() => scrollToSection("contact")}
+        />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+      </main>
+
       <Footer />
     </div>
   );

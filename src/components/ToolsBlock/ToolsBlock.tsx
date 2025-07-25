@@ -7,7 +7,7 @@ type ToolsBlockProps = {
   tools: {
     name: string;
     icon?: string;
-    color?: string;
+    type?: string;
   }[];
 };
 

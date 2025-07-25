@@ -1,12 +1,51 @@
-import ReactIcon from "assets/images/tools/react.svg";
+  export const TollsCardData = [
+  // Design
+  { name: "Figma", type: "design" },
+  { name: "Adobe XD", type: "design" },
 
-export const TollsCardData = [
-    { icon: ReactIcon, name: "React", color: "text-blue-500" },
-    { name: "JavaScript", color: "text-yellow-400" },
-    { name: "CSS3", color: "text-blue-500" },
-    { name: "HTML5", color: "text-orange-500" },
-    { name: "Git", color: "text-red-500" },
-    { name: "Figma", color: "text-purple-500" },
-    { name: "NPM", color: "text-red-500" },
-    { name: "SASS", color: "text-pink-500" },
-  ];
+  // UI Libraries
+  { name: "TailwindCSS", type: "ui-library" },
+  // { name: "Material UI", type: "ui-library" },
+
+  // Frameworks 
+  { name: "React", type: "framework" },
+  { name: "Vue", type: "framework" },
+  { name: "Next.js", type: "framework" },
+  { name: "React Native", type: "framework" },
+  { name: "TypeScript", type: "language" },
+  { name: "JavaScript", type: "language" },
+
+  // Build Tools
+  { name: "Vite", type: "build-tool" },
+  { name: "Webpack", type: "build-tool" },
+
+  // Package Managers
+  // { name: "npm", type: "package-manager" },
+  // { name: "yarn", type: "package-manager" },
+
+  // Testing
+  { name: "Jest", type: "testing" },
+  { name: "Storybook", type: "testing" },
+
+  // SEO
+  { name: "React Scan", type: "seo" },
+
+  // Accessibility
+  { name: "ARIA Guidelines", type: "a11y" },
+
+  // Version Control
+  // { name: "Git", type: "version-control" },
+  // { name: "GitHub", type: "version-control" },
+  // { name: "Bitbucket", type: "version-control" },
+
+  // Styling
+  { name: "HTML & CSS", type: "styling" },
+  { name: "Sass", type: "styling" },
+
+    //  API Integration
+  { name: "RESTful API", type: "api-integration" },
+  { name: "Axios", type: "api-integration" },
+
+  
+];
+

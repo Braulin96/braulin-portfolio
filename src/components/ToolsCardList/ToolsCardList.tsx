@@ -6,7 +6,7 @@ type ToolsCardListProps = {
   tools: {
     name: string;
     icon?: string;
-    color?: string;
+    type?: string;
   }[];
 };
 

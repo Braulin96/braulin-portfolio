@@ -8,13 +8,18 @@ type ToolsCardListProps = {
     icon?: string;
     type?: string;
   }[];
+  ariaLabel?: string;
 };
 
-const ToolsCardList = ({ tools }: ToolsCardListProps) => {
+const ToolsCardList = ({ tools, ariaLabel }: ToolsCardListProps) => {
   return (
     <div
       data-testid="ToolsCardList"
-      className="ToolsCardList flex flex-wrap justify-center gap-6">
+      className="ToolsCardList flex flex-wrap justify-center gap-6"
+      role="grid"
+      aria-label={
+        ariaLabel || "Collection of development tools and technologies"
+      }>
       {tools.map((tool, index) => (
         <ToolsCard key={index} tool={tool} />
       ))}

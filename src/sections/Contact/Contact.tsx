@@ -10,7 +10,7 @@ import "./Contact.styles.scss";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-20 bg-slate-800/50 relative">
+    <section id="contact" className="py-20  relative">
       <div className="container mx-auto px-4">
         <FadeOnScroll delay={100} className="text-center mb-16">
           <Subtitle

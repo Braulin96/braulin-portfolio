@@ -45,7 +45,10 @@ const Projects = () => {
   }, [showMoreProjects]);
 
   return (
-    <section ref={sectionRef} id="projects" className="py-20 relative">
+    <section
+      ref={sectionRef}
+      id="projects"
+      className="py-20 relative bg-slate-800/50 ">
       <div className="container mx-auto px-4">
         <FadeOnScroll delay={100} className="text-center mb-16">
           <Subtitle

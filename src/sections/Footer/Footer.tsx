@@ -15,7 +15,7 @@ const Footer = () => {
   const currentYear = getCurrentYear();
 
   return (
-    <footer className="py-10 border-t border-gray-800 relative ">
+    <footer className="py-10 border-t border-gray-800 bg-slate-800/50 relative ">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="text-2xl font-bold mb-4 md:mb-0">

@@ -10,7 +10,7 @@ import Profile from "assets/images/profile2.jpg";
 
 const About = () => {
   return (
-    <section id="about" className="py-20 relative">
+    <section id="about" className="py-20 relative bg-slate-800/50 ">
       <div className="container mx-auto px-4">
         <FadeOnScroll delay={100} className="mb-16 flex justify-center">
           <Subtitle firstText="About" secondText="Me" />

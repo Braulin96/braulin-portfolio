@@ -10,7 +10,7 @@ import "./Skills.styles.scss";
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20 bg-slate-800/50 relative">
+    <section id="skills" className="py-20 relative">
       <div className="container mx-auto px-4">
         <FadeOnScroll delay={100} className="text-center mb-16">
           <Subtitle firstText="My" secondText="Skills" customClass="mx-auto" />

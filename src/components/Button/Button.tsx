@@ -1,6 +1,7 @@
 type ButtonProps = {
   onClick: () => void;
   text: string;
+  type?: "button" | "submit" | "reset";
   variant?: "primary" | "secondary";
   disabled?: boolean;
   className?: string;
@@ -16,6 +17,7 @@ const Button = ({
   className = "",
   ariaLabel,
   ariaDescribedBy,
+  type = "button",
 }: ButtonProps) => {
   const baseClasses =
     "px-8 py-3 rounded-lg font-semibold transition-all text-white cursor-pointer";
@@ -42,7 +44,7 @@ const Button = ({
 
   return (
     <button
-      type="button"
+      type={type}
       onClick={onClick}
       onKeyDown={handleKeyDown}
       disabled={disabled}

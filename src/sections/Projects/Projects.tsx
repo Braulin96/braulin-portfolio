@@ -90,7 +90,6 @@ const Projects = () => {
             </FadeOnScroll>
           ))}
 
-          {/* Additional projects - conditionally rendered */}
           {showMoreProjects &&
             PROJECT_LIST_DATA.slice(3).map((project, index) => (
               <FadeOnScroll

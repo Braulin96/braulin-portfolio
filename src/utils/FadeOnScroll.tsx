@@ -30,6 +30,8 @@ const FadeOnScroll = ({
   const offsetValue = offset || 200;
   return (
     <div
+      role="presentation"
+      aria-hidden="false"
       className={className}
       data-aos={data}
       data-aos-offset={offsetValue}

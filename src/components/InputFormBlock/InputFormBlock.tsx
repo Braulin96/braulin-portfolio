@@ -140,18 +140,28 @@ const InputFormBlock = () => {
   return (
     <div
       data-testid="InputFormBlock"
-      className="InputFormBlock flex flex-col lg:flex-row gap-12">
+      className="InputFormBlock flex flex-col lg:flex-row gap-12"
+      role="form"
+      aria-label="Contact form to send a message">
       <div className="w-full">
         {/* Status Messages */}
         {status === "success" && (
-          <div className="bg-accent-green/20 border border-accent-green text-accent-green rounded-lg p-4 mb-6">
-            ✓ {statusMessage}
+          <div
+            className="bg-accent-green/20 border border-accent-green text-accent-green rounded-lg p-4 mb-6"
+            role="status"
+            aria-live="polite"
+            aria-label={`Success: ${statusMessage}`}>
+            <span aria-hidden="true">✓</span> {statusMessage}
           </div>
         )}
 
         {status === "error" && (
-          <div className="bg-red-500/20 border border-red-500 text-red-400 rounded-lg p-4 mb-6">
-            ✗ {statusMessage}
+          <div
+            className="bg-red-500/20 border border-red-500 text-red-400 rounded-lg p-4 mb-6"
+            role="alert"
+            aria-live="assertive"
+            aria-label={`Error: ${statusMessage}`}>
+            <span aria-hidden="true">✗</span> {statusMessage}
           </div>
         )}
 

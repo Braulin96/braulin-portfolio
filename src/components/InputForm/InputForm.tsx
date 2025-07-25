@@ -23,15 +23,28 @@ const InputForm = ({
   handleContactSubmit,
   isLoading = false,
 }: InputFormProps) => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleContactSubmit();
+  };
+
   return (
-    <div data-testid="InputForm" className="InputForm space-y-6  w-full">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <form
+      data-testid="InputForm"
+      className="InputForm space-y-6 w-full"
+      onSubmit={handleSubmit}
+      noValidate
+      aria-label="Contact form with name, email, subject and message fields">
+      <fieldset className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <legend className="sr-only">Personal Information</legend>
         <Input
           isRequired
           label="Name"
           type="text"
           formData={formData}
           handleInputChange={handleInputChange}
+          ariaLabel="Enter your full name"
+          ariaDescribedBy="name-help"
         />
         <Input
           isRequired
@@ -39,14 +52,18 @@ const InputForm = ({
           type="email"
           formData={formData}
           handleInputChange={handleInputChange}
+          ariaLabel="Enter your email address"
+          ariaDescribedBy="email-help"
         />
-      </div>
+      </fieldset>
 
       <Input
         label="Subject"
         type="text"
         formData={formData}
         handleInputChange={handleInputChange}
+        ariaLabel="Enter the subject of your message (optional)"
+        ariaDescribedBy="subject-help"
       />
 
       <Input
@@ -55,6 +72,8 @@ const InputForm = ({
         type="textarea"
         formData={formData}
         handleInputChange={handleInputChange}
+        ariaLabel="Enter your message or inquiry"
+        ariaDescribedBy="message-help"
       />
 
       <Button
@@ -62,8 +81,14 @@ const InputForm = ({
         variant="secondary"
         onClick={handleContactSubmit}
         text={isLoading ? "Sending..." : "Send Message"}
+        ariaLabel={
+          isLoading
+            ? "Sending your message, please wait"
+            : "Send your message to Braulin"
+        }
+        type="submit"
       />
-    </div>
+    </form>
   );
 };
 

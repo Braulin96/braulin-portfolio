@@ -10,39 +10,59 @@ import "./Contact.styles.scss";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-20  relative">
+    <section
+      id="contact"
+      className="py-20 relative"
+      aria-label="Contact information and message form">
       <div className="container mx-auto px-4">
         <FadeOnScroll delay={100} className="text-center mb-16">
           <Subtitle
             firstText="Get In"
             secondText="Touch"
             customClass="mx-auto"
+            ariaLabel="Get in touch section heading"
+            headingLevel="h2"
           />
 
           <Paragraph
-            text="  Have a project in mind or want to discuss potential opportunities?
+            text="Have a project in mind or want to discuss potential opportunities?
             Feel free to reach out!"
             customClass="mt-4 mx-auto !text-gray-400 !text-[16px] max-w-2xl"
+            ariaLabel="Contact section description and invitation to reach out"
           />
         </FadeOnScroll>
 
-        <div className="flex flex-col lg:flex-row gap-12">
-          <FadeOnScroll delay={500} className="lg:w-1/2">
+        <div
+          className="flex flex-col lg:flex-row gap-12"
+          role="group"
+          aria-label="Contact form and contact information">
+          <FadeOnScroll
+            delay={500}
+            className="lg:w-1/2"
+            aria-label="Contact form section">
             <InputFormBlock />
           </FadeOnScroll>
 
-          <FadeOnScroll delay={800} className="lg:w-1/2">
+          <FadeOnScroll
+            delay={800}
+            className="lg:w-1/2"
+            aria-label="Contact information and social media">
             <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 h-full border border-indigo-500/20">
               <Title
                 firstText="Contact Information"
                 customClass="mb-6"
                 size="xs"
+                headingLevel="h3"
+                ariaLabel="Contact information heading"
               />
               <ContactDetailsList />
+
               <div className="mt-12">
                 <Paragraph
                   text="Follow Me"
-                  customClass="!font-bold !text-white  mb-4"
+                  customClass="!font-bold !text-white mb-4"
+                  ariaLabel="Social media links heading"
+                  role="heading"
                 />
                 <SocialNetworkList />
               </div>

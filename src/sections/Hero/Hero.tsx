@@ -18,14 +18,14 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
     <section
       id="home"
       className="min-h-screen flex items-center pt-16 relative">
-      <div className="container mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
+      <div className="container justify-between mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
         <FadeOnScroll
           data="fade-up"
           delay={100}
           className="md:w-1/2 mb-12 md:mb-0 md:space-y-[12px] space-y-[8px]">
           <Title size="lg" firstText="Hi, I'm" secondText="Braulin" />
           <Title size="md" firstText="Front-End" secondText="React Developer" />
-          <div className="mb-8 max-w-lg">
+          <div className="mb-8 max-w-[650px]">
             <Paragraph
               text="I build modern, responsive web applications with React and
               TailwindCSS. Passionate about creating intuitive user
@@ -45,11 +45,11 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
         <FadeOnScroll
           data="fade-up"
           delay={500}
-          className="w-full md:w-1/2 flex justify-center">
+          className="w-full md:w-1/2 flex lg:justify-end justify-center">
           <Asset
             image={Profile}
             variant="fullRounded"
-            specialization="React Developer"
+            specialization="Built with Vite + React + TypeScript and TailwindCSS"
           />
         </FadeOnScroll>
       </div>

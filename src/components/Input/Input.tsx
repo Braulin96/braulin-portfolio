@@ -59,7 +59,7 @@ const Input = ({
         className="block text-slate-300 mb-2 font-medium">
         {label}
         {isRequired && (
-          <span className="text-red-400 ml-1" aria-label="required field">
+          <span className="ml-1" aria-label="required field">
             *
           </span>
         )}

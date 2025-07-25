@@ -108,27 +108,29 @@ const InputFormBlock = () => {
         subject: "",
         message: "",
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Failed to send email:", error);
-      console.error("Error details:", error.text || error.message);
+      
+      const errorObj = error as { status?: number; text?: string; message?: string };
+      console.error("Error details:", errorObj.text || errorObj.message);
 
       setStatus("error");
 
       // More specific error messages
-      if (error.status === 400) {
+      if (errorObj.status === 400) {
         setStatusMessage("Invalid email configuration. Please try again.");
-      } else if (error.status === 403) {
+      } else if (errorObj.status === 403) {
         setStatusMessage(
           "Email service not authorized. Please contact me directly."
         );
-      } else if (error.status === 404) {
+      } else if (errorObj.status === 404) {
         setStatusMessage(
           "Email template not found. Please contact me directly."
         );
       } else {
         setStatusMessage(
           `Failed to send message: ${
-            error.text || error.message || "Unknown error"
+            errorObj.text || errorObj.message || "Unknown error"
           }. Please try again or contact me directly.`
         );
       }

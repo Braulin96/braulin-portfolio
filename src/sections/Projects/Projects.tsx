@@ -13,7 +13,7 @@ import "./Projects.styles.scss";
 
 const Projects = () => {
   const [showMoreProjects, setShowMoreProjects] = useState(false);
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const handleShowMoreClick = () => {
     setShowMoreProjects(!showMoreProjects);
@@ -70,7 +70,7 @@ const Projects = () => {
           />
         </FadeOnScroll>
 
-        <div 
+        <div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           role="grid"
           aria-label={`Portfolio projects grid showing ${visibleProjectsCount} of ${PROJECT_LIST_DATA.length} projects`}>
@@ -82,7 +82,7 @@ const Projects = () => {
               duration={600}
               delay={200 + index * 100}
               offset={150}>
-              <ProjectCard 
+              <ProjectCard
                 project={project}
                 projectIndex={index + 1}
                 totalProjects={PROJECT_LIST_DATA.length}
@@ -90,6 +90,7 @@ const Projects = () => {
             </FadeOnScroll>
           ))}
 
+          {/* Additional projects - conditionally rendered */}
           {showMoreProjects &&
             PROJECT_LIST_DATA.slice(3).map((project, index) => (
               <FadeOnScroll
@@ -101,7 +102,7 @@ const Projects = () => {
                 className={`transition-all duration-300 ${
                   showMoreProjects ? "opacity-100" : "opacity-0"
                 }`}>
-                <ProjectCard 
+                <ProjectCard
                   project={project}
                   projectIndex={index + 4}
                   totalProjects={PROJECT_LIST_DATA.length}
@@ -116,7 +117,7 @@ const Projects = () => {
             variant="secondary"
             text={showMoreProjects ? "Show Less" : "Show More"}
             ariaLabel={
-              showMoreProjects 
+              showMoreProjects
                 ? `Show less projects. Currently showing ${PROJECT_LIST_DATA.length} projects`
                 : `Show more projects. Currently showing 3 of ${PROJECT_LIST_DATA.length} projects`
             }

@@ -48,12 +48,13 @@ const NavLinkList = ({
         isMobile ? "Mobile navigation menu" : "Desktop navigation menu"
       }>
       {list.map((item) => (
-        <NavLink
-          key={item}
-          onClick={() => handleNavClick(item)}
-          link={item}
-          isActive={currentActiveNav === item}
-        />
+        <li key={item} role="none">
+          <NavLink
+            onClick={() => handleNavClick(item)}
+            link={item}
+            isActive={currentActiveNav === item}
+          />
+        </li>
       ))}
     </ul>
   );

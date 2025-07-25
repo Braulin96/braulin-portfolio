@@ -15,7 +15,7 @@ const ContactDetails = ({ contact }: ContactDetailsProps) => {
       className="ContactDetails flex items-start">
       <div className="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center mr-4">
         <i className={contact.icon}></i>
-        <img src={contact.icon} alt={contact.title} className="" />
+        <img src={contact.icon} alt={contact.title} className="p-[10px]" />
       </div>
       <div>
         <h4 className="font-bold mb-1">{contact.title}</h4>

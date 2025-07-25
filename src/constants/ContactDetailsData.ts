@@ -1,18 +1,20 @@
-import Arrow from "assets/images/prev_arrow.svg"
+import Location from "assets/images/location.svg"
+import Email from "assets/images/email.svg"
+import Phone from "assets/images/phone.svg"
 
 export const CONTACT_DETAILS_DATA = [
   {
-    icon: Arrow,
+    icon: Location,
     title: "Location",
     info: "San Francisco, California",
   },
   {
-    icon: Arrow,
+    icon: Email,
     title: "Email",
     info: "hello@example.com",
   },
   {
-    icon: Arrow,
+    icon: Phone,
     title: "Phone",
     info: "+1 (123) 456-7890",
   }

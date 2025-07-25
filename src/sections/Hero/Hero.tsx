@@ -17,7 +17,7 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center pt-16 relative">
+      className="md:min-h-[800px] flex items-center py-20 relative">
       <div className="container justify-between mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
         <FadeOnScroll
           data="fade-up"

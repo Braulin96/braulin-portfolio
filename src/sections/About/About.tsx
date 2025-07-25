@@ -38,14 +38,14 @@ const About = () => {
               React.js and modern CSS frameworks like TailwindCSS. I'm
               passionate about building intuitive user interfaces that provide
               exceptional user experiences."
-              customClass="mb-6 !text-[16px]"
+              customClass="mb-6 !text-[16px] !text-gray-400"
             />
 
             <Paragraph
               text="My approach combines technical expertise with creative
               problem-solving. I stay updated with the latest web technologies
               and best practices to deliver high-quality, maintainable code."
-              customClass="mb-6 !text-[16px]"
+              customClass="mb-6 !text-[16px] !text-gray-400"
             />
           </FadeOnScroll>
         </div>

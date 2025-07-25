@@ -39,7 +39,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         data-testid="ProjectCard"
         className="ProjectCard relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-500/30 border border-indigo-500/20 group">
         <div
-          className={`h-48 bg-gradient-to-r ${project.gradient} flex items-center justify-center`}>
+          className={`h-48 bg-gradient-to-r bg-black flex items-center justify-center`}>
           {project.mainImage && (
             <img
               src={project.mainImage}

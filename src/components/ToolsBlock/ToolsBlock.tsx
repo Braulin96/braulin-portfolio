@@ -13,7 +13,7 @@ type ToolsBlockProps = {
 
 const ToolsBlock = ({ tools }: ToolsBlockProps) => {
   return (
-    <div data-testid="ToolsBlock" className="py-8 ToolsBlock">
+    <div data-testid="ToolsBlock" className="md:py-8 ToolsBlock">
       <Title
         firstText="Tools & Technologies"
         customClass="mb-6 text-center"

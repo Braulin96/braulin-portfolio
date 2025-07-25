@@ -5,6 +5,8 @@ type TitleProps = {
   secondText?: string;
   customClass?: string;
   size?: "xs" | "sm" | "md" | "lg";
+  ariaLabel?: string;
+  headingLevel?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 };
 
 const defaultClasses = {
@@ -19,10 +21,16 @@ const Title = ({
   secondText,
   customClass,
   size = "md",
+  ariaLabel,
+  headingLevel = "h1",
 }: TitleProps) => {
+  const HeadingTag = headingLevel;
+
   return (
     <div data-testid="Title" className={`Title ${customClass}`}>
-      <h1 className={`${defaultClasses[size]} font-bold`}>
+      <HeadingTag
+        className={`${defaultClasses[size]} font-bold`}
+        aria-label={ariaLabel || `${firstText} ${secondText || ""}`.trim()}>
         {firstText}
         {secondText && (
           <span
@@ -30,11 +38,12 @@ const Title = ({
               size === "lg"
                 ? "primary-blue"
                 : "bg-gradient-to-r from-primary-blue to-secondary-purple text-transparent bg-clip-text"
-            }`}>
+            }`}
+            aria-label={`emphasized text: ${secondText}`}>
             {secondText}
           </span>
         )}
-      </h1>
+      </HeadingTag>
     </div>
   );
 };

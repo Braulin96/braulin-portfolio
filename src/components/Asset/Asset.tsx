@@ -6,6 +6,7 @@ type AssetProps = {
   variant?: "default" | "fullRounded";
   specialization?: string;
   alt?: string;
+  ariaLabel?: string;
 };
 
 const Asset = ({
@@ -14,13 +15,14 @@ const Asset = ({
   specialization,
   variant = "default",
   alt = "Profile image",
+  ariaLabel,
 }: AssetProps) => {
   return (
     <figure
       data-testid="Asset"
       className={`Asset group relative ${customClass}`}
       role="img"
-      aria-label={alt}>
+      aria-label={ariaLabel || alt}>
       <div
         className={`relative overflow-hidden border-4 border-primary-blue/10 ${
           variant === "default"
@@ -28,12 +30,14 @@ const Asset = ({
             : "rounded-full size-[300px] md:size-[350px] lg:mr-[80px]"
         }`}>
         <div className="w-full h-full bg-slate-200 border-2 border-dashed rounded-full flex items-center justify-center text-slate-500">
-          <img
-            src={image}
-            alt={alt}
-            className="group-hover:scale-105 transition-transform duration-500"
-            loading="lazy"
-          />
+          {image && (
+            <img
+              src={image}
+              alt={alt}
+              className="group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+          )}
         </div>
         {/* bg overlay */}
         <div

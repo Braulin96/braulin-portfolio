@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import Modal from "./Modal";
 
 describe("Modal Component", () => {
@@ -165,6 +165,7 @@ describe("Modal Component", () => {
     expect(screen.getByText("Action Button")).toBeInTheDocument();
   });
 
+  // Fixed: Updated to match Headless UI behavior
   test("has correct dialog role and accessibility", () => {
     render(
       <Modal isOpen={true} onClose={mockOnClose}>
@@ -172,9 +173,21 @@ describe("Modal Component", () => {
       </Modal>
     );
 
-    const dialog = screen.getByRole("dialog");
-    expect(dialog).toBeInTheDocument();
-    expect(dialog).toHaveClass("relative", "z-100");
+    // Find all dialog elements
+    const dialogs = screen.getAllByRole("dialog");
+    expect(dialogs).toHaveLength(2);
+
+    // The main Dialog component should have the aria-label
+    const mainDialog = dialogs.find(
+      (dialog) => dialog.getAttribute("aria-label") === "Modal dialog"
+    );
+    expect(mainDialog).toBeInTheDocument();
+
+    // The Dialog.Panel should have aria-modal
+    const dialogPanel = dialogs.find(
+      (dialog) => dialog.getAttribute("aria-modal") === "true"
+    );
+    expect(dialogPanel).toBeInTheDocument();
   });
 
   test("modal container has correct positioning classes", () => {
@@ -197,6 +210,7 @@ describe("Modal Component", () => {
     expect(centeringDiv).toHaveClass("p-4", "text-center");
   });
 
+  // Fixed: Updated to find correct dialog element
   test("has correct z-index values", () => {
     render(
       <Modal isOpen={true} onClose={mockOnClose}>
@@ -207,7 +221,11 @@ describe("Modal Component", () => {
     const container = document.querySelector(".container");
     expect(container).toHaveClass("z-100");
 
-    const dialog = screen.getByRole("dialog");
+    // Updated to find the Headless UI Dialog component
+    const dialog = document.querySelector(
+      '[class*="relative"][class*="z-100"]'
+    );
+    expect(dialog).toBeInTheDocument();
     expect(dialog).toHaveClass("z-100");
   });
 
@@ -248,7 +266,8 @@ describe("Modal Component", () => {
     expect(panel).toBeInTheDocument();
   });
 
-  test("handles modal state transitions", () => {
+  // Fixed: Updated to handle Headless UI transitions properly
+  test("handles modal state transitions", async () => {
     const { rerender } = render(
       <Modal isOpen={false} onClose={mockOnClose}>
         <div>Content</div>
@@ -265,7 +284,10 @@ describe("Modal Component", () => {
       </Modal>
     );
 
-    expect(screen.getByText("Content")).toBeInTheDocument();
+    // Wait for transition to complete
+    await waitFor(() => {
+      expect(screen.getByText("Content")).toBeInTheDocument();
+    });
 
     // Close modal
     rerender(
@@ -274,8 +296,10 @@ describe("Modal Component", () => {
       </Modal>
     );
 
-    // Check immediately - Headless UI should handle the transition
-    expect(screen.queryByText("Content")).not.toBeInTheDocument();
+    // Wait for transition to complete
+    await waitFor(() => {
+      expect(screen.queryByText("Content")).not.toBeInTheDocument();
+    });
   });
 
   test("modal opens and closes correctly", () => {
@@ -308,5 +332,68 @@ describe("Modal Component", () => {
     const overlay = document.querySelector(".modal-overlay");
     expect(overlay).toHaveClass("backdrop-blur-md");
     expect(overlay).toHaveClass("bg-slate-900/80");
+  });
+
+  // Fixed: Test the actual DOM attributes instead of role queries
+  test("applies custom aria-label", () => {
+    render(
+      <Modal isOpen={true} onClose={mockOnClose} ariaLabel="Custom modal label">
+        <div>Content</div>
+      </Modal>
+    );
+
+    // Check if any dialog element has the custom aria-label
+    const dialogs = screen.getAllByRole("dialog");
+    const dialogWithCustomLabel = dialogs.find(
+      (dialog) => dialog.getAttribute("aria-label") === "Custom modal label"
+    );
+    expect(dialogWithCustomLabel).toBeInTheDocument();
+  });
+
+  test("applies aria-describedby", () => {
+    render(
+      <div>
+        <div id="modal-description">Description text</div>
+        <Modal
+          isOpen={true}
+          onClose={mockOnClose}
+          ariaDescribedBy="modal-description">
+          <div>Content</div>
+        </Modal>
+      </div>
+    );
+
+    // Check if any dialog element has the aria-describedby attribute
+    const dialogs = screen.getAllByRole("dialog");
+    const dialogWithDescribedBy = dialogs.find(
+      (dialog) =>
+        dialog.getAttribute("aria-describedby") === "modal-description"
+    );
+    expect(dialogWithDescribedBy).toBeInTheDocument();
+  });
+
+  test("has screen reader instructions", () => {
+    render(
+      <Modal isOpen={true} onClose={mockOnClose}>
+        <div>Content</div>
+      </Modal>
+    );
+
+    const instructions = document.getElementById("modal-instructions");
+    expect(instructions).toBeInTheDocument();
+    expect(instructions).toHaveTextContent("Press Escape key to close modal");
+    expect(instructions).toHaveClass("sr-only");
+    expect(instructions).toHaveAttribute("aria-live", "polite");
+  });
+
+  test("overlay has aria-hidden attribute", () => {
+    render(
+      <Modal isOpen={true} onClose={mockOnClose}>
+        <div>Content</div>
+      </Modal>
+    );
+
+    const overlay = document.querySelector(".modal-overlay");
+    expect(overlay).toHaveAttribute("aria-hidden", "true");
   });
 });

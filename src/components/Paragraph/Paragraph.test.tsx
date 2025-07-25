@@ -51,8 +51,9 @@ describe("Paragraph Component", () => {
 
     const component = screen.getByTestId("Paragraph");
     expect(component).toHaveClass("Paragraph");
+    // Fix: Check for the actual className without "undefined"
     expect(component.className).toBe(
-      "Paragraph text-slate-300 md:text-lg text-md undefined"
+      "Paragraph text-slate-300 md:text-lg text-md "
     );
   });
 
@@ -86,5 +87,40 @@ describe("Paragraph Component", () => {
     const component = screen.getByTestId("Paragraph");
     expect(component).toHaveClass("Paragraph", "full-paragraph");
     expect(component).toHaveTextContent("Complete test");
+  });
+
+  // Add tests for the new accessibility props
+  test("applies aria-label when provided", () => {
+    render(<Paragraph text="Test text" ariaLabel="Custom aria label" />);
+
+    const component = screen.getByTestId("Paragraph");
+    expect(component).toHaveAttribute("aria-label", "Custom aria label");
+  });
+
+  test("applies role when provided", () => {
+    render(<Paragraph text="Test text" role="heading" />);
+
+    const component = screen.getByTestId("Paragraph");
+    expect(component).toHaveAttribute("role", "heading");
+  });
+
+  test("works with all accessibility props", () => {
+    render(
+      <Paragraph
+        text="Accessible text"
+        customClass="accessible-paragraph"
+        ariaLabel="Accessible paragraph label"
+        role="text"
+      />
+    );
+
+    const component = screen.getByTestId("Paragraph");
+    expect(component).toHaveClass("Paragraph", "accessible-paragraph");
+    expect(component).toHaveAttribute(
+      "aria-label",
+      "Accessible paragraph label"
+    );
+    expect(component).toHaveAttribute("role", "text");
+    expect(component).toHaveTextContent("Accessible text");
   });
 });

@@ -36,13 +36,17 @@ const NavLinkList = ({
   };
 
   return (
-    <div
+    <ul
       data-testid="NavLinkList"
       className={`NavLinkList ${
         isMobile
           ? "flex flex-col space-y-[40px] w-fit mx-auto"
           : "flex space-x-[40px]"
-      }`}>
+      }`}
+      role="menubar"
+      aria-label={
+        isMobile ? "Mobile navigation menu" : "Desktop navigation menu"
+      }>
       {list.map((item) => (
         <NavLink
           key={item}
@@ -51,7 +55,7 @@ const NavLinkList = ({
           isActive={currentActiveNav === item}
         />
       ))}
-    </div>
+    </ul>
   );
 };
 

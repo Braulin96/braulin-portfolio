@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+
 import Button from "./Button";
 
 describe("Button Component", () => {
@@ -156,7 +156,6 @@ describe("Button Component", () => {
   });
 
   test("handles keyboard navigation - Enter key", async () => {
-    const user = userEvent.setup();
     render(<Button onClick={mockClick} text="Keyboard Button" />);
 
     const button = screen.getByRole("button");
@@ -168,7 +167,6 @@ describe("Button Component", () => {
   });
 
   test("handles keyboard navigation - Space key", async () => {
-    const user = userEvent.setup();
     render(<Button onClick={mockClick} text="Keyboard Button" />);
 
     const button = screen.getByRole("button");

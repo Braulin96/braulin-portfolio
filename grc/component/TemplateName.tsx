@@ -7,7 +7,7 @@ type TemplateNameProps = {
 const TemplateName = ({ children }: TemplateNameProps) => {
   return (
     <div data-testid="TemplateName" className="TemplateName">
-      {children}
+      {children || "TemplateName"}
     </div>
   );
 };

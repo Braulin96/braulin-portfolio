@@ -6,16 +6,16 @@ export const CONTACT_DETAILS_DATA = [
   {
     icon: Location,
     title: "Location",
-    info: "San Francisco, California",
+    info: "Liverpool, UK",
   },
   {
     icon: Email,
     title: "Email",
-    info: "hello@example.com",
+    info: "braulinpires@hotmail.com",
   },
   {
     icon: Phone,
     title: "Phone",
-    info: "+1 (123) 456-7890",
+    info: "+44 07909333913",
   }
 ];

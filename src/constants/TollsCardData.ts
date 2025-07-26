@@ -17,8 +17,8 @@
   { name: "JavaScript", type: "language" },
 
   // Build Tools
-  { name: "Vite", type: "build-tool" },
-  { name: "Webpack", type: "build-tool" },
+  // { name: "Vite", type: "build-tool" },
+  // { name: "Webpack", type: "build-tool" },
 
   // Package Managers
   // { name: "npm", type: "package-manager" },

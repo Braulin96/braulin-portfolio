@@ -55,17 +55,11 @@ const Modal = ({
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95">
                 <Dialog.Panel
-                  className={`my-auto h-[fit] w-full max-w-[854px] transform rounded-[14px] overflow-hidden bg-white text-left align-middle shadow-xl transition-all ${customPanelClasses}`}
+                  className={`my-auto h-[fit] w-full max-w-[854px] aspect-[854/600] transform rounded-[14px] overflow-hidden bg-white text-left align-middle shadow-xl transition-all ${customPanelClasses}`}
                   role="dialog"
                   aria-modal="true"
                   aria-label={ariaLabel || "Modal content"}
                   aria-describedby={ariaDescribedBy}>
-                  <div
-                    className="sr-only"
-                    id="modal-instructions"
-                    aria-live="polite">
-                    Press Escape key to close modal
-                  </div>
                   {children}
                 </Dialog.Panel>
               </Transition.Child>

@@ -148,9 +148,7 @@ const Carousel = ({
       onMouseOver={onMouseOver}
       onMouseOut={onMouseOut}
       data-testid="Carousel"
-      className={`Carousel relative w-full md:max-h-[600px] md:h-[600px] ${
-        customClasses || ""
-      }`}
+      className={`Carousel relative w-full h-full ${customClasses || ""}`}
       role="region"
       aria-label={ariaLabel || `Image carousel for ${title}`}
       aria-live="polite">
@@ -188,14 +186,13 @@ const Carousel = ({
             ref={(slider) => {
               sliderRef.current = slider;
             }}
-            className="w-full h-full [&_.slick-list]:h-full [&_.slick-track]:h-full [&_.slick-slide]:h-full [&_.slick-slide>div]:h-full"
-            role="presentation">
+            className="w-full h-full [&_.slick-list]:h-full [&_.slick-track]:h-full [&_.slick-slide]:h-full [&_.slick-slide>div]:h-full">
             {slides.map((slide, index) => (
               <div key={index} className="w-full h-full">
                 <img
                   src={slide.url}
                   alt={`${title} - Image ${index + 1} of ${slides.length}`}
-                  className="w-full h-full max-h-[700px] object-cover transition-all duration-[4000ms] ease-in-out hover:scale-105 hover:opacity-90 rounded-[14px]"
+                  className="w-full h-full  transition-all duration-[4000ms] ease-in-out hover:scale-105 hover:opacity-90 rounded-[14px] object-cover object-center"
                 />
               </div>
             ))}

@@ -12,6 +12,7 @@
   { name: "Vue", type: "framework" },
   { name: "Next.js", type: "framework" },
   { name: "React Native", type: "framework" },
+  
   { name: "TypeScript", type: "language" },
   { name: "JavaScript", type: "language" },
 

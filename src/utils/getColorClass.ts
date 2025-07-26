@@ -1,30 +1,30 @@
 export const getColorClass = (type?: string) => {
   switch (type) {
     case "design":
-      return "text-purple-500";
+      return "text-secondary-purple-500";
     case "ui-library":
-      return "text-blue-500";
+      return "text-primary-blue-500";
     case "framework":
-      return "text-green-500";
+      return "text-accent-green-500"; 
     case "language":
-      return "text-yellow-400";
+      return "text-sky-400"; 
     case "build-tool":
-      return "text-red-500";
+      return "text-rose-400"; 
     case "package-manager":
-      return "text-orange-500";
+      return "text-slate-300"; 
     case "testing":
-      return "text-pink-500";
+      return "text-secondary-purple-500";
     case "seo":
-      return "text-teal-500";
+      return "text-teal-600"; 
     case "a11y":
-      return "text-indigo-500";
+      return "text-primary-blue-500"; 
     case "version-control":
-      return "text-gray-500";
+      return "text-slate-300";
     case "styling":
-      return "text-gray-200";
+      return "text-stone-400"; 
     case "api-integration":
-      return "text-lime-500";
+      return "text-violet-300"; 
     default:
-      return "tex-white";
+      return "text-white";
   }
 };

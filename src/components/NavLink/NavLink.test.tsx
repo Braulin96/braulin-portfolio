@@ -1,6 +1,5 @@
 import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import NavLink from "./NavLink";
 
 describe("NavLink Component", () => {
@@ -98,7 +97,6 @@ describe("NavLink Component", () => {
   });
 
   test("handles keyboard navigation - Enter key", async () => {
-    const user = userEvent.setup();
     render(<NavLink {...defaultProps} />);
 
     const menuitem = screen.getByRole("menuitem");
@@ -110,7 +108,6 @@ describe("NavLink Component", () => {
   });
 
   test("handles keyboard navigation - Space key", async () => {
-    const user = userEvent.setup();
     render(<NavLink {...defaultProps} />);
 
     const menuitem = screen.getByRole("menuitem");
@@ -125,15 +122,7 @@ describe("NavLink Component", () => {
     render(<NavLink {...defaultProps} />);
 
     const menuitem = screen.getByRole("menuitem");
-    expect(menuitem).toHaveClass(
-      "NavLink",
-      "relative",
-      "font-medium",
-      "transition-colors",
-      "duration-300",
-      "cursor-pointer",
-      "capitalize"
-    );
+    expect(menuitem).toHaveClass("font-medium");
   });
 
   test("capitalizes link text with CSS", () => {

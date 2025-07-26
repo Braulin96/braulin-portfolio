@@ -48,7 +48,7 @@ const About = () => {
               />
 
               <Paragraph
-                text="With over 5 years of experience in front-end development, I
+                text="With over 4 years of experience in front-end development, I
                 specialize in creating responsive web applications using
                 React.js and modern CSS frameworks like TailwindCSS. I'm
                 passionate about building intuitive user interfaces that provide

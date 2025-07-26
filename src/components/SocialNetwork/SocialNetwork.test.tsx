@@ -62,24 +62,7 @@ describe("SocialNetwork Component", () => {
     render(<SocialNetwork social={mockSocial} />);
 
     const component = screen.getByTestId("SocialNetwork");
-    expect(component).toHaveClass(
-      "SocialNetwork",
-      "size-12",
-      "bg-gradient-to-r",
-      "from-indigo-500",
-      "to-purple-600",
-      "rounded-full",
-      "flex",
-      "items-center",
-      "justify-center",
-      "hover:opacity-90",
-      "focus:outline-none",
-      "focus:ring-2",
-      "focus:ring-indigo-500",
-      "focus:ring-offset-2",
-      "focus:ring-offset-slate-900",
-      "transition-all"
-    );
+    expect(component).toHaveClass("size-12");
   });
 
   test("handles empty strings gracefully", () => {

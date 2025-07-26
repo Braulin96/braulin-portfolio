@@ -1,69 +1,205 @@
-# React + TypeScript + Vite
+# Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive portfolio website built with React, TypeScript, and Vite, showcasing my front-end development skills and projects.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[View Live Portfolio](your-portfolio-url-here)
 
-## Expanding the ESLint configuration
+## 📋 Table of Contents
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Available Scripts](#available-scripts)
+- [Development](#development)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Contact](#contact)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## ✨ Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- **Responsive Design**: Optimized for all devices and screen sizes
+- **Modern UI/UX**: Clean, professional design with smooth animations
+- **Project Showcase**: Interactive gallery of development projects
+- **Skills Visualization**: Dynamic display of technical skills and expertise
+- **Contact Integration**: Direct contact form with EmailJS integration
+- **Performance Optimized**: Fast loading with Vite's lightning-fast build tool
+- **Accessibility**: WCAG compliant with proper ARIA labels and keyboard navigation
+- **Type Safety**: Full TypeScript implementation for better code reliability
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🛠 Tech Stack
+
+### Core
+- **React 19** - UI library for building user interfaces
+- **TypeScript** - Static type checking for JavaScript
+- **Vite 7** - Next generation frontend build tool
+
+### Styling & UI
+- **Tailwind CSS 4** - Utility-first CSS framework
+- **SCSS** - CSS preprocessor for enhanced styling capabilities
+- **Framer Motion** - Production-ready motion library for React
+- **HeadlessUI** - Unstyled, accessible UI components
+- **AOS** - Animate On Scroll library
+
+### Components & Interactions
+- **React Slick** - Carousel component for image galleries
+- **React Responsive** - Media queries in React component
+
+### Development Tools
+- **ESLint** - Code linting and quality assurance
+- **Jest** - JavaScript testing framework
+- **Testing Library** - Testing utilities for React components
+- **Generate React CLI (GRC)** - Component generation tool
+
+### Integrations
+- **EmailJS** - Email service for contact form functionality
+
+## 📁 Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+├── sections/           # Page sections and layouts
+├── assets/             # Images, icons, and static files
+├── styles/             # Global styles and SCSS modules
+├── types/              # TypeScript type definitions
+├── utils/              # Utility functions and helpers
+└── grc/                # Component templates for GRC
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Node.js** (v18 or higher)
+- **npm** or **yarn** package manager
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/my-portfolio.git
+   cd my-portfolio
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env.local
+   ```
+   Update the environment variables with your EmailJS configuration.
+
+4. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open your browser**
+   Navigate to `http://localhost:5173`
+
+## 📜 Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server with hot reload |
+| `npm run build` | Build the project for production |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint to check code quality |
+| `npm run test` | Run Jest tests |
+
+## 🔧 Development
+
+### Component Generation
+
+This project uses [Generate React CLI](https://github.com/arminbro/generate-react-cli) for consistent component creation:
+
+```bash
+# Generate a new component
+npx grc component ComponentName
+
+# Generate a new section
+npx grc section SectionName
 ```
+
+### Code Style
+
+- **TypeScript**: Strict type checking enabled
+- **ESLint**: Configured with React and TypeScript rules
+- **Prettier**: Code formatting (configure according to your preferences)
+
+### Testing
+
+The project includes comprehensive testing setup:
+
+```bash
+# Run all tests
+npm run test
+
+# Run tests in watch mode
+npm run test -- --watch
+
+# Run tests with coverage
+npm run test -- --coverage
+```
+
+## 🚀 Deployment
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+The built files will be in the `dist` directory, ready for deployment to any static hosting service.
+
+### Deployment Options
+
+- **Vercel**: Connect your GitHub repository for automatic deployments
+- **Netlify**: Drag and drop the `dist` folder or connect via Git
+- **GitHub Pages**: Use GitHub Actions for automated deployment
+- **AWS S3 + CloudFront**: For scalable static hosting
+
+## 🔧 Configuration
+
+### Tailwind CSS
+
+The project uses Tailwind CSS 4 with custom color variables defined in the main CSS file. Modify the color palette in `src/styles/globals.css`.
+
+### TypeScript
+
+TypeScript configuration is split between:
+- `tsconfig.app.json` - App-specific settings
+- `tsconfig.node.json` - Node.js/build tool settings
+
+## 📱 Browser Support
+
+- **Chrome** (latest)
+- **Firefox** (latest)
+- **Safari** (latest)
+- **Edge** (latest)
+
+## 🤝 Contributing
+
+While this is a personal portfolio, suggestions and feedback are welcome! Please open an issue to discuss any changes.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📞 Contact
+
+**Your Name**
+- Email: braulinpires.email@hotmail.com
+- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/braulin-pires-7a13b3145/)
+- GitHub: [@yourusername](https://github.com/Braulin96)
+- Portfolio: [your-portfolio-url.com](https://your-portfolio-url.com)
+
+---
+
+*Built with ❤️ using React, TypeScript, and modern web technologies*

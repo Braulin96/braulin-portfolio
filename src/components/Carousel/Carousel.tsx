@@ -27,7 +27,15 @@ const isFirstSlide = (currentSlide: number) => currentSlide === 0;
 const isLastSlide = (currentSlide: number, totalSlides: number) =>
   currentSlide === totalSlides - 1;
 
-const NextArrow = ({ onClick, currentSlide, slideCount }: any) => {
+const NextArrow = ({
+  onClick,
+  currentSlide,
+  slideCount,
+}: {
+  onClick: () => void;
+  currentSlide: number;
+  slideCount: number;
+}) => {
   const isLast = isLastSlide(currentSlide, slideCount);
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -64,7 +72,13 @@ const NextArrow = ({ onClick, currentSlide, slideCount }: any) => {
   );
 };
 
-const PrevArrow = ({ onClick, currentSlide }: any) => {
+const PrevArrow = ({
+  onClick,
+  currentSlide,
+}: {
+  onClick: () => void;
+  currentSlide: number;
+}) => {
   const isFirst = isFirstSlide(currentSlide);
 
   const handlePrevClick = (event: React.MouseEvent) => {
@@ -127,15 +141,28 @@ const Carousel = ({
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    nextArrow: slides.length > 1 && displayArrows ? <NextArrow /> : null,
-    prevArrow: slides.length > 1 && displayArrows ? <PrevArrow /> : null,
-    beforeChange: (currentSlide: number, nextSlide: number) => {
+    nextArrow:
+      slides.length > 1 && displayArrows ? (
+        <NextArrow
+          onClick={() => sliderRef.current?.slickNext()}
+          currentSlide={internalCurrentSlide}
+          slideCount={slides.length}
+        />
+      ) : null,
+    prevArrow:
+      slides.length > 1 && displayArrows ? (
+        <PrevArrow
+          onClick={() => sliderRef.current?.slickPrev()}
+          currentSlide={internalCurrentSlide}
+        />
+      ) : null,
+    beforeChange: (nextSlide: number) => {
       setInternalCurrentSlide(nextSlide);
       if (onSlideChange) onSlideChange(nextSlide);
     },
   };
 
-  let sliderRef = useRef<Slider>(null);
+  const sliderRef = useRef<Slider>(null);
 
   useEffect(() => {
     const slideIndex = currentSlide || 0;

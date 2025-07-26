@@ -4,10 +4,10 @@ type TemplateNameProps = {
   children?: React.ReactNode;
 };
 
-const TemplateName = ({}: TemplateNameProps) => {
+const TemplateName = ({ children }: TemplateNameProps) => {
   return (
     <div data-testid="TemplateName" className="TemplateName">
-      TemplateName
+      {children}
     </div>
   );
 };

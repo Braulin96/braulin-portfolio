@@ -1,13 +1,19 @@
 import Title from "components/Title/Title";
+import SlideCarousel from "components/SlideCarousel/SlideCarousel";
+import ToolsCard from "components/ToolsCard/ToolsCard";
 
 import "./ProfissionalSkills.styles.scss";
 
 type ProfissionalSkillsProps = {
-  skills: string[];
   ariaLabel?: string;
+  tools: {
+    name: string;
+    icon?: string;
+    type?: string;
+  }[];
 };
 
-const ProfissionalSkills = ({ skills, ariaLabel }: ProfissionalSkillsProps) => {
+const ProfissionalSkills = ({ ariaLabel, tools }: ProfissionalSkillsProps) => {
   return (
     <div
       data-testid="ProfissionalSkills"
@@ -21,24 +27,13 @@ const ProfissionalSkills = ({ skills, ariaLabel }: ProfissionalSkillsProps) => {
         headingLevel="h3"
         ariaLabel="Professional skills heading"
       />
-      <ul
-        className="ml-[20px] grid grid-cols-1 md:grid-cols-2 gap-4"
-        role="list"
-        aria-label="List of professional skills and competencies">
-        {skills.map((skill, index) => (
-          <li key={index} className="flex items-center mb-4" role="listitem">
-            <div
-              className="size-3 bg-primary-blue rounded-full mr-4 flex-shrink-0"
-              role="presentation"
-              aria-hidden="true"></div>
-            <span
-              className="text-slate-300"
-              aria-label={`Professional skill: ${skill}`}>
-              {skill}
-            </span>
-          </li>
-        ))}
-      </ul>
+
+      <SlideCarousel
+        variant="reverse"
+        slides={tools}
+        ariaLabel="Sliding carousel of development tools and programming technologies">
+        {(tool, index) => <ToolsCard key={index} tool={tool} />}
+      </SlideCarousel>
     </div>
   );
 };

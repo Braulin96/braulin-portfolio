@@ -1,5 +1,6 @@
-import ToolsCardList from "components/ToolsCardList/ToolsCardList";
+import SlideCarousel from "components/SlideCarousel/SlideCarousel";
 import Title from "components/Title/Title";
+import ToolsCard from "components/ToolsCard/ToolsCard";
 
 import "./ToolsBlock.styles.scss";
 
@@ -26,10 +27,11 @@ const ToolsBlock = ({ tools, ariaLabel }: ToolsBlockProps) => {
         headingLevel="h3"
         ariaLabel="Tools and technologies heading"
       />
-      <ToolsCardList
-        tools={tools}
-        ariaLabel="Grid of development tools and programming technologies"
-      />
+      <SlideCarousel
+        slides={tools}
+        ariaLabel="Sliding carousel of development tools and programming technologies">
+        {(tool, index) => <ToolsCard key={index} tool={tool} />}
+      </SlideCarousel>
     </div>
   );
 };

@@ -3,6 +3,7 @@ import Paragraph from "components/Paragraph/Paragraph";
 import Button from "components/Button/Button";
 import Asset from "components/Asset/Asset";
 import FadeOnScroll from "utils/FadeOnScroll";
+import Code from "assets/images/code.svg";
 
 import { TECH_STACK_DATA } from "constants/TechStack";
 
@@ -52,6 +53,7 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
               onClick={onProjectsClick}
               text="View Projects"
               ariaLabel="View my portfolio projects"
+              icon={Code}
             />
             <Button
               onClick={onContactClick}

@@ -7,6 +7,7 @@ type ButtonProps = {
   className?: string;
   ariaLabel?: string;
   ariaDescribedBy?: string;
+  icon?: string;
 };
 
 const Button = ({
@@ -18,6 +19,7 @@ const Button = ({
   ariaLabel,
   ariaDescribedBy,
   type = "button",
+  icon,
 }: ButtonProps) => {
   const baseClasses =
     "px-8 py-3 rounded-lg font-semibold transition-all  cursor-pointer";
@@ -48,11 +50,12 @@ const Button = ({
       onClick={onClick}
       onKeyDown={handleKeyDown}
       disabled={disabled}
-      className={buttonClasses}
+      className={`${buttonClasses} flex items-center justify-center`}
       aria-label={ariaLabel || text}
       aria-describedby={ariaDescribedBy}
       tabIndex={0}>
-      {text}
+      {icon && <img src={icon} alt={text} className="size-5 mr-2" />}
+      <span>{text}</span>
     </button>
   );
 };

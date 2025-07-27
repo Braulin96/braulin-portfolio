@@ -20,6 +20,7 @@ type CarouselProps = {
   onMouseOut?: () => void;
   currentSlide?: number;
   title: string;
+  description?: string;
   ariaLabel?: string;
 };
 
@@ -129,6 +130,7 @@ const Carousel = ({
   onMouseOut,
   currentSlide,
   title,
+  description,
   ariaLabel,
 }: CarouselProps) => {
   const [internalCurrentSlide, setInternalCurrentSlide] = useState(
@@ -196,11 +198,6 @@ const Carousel = ({
                     customClass="!text-white"
                     ariaLabel={`Project title: ${title}`}
                   />
-                  <Paragraph
-                    text="1/1"
-                    customClass="!text-white !text-sm !font-bold"
-                    ariaLabel="Image 1 of 1"
-                  />
                 </div>
               </figcaption>
             </figure>
@@ -227,18 +224,26 @@ const Carousel = ({
 
           {/* Text overlay */}
           <div
-            className="absolute bottom-0 left-0 right-0 px-4 pb-2 pt-10 z-20 bg-gradient-to-b from-transparent via-black/20 to-black/50 rounded-b-[14px]"
+            className="absolute bottom-0 left-0 right-0 px-4 pb-2 pt-10 z-20 bg-gradient-to-b from-transparent via-black/30 to-black/80 rounded-b-[14px]"
             role="status"
             aria-live="polite">
-            <div className="flex justify-between w-full">
-              <Paragraph
-                text={title}
-                customClass="!text-white"
-                ariaLabel={`Project title: ${title}`}
-              />
+            <div className="flex justify-between w-full gap-x-[30px]">
+              <div>
+                <Paragraph
+                  text={title}
+                  customClass="!text-white !font-bold"
+                  ariaLabel={`Project title: ${title}`}
+                />
+                <Paragraph
+                  text={description}
+                  customClass="!text-white !text-sm !font-bold"
+                  ariaLabel={`Project title: ${description}`}
+                />
+              </div>
+
               <Paragraph
                 text={`${internalCurrentSlide + 1}/${slides.length}`}
-                customClass="!text-white !text-sm !font-bold"
+                customClass="!text-white !text-sm !font-bold shrink-0 mt-auto"
                 ariaLabel={`Image ${internalCurrentSlide + 1} of ${
                   slides.length
                 }`}

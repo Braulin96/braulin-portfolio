@@ -55,6 +55,7 @@ const ProjectCard = ({
       role="gridcell"
       aria-label={`${project.title} project card ${projectPositionLabel}`}>
       <div
+        onClick={handlePlusClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         data-testid="ProjectCard"
@@ -83,12 +84,13 @@ const ProjectCard = ({
 
           <Paragraph
             text={project.description}
+            numberOfLines={3}
             customClass="!text-[16px] !text-gray-400 mb-4"
             ariaLabel={`Project description: ${project.description}`}
           />
 
           <div
-            className="mb-6"
+            className="mb-12"
             role="group"
             aria-label="Technologies used in this project">
             <TechList
@@ -126,6 +128,7 @@ const ProjectCard = ({
           displayArrows={true}
           currentSlide={0}
           title={project.title}
+          description={project.description}
           ariaLabel={`Image carousel for ${project.title} project`}
         />
       </Modal>

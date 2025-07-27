@@ -112,6 +112,7 @@ const Projects = () => {
         <FadeOnScroll offset={-100} delay={800} className="text-center mt-12">
           <Button
             onClick={handleShowMoreClick}
+            className="mx-auto"
             variant="secondary"
             text={showMoreProjects ? "Show Less" : "Show More"}
             ariaLabel={

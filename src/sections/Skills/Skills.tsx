@@ -2,13 +2,9 @@ import ToolsBlock from "components/ToolsBlock/ToolsBlock";
 import ProfissionalSkills from "components/ProfissionalSkills/ProfissionalSkills";
 import Subtitle from "components/Subtitle/Subtitle";
 import FadeOnScroll from "utils/FadeOnScroll";
-import SlideCarousel from "components/SlideCarousel/SlideCarousel";
 
 import { TOOLS_CARD_DATA } from "constants/TollsCardData";
-import {
-  PROFESSIONAL_SKILLS_DATA,
-  PROFESSIONAL_SKILLS,
-} from "constants/ProfessionalSkillsData";
+import { PROFESSIONAL_SKILLS } from "constants/ProfessionalSkillsData";
 
 import "./Skills.styles.scss";
 
@@ -39,7 +35,6 @@ const Skills = () => {
               ariaLabel="Development tools and technologies I use"
             />
           </FadeOnScroll>
-          {/* <SlideCarousel /> */}
 
           <FadeOnScroll className="shrink-0" delay={800}>
             <ProfissionalSkills

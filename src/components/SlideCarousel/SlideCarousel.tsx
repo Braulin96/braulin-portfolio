@@ -27,9 +27,6 @@ const SlideCarousel = memo(
   }: SlideCarouselProps) => {
     const swiperRef = useRef<any>(null);
 
-    // Duplicate slides for seamless infinite loop
-    const duplicatedSlides = [...slides, ...slides, ...slides];
-
     return (
       <div className="w-[700px]">
         <Swiper
@@ -54,7 +51,7 @@ const SlideCarousel = memo(
           aria-label={
             ariaLabel || "Collection of development tools and technologies"
           }>
-          {duplicatedSlides.map((slide, index) => (
+          {slides.map((slide, index) => (
             <SwiperSlide key={`${slide.name}-${index}`} className="!w-auto">
               {children ? children(slide, index) : null}
             </SwiperSlide>

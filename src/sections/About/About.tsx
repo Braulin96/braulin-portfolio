@@ -21,7 +21,7 @@ const About = ({ onContactClick }: AboutProps) => {
       id="about"
       className="relative "
       aria-label="About me - Professional background and experience">
-      <div className=" mx-auto px-4 h-full">
+      <div className="mx-auto px-4 h-full">
         <div className="order-1 1280:order-2 1280:w-full md:py-40 py-20 w-full flex flex-col justify-center">
           <FadeOnScroll delay={100} className=" flex justify-center">
             <Subtitle

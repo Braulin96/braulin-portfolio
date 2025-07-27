@@ -20,13 +20,13 @@ const Button = ({
   type = "button",
 }: ButtonProps) => {
   const baseClasses =
-    "px-8 py-3 rounded-lg font-semibold transition-all text-white cursor-pointer";
+    "px-8 py-3 rounded-lg font-semibold transition-all  cursor-pointer";
 
   const variantClasses = {
     primary:
-      "bg-gradient-to-r from-indigo-500 to-purple-600 shadow-lg hover:shadow-indigo-500/30 ",
+      "bg-gradient-to-r text-white from-indigo-500 to-purple-600 shadow-lg hover:shadow-indigo-500/30 ",
     secondary:
-      "bg-transparent border-2 border-indigo-500 hover:bg-indigo-500/10",
+      "bg-transparent border-2 border-indigo-500 text-indigo-500 hover:bg-indigo-500/10",
   };
 
   const disabledClasses = disabled ? "opacity-50 cursor-not-allowed" : "";

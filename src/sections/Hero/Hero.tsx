@@ -4,6 +4,8 @@ import Button from "components/Button/Button";
 import Asset from "components/Asset/Asset";
 import FadeOnScroll from "utils/FadeOnScroll";
 
+import { TECH_STACK_DATA } from "constants/TechStack";
+
 import "./Hero.styles.scss";
 
 import Profile from "assets/images/profile2.jpg";
@@ -32,7 +34,6 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
               secondText="React Developer"
             />
           </div>
-
           <div
             className="mb-8 max-w-[650px]"
             role="complementary"
@@ -43,7 +44,6 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
               experiences with clean, efficient code."
             />
           </div>
-
           <div
             className="flex space-x-4"
             role="group"
@@ -59,6 +59,21 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
               text="Contact Me"
               ariaLabel="Get in touch with me"
             />
+          </div>
+          <div className="flex items-center gap-4 mt-10">
+            <div className="flex -space-x-2">
+              {TECH_STACK_DATA.map((tech) => (
+                <img
+                  key={tech.id}
+                  src={tech.src}
+                  className={`size-8 rounded-full border-2 border-slate-700 ${
+                    tech.customClass || ""
+                  }`}
+                  alt={tech.alt}
+                  title={tech.title}
+                />
+              ))}
+            </div>
           </div>
         </FadeOnScroll>
 

@@ -28,7 +28,7 @@ const SlideCarousel = memo(
     const swiperRef = useRef<any>(null);
 
     return (
-      <div className="w-[700px]">
+      <div className="max-w-[500px]">
         <Swiper
           ref={swiperRef}
           slidesPerView="auto"

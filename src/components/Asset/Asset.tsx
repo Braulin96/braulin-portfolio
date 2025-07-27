@@ -24,10 +24,10 @@ const Asset = ({
       role="img"
       aria-label={ariaLabel || alt}>
       <div
-        className={`relative overflow-hidden border-4 border-primary-blue/10 ${
+        className={`relative overflow-hidden border-primary-blue/10 ${
           variant === "default"
-            ? "rounded-lg transform rotate-3 size-[220px] md:size-[250px]"
-            : "rounded-full size-[300px] md:size-[350px] lg:mr-[80px]"
+            ? " size-[220px] md:size-[450px]"
+            : "rounded-full size-[300px] md:size-[350px] lg:mr-[80px] border-4 "
         }`}>
         <div className="w-full h-full bg-slate-200 border-2 border-dashed rounded-full flex items-center justify-center text-slate-500">
           {image && (

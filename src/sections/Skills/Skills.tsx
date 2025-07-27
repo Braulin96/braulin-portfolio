@@ -25,7 +25,7 @@ const Skills = () => {
           />
         </FadeOnScroll>
 
-        <div
+        {/* <div
           className="flex lg:flex-row flex-col gap-12"
           role="group"
           aria-label="Technical skills and professional competencies">
@@ -42,7 +42,7 @@ const Skills = () => {
               ariaLabel="Core professional skills and competencies"
             />
           </FadeOnScroll>
-        </div>
+        </div> */}
       </div>
     </section>
   );

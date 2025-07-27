@@ -20,13 +20,13 @@ const ToolsBlock = ({ tools, ariaLabel }: ToolsBlockProps) => {
       className="md:py-8 ToolsBlock"
       role="region"
       aria-label={ariaLabel || "Development tools and technologies"}>
-      <Title
+      {/* <Title
         firstText="Tools & Technologies"
         customClass="mb-6 text-center"
         size="sm"
         headingLevel="h3"
         ariaLabel="Tools and technologies heading"
-      />
+      /> */}
       <SlideCarousel
         slides={tools}
         ariaLabel="Sliding carousel of development tools and programming technologies">

@@ -16,7 +16,7 @@ const ToolsCard = ({ tool }: ToolsCardProps) => {
   return (
     <div
       data-testid="ToolsCard"
-      className={`ToolsCard w-[140px] h-[80px] bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl flex flex-col items-center justify-center p-4 text-center border border-primary-blue/20 hover:border-primary-blue/40 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-900`}
+      className={`ToolsCard w-[140px] h-[80px] rounded-2xl flex flex-col items-center justify-center p-4 text-center border border-primary-blue/20 hover:border-primary-blue/40 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-900`}
       role="gridcell"
       aria-label={`${tool.name}${
         tool.type ? ` - ${tool.type}` : ""

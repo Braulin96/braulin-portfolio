@@ -18,20 +18,20 @@ const About = () => {
   return (
     <section
       id="about"
-      className="py-20 relative bg-slate-800/50"
+      className="relative bg-slate-800/50"
       aria-label="About me - Professional background and experience">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center order gap-x-[20px]">
+        <div className="flex flex-col 1280:flex-row items-center order gap-x-[20px]">
           <FadeOnScroll
             delay={500}
-            className="md:w-1/3 mb-10 md:mb-0 md:mt-0 mt-10 flex justify-center md:order-1 order-2">
+            className="1280:w-1/3 mb-10 1280:mb-0 flex justify-center 1280:order-1 order-2">
             <Asset
               image={Profile}
               alt="Professional photo of Braulin, showcasing a friendly and approachable developer"
             />
           </FadeOnScroll>
 
-          <div className="order-1 md:order-2 md:w-2/3 md:pl-12 ">
+          <div className="order-1 1280:order-2 1280:w-2/3 1280:pl-12 py-20 w-full  ">
             <FadeOnScroll delay={100} className="mb-16 flex justify-center">
               <Subtitle
                 firstText="About"
@@ -58,25 +58,17 @@ const About = () => {
                   customClass="mb-6 !text-[16px] !text-gray-400"
                   ariaLabel="Professional experience and technical specialization"
                 />
-
-                {/* <Paragraph
-                  text="My approach combines technical expertise with creative
-                problem-solving. I stay updated with the latest web technologies
-                and best practices to deliver high-quality, maintainable code."
-                  customClass="mb-6 !text-[16px] !text-gray-400"
-                  ariaLabel="Development philosophy and approach to work"
-                /> */}
               </article>
             </FadeOnScroll>
 
-            <FadeOnScroll className="" delay={500}>
+            <FadeOnScroll className="1280:mt-0 mt-[30px]" delay={500}>
               <ToolsBlock
                 tools={TOOLS_CARD_DATA}
                 ariaLabel="Development tools and technologies I use"
               />
             </FadeOnScroll>
 
-            <FadeOnScroll className="shrink-0" delay={800}>
+            <FadeOnScroll className="shrink-0 1280:mt-0 mt-[20px]" delay={800}>
               <ProfissionalSkills
                 tools={PROFESSIONAL_SKILLS}
                 ariaLabel="Core professional skills and competencies"

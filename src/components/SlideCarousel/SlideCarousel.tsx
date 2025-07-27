@@ -27,8 +27,11 @@ const SlideCarousel = memo(
   }: SlideCarouselProps) => {
     const swiperRef = useRef<any>(null);
 
+    // Duplicate slides for seamless infinite loop
+    const duplicatedSlides = [...slides, ...slides, ...slides];
+
     return (
-      <div className="max-w-[500px]">
+      <div className="w-full overflow-hidden">
         <Swiper
           ref={swiperRef}
           slidesPerView="auto"
@@ -41,9 +44,9 @@ const SlideCarousel = memo(
             pauseOnMouseEnter: true,
             reverseDirection: variant === "reverse",
           }}
-          speed={900}
+          speed={1500}
           modules={[Autoplay]}
-          className="tools-swiper"
+          className="tools-swiper w-full"
           onBeforeInit={(swiper) => {
             swiperRef.current = swiper;
           }}
@@ -51,7 +54,7 @@ const SlideCarousel = memo(
           aria-label={
             ariaLabel || "Collection of development tools and technologies"
           }>
-          {slides.map((slide, index) => (
+          {duplicatedSlides.map((slide, index) => (
             <SwiperSlide key={`${slide.name}-${index}`} className="!w-auto">
               {children ? children(slide, index) : null}
             </SwiperSlide>

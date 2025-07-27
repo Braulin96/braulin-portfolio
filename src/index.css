@@ -32,6 +32,8 @@
   --color-primary-blue-500: var(--color-primary-blue);
   --color-secondary-purple-500: var(--color-secondary-purple);
   --color-accent-green-500: var(--color-accent-green);
+
+  --breakpoint-1280: 1280px;
 }
 
 .primary-blue {

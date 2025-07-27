@@ -23,7 +23,7 @@ const ProfissionalSkills = ({ ariaLabel, tools }: ProfissionalSkillsProps) => {
         variant="reverse"
         slides={tools}
         ariaLabel="Sliding carousel of development tools and programming technologies">
-        {(tool, index) => <ToolsCard key={index} tool={tool} />}
+        {(tool, index) => <ToolsCard isProfessional key={index} tool={tool} />}
       </SlideCarousel>
     </div>
   );

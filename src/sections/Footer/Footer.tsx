@@ -32,7 +32,7 @@ const Footer = () => {
             className="text-2xl font-bold mb-4 md:mb-0"
             role="banner"
             aria-label="DevPortfolio brand logo">
-            <span className="primary-blue">Dev</span>Portfolio
+            <span className="primary-blue">Braulin</span>Portfolio
           </div>
 
           <div

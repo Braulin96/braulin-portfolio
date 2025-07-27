@@ -21,11 +21,9 @@ const Projects = () => {
     setTimeout(() => {
       if (sectionRef.current) {
         if (!showMoreProjects) {
-          // Expanding: scroll to bottom of section
-          const sectionBottom =
-            sectionRef.current.offsetTop + sectionRef.current.offsetHeight;
+          // Expanding: scroll down 450px from current position
           window.scrollTo({
-            top: sectionBottom - window.innerHeight + 60,
+            top: window.scrollY + 450,
             behavior: "smooth",
           });
         } else {

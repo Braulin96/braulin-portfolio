@@ -1,4 +1,4 @@
-  export const TOOLS_CARD_DATA = [
+    export const TOOLS_CARD_DATA = [
   // Design
   { name: "Figma", type: "design" },
   { name: "Adobe XD", type: "design" },

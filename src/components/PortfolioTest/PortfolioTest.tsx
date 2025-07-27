@@ -56,8 +56,8 @@ const PortfolioTest = () => {
           onProjectsClick={() => scrollToSection("projects")}
           onContactClick={() => scrollToSection("contact")}
         />
-        <About />
-        <Skills />
+        <About onContactClick={() => scrollToSection("contact")} />
+        {/* <Skills /> */}
         <Projects />
         <Contact />
       </main>

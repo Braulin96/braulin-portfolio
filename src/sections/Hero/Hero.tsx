@@ -17,7 +17,7 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
   return (
     <section
       id="home"
-      className="md:min-h-[900px] flex items-center py-20 relative"
+      className="md:min-h-[850px] flex items-center py-20 relative bg-slate-800/50 "
       aria-label="Hero section - Introduction and main call to action">
       <div className="container justify-between mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
         <FadeOnScroll
@@ -26,10 +26,17 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
           className="md:w-1/2 mb-12 md:mb-0 md:space-y-[12px] space-y-[8px]">
           <div role="banner" aria-label="Personal introduction">
             <Title size="lg" firstText="Hi, I'm" secondText="Braulin" />
-            <Title size="md" firstText="Front-End" secondText="React Developer" />
+            <Title
+              size="md"
+              firstText="Front-End"
+              secondText="React Developer"
+            />
           </div>
-          
-          <div className="mb-8 max-w-[650px]" role="complementary" aria-label="Professional summary">
+
+          <div
+            className="mb-8 max-w-[650px]"
+            role="complementary"
+            aria-label="Professional summary">
             <Paragraph
               text="I build modern, responsive web applications with React and
               TailwindCSS. Passionate about creating intuitive user
@@ -37,9 +44,12 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
             />
           </div>
 
-          <div className="flex space-x-4" role="group" aria-label="Main action buttons">
-            <Button 
-              onClick={onProjectsClick} 
+          <div
+            className="flex space-x-4"
+            role="group"
+            aria-label="Main action buttons">
+            <Button
+              onClick={onProjectsClick}
               text="View Projects"
               ariaLabel="View my portfolio projects"
             />
@@ -51,7 +61,7 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
             />
           </div>
         </FadeOnScroll>
-        
+
         <FadeOnScroll
           data="fade-up"
           delay={500}

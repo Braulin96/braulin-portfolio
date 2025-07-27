@@ -20,14 +20,6 @@ const ProfissionalSkills = ({ ariaLabel, tools }: ProfissionalSkillsProps) => {
       className="ProfissionalSkills flex flex-col justify-center items-center h-full "
       role="region"
       aria-label={ariaLabel || "Professional skills and competencies"}>
-      {/* <Title
-        firstText="Professional Skills"
-        customClass="mb-6"
-        size="sm"
-        headingLevel="h3"
-        ariaLabel="Professional skills heading"
-      /> */}
-
       <SlideCarousel
         variant="reverse"
         slides={tools}

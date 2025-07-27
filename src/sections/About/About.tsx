@@ -1,6 +1,4 @@
-import Title from "components/Title/Title";
 import Paragraph from "components/Paragraph/Paragraph";
-import Asset from "components/Asset/Asset";
 import FadeOnScroll from "utils/FadeOnScroll";
 import Button from "components/Button/Button";
 
@@ -12,8 +10,6 @@ import { TOOLS_CARD_DATA } from "constants/TollsCardData";
 import { PROFESSIONAL_SKILLS } from "constants/ProfessionalSkillsData";
 
 import "./About.styles.scss";
-
-import Profile from "assets/images/profile2.jpg";
 
 type AboutProps = {
   onContactClick: () => void;

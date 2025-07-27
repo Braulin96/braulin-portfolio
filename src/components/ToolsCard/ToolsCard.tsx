@@ -16,7 +16,7 @@ const ToolsCard = ({ tool }: ToolsCardProps) => {
   return (
     <div
       data-testid="ToolsCard"
-      className={`ToolsCard md:w-[160px] w-[130px] h-[70px] md:h-[100px] bg-slate-800/50 rounded-2xl flex flex-col items-center justify-center p-4 text-center border border-primary-blue/20 hover:border-primary-blue/40 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-900`}
+      className={`ToolsCard md:w-[160px] w-[130px] h-[70px] md:h-[100px] bg-slate-800/50 rounded-2xl flex flex-col items-center justify-center p-4 text-center border border-primary-blue/20 hover:border-primary-blue/40 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-900 md:text-md text-sm`}
       role="gridcell"
       aria-label={`${tool.name}${
         tool.type ? ` - ${tool.type}` : ""
@@ -32,9 +32,7 @@ const ToolsCard = ({ tool }: ToolsCardProps) => {
           aria-hidden="true"
         />
       )}
-      <span
-        className={`md:text-md text-sm ${color}`}
-        aria-label={`Technology name: ${tool.name}`}>
+      <span className={`${color}`} aria-label={`Technology name: ${tool.name}`}>
         {tool.name}
       </span>
     </div>

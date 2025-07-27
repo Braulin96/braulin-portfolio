@@ -1,4 +1,3 @@
-import Title from "components/Title/Title";
 import SlideCarousel from "components/SlideCarousel/SlideCarousel";
 import ToolsCard from "components/ToolsCard/ToolsCard";
 

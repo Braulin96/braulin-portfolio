@@ -11,6 +11,7 @@ type FadeOnScrollProps = {
   children: React.ReactNode;
   offset?: number;
   className?: string;
+  style?: React.CSSProperties;
 };
 
 const FadeOnScroll = ({
@@ -20,6 +21,7 @@ const FadeOnScroll = ({
   children,
   offset,
   className,
+  style,
 }: FadeOnScrollProps) => {
   useEffect(() => {
     AOS.init({
@@ -30,6 +32,7 @@ const FadeOnScroll = ({
   const offsetValue = offset || 200;
   return (
     <div
+      style={style}
       role="presentation"
       aria-hidden="false"
       className={className}

@@ -9,7 +9,7 @@ import { TECH_STACK_DATA } from "constants/TechStack";
 
 import "./Hero.styles.scss";
 
-import Profile from "assets/images/profile2.jpg";
+import Profile from "assets/images/linkedinProfile2.png";
 
 type HeroProps = {
   onProjectsClick: () => void;
@@ -20,17 +20,17 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
   return (
     <section
       id="home"
-      className="md:min-h-[850px] flex items-center py-20 relative bg-slate-800/50 "
+      className="lg:min-h-[850px] flex items-center py-20 relative bg-slate-800/50 "
       aria-label="Hero section - Introduction and main call to action">
-      <div className="container justify-between mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
+      <div className="container justify-between mx-auto px-4 py-20 flex flex-col lg:flex-row items-center">
         <FadeOnScroll
           data="fade-up"
           delay={100}
-          className="md:w-1/2 mb-12 md:mb-0 md:space-y-[12px] space-y-[8px]">
+          className="lg:w-1/2 mb-12 lg:mb-0 lg:space-y-[12px] space-y-[8px]">
           <div role="banner" aria-label="Personal introduction">
             <Title size="lg" firstText="Hi, I'm" secondText="Braulin" />
             <Title
-              size="md"
+              size="lg"
               firstText="Front-End"
               secondText="React Developer"
             />
@@ -68,7 +68,7 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
                 <img
                   key={tech.id}
                   src={tech.src}
-                  className={`size-8 rounded-full border-2 border-slate-700 ${
+                  className={`size-7 rounded-full border-2 border-slate-700 ${
                     tech.customClass || ""
                   }`}
                   alt={tech.alt}
@@ -81,11 +81,15 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
 
         <FadeOnScroll
           data="fade-up"
-          delay={500}
-          className="w-full md:w-1/2 flex lg:justify-end justify-center">
+          delay={800}
+          // style={{
+          //   animation: "smoothFloat 3s ease-in-out infinite",
+          // }}
+          className="w-full lg:w-1/2 flex lg:justify-end justify-center">
           <Asset
             image={Profile}
-            variant="fullRounded"
+            customClass="!rounded-full !overflow-hidden"
+            variant="default"
             specialization="Built with Vite + React + TypeScript and TailwindCSS"
             alt="Braulin - Front-End React Developer"
           />

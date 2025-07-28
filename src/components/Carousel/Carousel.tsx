@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
+import { useMediaQuery } from "react-responsive";
+
 import Paragraph from "components/Paragraph/Paragraph";
 
 import Arrow from "assets/images/prev_arrow.svg";
@@ -137,6 +139,8 @@ const Carousel = ({
     currentSlide || 0
   );
 
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+
   const settings = {
     infinite: true,
     arrows: slides.length > 1 && displayArrows,
@@ -229,11 +233,14 @@ const Carousel = ({
             aria-live="polite">
             <div className="flex justify-between w-full gap-x-[30px]">
               <div>
-                <Paragraph
-                  text={title}
-                  customClass="!text-white !font-bold"
-                  ariaLabel={`Project title: ${title}`}
-                />
+                {!isMobile && (
+                  <Paragraph
+                    text={title}
+                    customClass="!text-white !font-bold"
+                    ariaLabel={`Project title: ${title}`}
+                  />
+                )}
+
                 <Paragraph
                   text={description}
                   customClass="!text-white !text-sm !font-bold"
@@ -241,13 +248,15 @@ const Carousel = ({
                 />
               </div>
 
-              <Paragraph
-                text={`${internalCurrentSlide + 1}/${slides.length}`}
-                customClass="!text-white !text-sm !font-bold shrink-0 mt-auto"
-                ariaLabel={`Image ${internalCurrentSlide + 1} of ${
-                  slides.length
-                }`}
-              />
+              {!isMobile && (
+                <Paragraph
+                  text={`${internalCurrentSlide + 1}/${slides.length}`}
+                  customClass="!text-white !text-sm !font-bold shrink-0 mt-auto"
+                  ariaLabel={`Image ${internalCurrentSlide + 1} of ${
+                    slides.length
+                  }`}
+                />
+              )}
             </div>
           </div>
         </div>

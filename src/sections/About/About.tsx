@@ -25,8 +25,8 @@ const About = ({ onContactClick }: AboutProps) => {
         <div className="order-1 1280:order-2 1280:w-full md:py-40 py-20 w-full flex flex-col justify-center">
           <FadeOnScroll delay={100} className=" flex justify-center">
             <Subtitle
-              firstText="About"
-              secondText="Me"
+              firstText="What I bring "
+              secondText="to the Table"
               ariaLabel="About me section heading"
             />
           </FadeOnScroll>
@@ -36,10 +36,8 @@ const About = ({ onContactClick }: AboutProps) => {
               className="flex flex-col justify-center items-center"
               aria-label="Professional summary and background information">
               <Paragraph
-                text="I
-                specialize in creating web and mobile applications. I stay updated with the latest web technologies
-                and best practices to deliver high-quality, maintainable code."
-                customClass="mb-6 !text-[16px] !text-gray-400 mt-4 max-w-2xl text-center"
+                text="These are the technical tools and human strengths that shape the way I work. While code is at the core, I believe great products come from clear communication, adaptability, and strong collaboration."
+                customClass="mb-6 !text-[16px] !text-gray-400 mt-8 max-w-2xl text-center"
                 ariaLabel="Professional experience and technical specialization"
               />
             </article>

@@ -20,17 +20,17 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
   return (
     <section
       id="home"
-      className="lg:min-h-[850px] flex items-center py-20 relative bg-slate-800/50 "
+      className="md:min-h-[850px] flex items-center py-20 relative bg-slate-800/50 "
       aria-label="Hero section - Introduction and main call to action">
-      <div className="container justify-between mx-auto px-4 py-20 flex flex-col lg:flex-row items-center">
+      <div className="container justify-between mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
         <FadeOnScroll
           data="fade-up"
           delay={100}
-          className="lg:w-1/2 mb-12 lg:mb-0 lg:space-y-[12px] space-y-[8px]">
+          className="md:w-1/2 mb-12 md:mb-0 md:space-y-[12px] space-y-[8px]">
           <div role="banner" aria-label="Personal introduction">
             <Title size="lg" firstText="Hi, I'm" secondText="Braulin" />
             <Title
-              size="lg"
+              size="md"
               firstText="Front-End"
               secondText="React Developer"
             />
@@ -40,9 +40,8 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
             role="complementary"
             aria-label="Professional summary">
             <Paragraph
-              text="I build modern, responsive web applications with React and
-              TailwindCSS. Passionate about creating intuitive user
-              experiences with clean, efficient code."
+              text="Passionate about creating intuitive user
+              experiences with clean, efficient code with React and other frameworks."
             />
           </div>
           <div
@@ -85,7 +84,7 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
           // style={{
           //   animation: "smoothFloat 3s ease-in-out infinite",
           // }}
-          className="w-full lg:w-1/2 flex lg:justify-end justify-center">
+          className="w-full md:w-1/2 flex lg:justify-end justify-center">
           <Asset
             image={Profile}
             customClass="!rounded-full !overflow-hidden"

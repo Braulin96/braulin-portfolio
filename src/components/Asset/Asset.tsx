@@ -25,7 +25,7 @@ const Asset = ({
       case "fullRounded":
         return "rounded-2xl size-[300px] md:size-[350px] lg:mr-[80px] border-4";
       default:
-        return "size-[30px] lg:size-[450px]";
+        return "size-[300px] lg:size-[400px]";
     }
   };
 

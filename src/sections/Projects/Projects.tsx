@@ -53,17 +53,16 @@ const Projects = () => {
       <div className="container mx-auto px-4">
         <FadeOnScroll delay={100} className="text-center mb-16">
           <Subtitle
-            firstText="My"
-            secondText="Projects"
+            firstText="What I"
+            secondText="have built"
             customClass="mx-auto"
             ariaLabel="My projects section heading"
             headingLevel="h2"
           />
 
           <Paragraph
-            text="Here are some of my recent projects showcasing my skills in React
-            and modern web development."
-            customClass="mt-4 mx-auto !text-gray-400 !text-[16px] max-w-2xl"
+            text="Every project is a step in my growth and a reflection of how I approach problems. From UI challenges to state management and API integration, these are real-world applications where I brought design and logic together."
+            customClass="mt-8 mx-auto !text-gray-400 !text-[16px] max-w-2xl"
             ariaLabel="Projects section description"
           />
         </FadeOnScroll>

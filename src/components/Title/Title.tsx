@@ -12,8 +12,8 @@ type TitleProps = {
 const defaultClasses = {
   xs: "md:text-xl text-lg",
   sm: "md:text-2xl text-xl",
-  md: "text-2xl md:text-4xl ",
-  lg: "text-4xl md:text-6xl ",
+  md: "text-2xl md:text-3xl ",
+  lg: "text-3xl md:text-5xl ",
 };
 
 const Title = ({

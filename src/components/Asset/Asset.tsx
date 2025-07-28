@@ -25,7 +25,7 @@ const Asset = ({
       case "fullRounded":
         return "rounded-2xl size-[300px] md:size-[350px] lg:mr-[80px] border-4";
       default:
-        return "size-[320px] lg:size-[450px]";
+        return "size-[30px] lg:size-[450px]";
     }
   };
 
@@ -72,7 +72,7 @@ const Asset = ({
       </figure>
       {specialization && (
         <figcaption
-          className="absolute max-w-[250px] text-center -bottom-6 py-2 px-5 right-1/2 transform translate-x-1/2 bg-primary-blue/90 rounded-full text-sm text-white font-bold"
+          className="absolute max-w-[250px] text-center -bottom-6 py-2 px-5 right-1/2 transform translate-x-1/2 bg-gradient-to-r text-white from-indigo-500/50 to-purple-600/50 shadow-lg hover:shadow-indigo-500/30 rounded-full text-sm font-bold "
           aria-label={`Technology stack: ${specialization}`}>
           {specialization}
         </figcaption>

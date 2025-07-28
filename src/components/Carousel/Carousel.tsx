@@ -140,6 +140,16 @@ const Carousel = ({
   );
 
   const isMobile = useMediaQuery({ maxWidth: 768 });
+  const sliderRef = useRef<Slider>(null);
+
+  // Create a stable reference to the current slide for arrows
+  const currentSlideRef = useRef(internalCurrentSlide);
+  currentSlideRef.current = internalCurrentSlide;
+
+  const handleSlideChange = (current: number, next: number) => {
+    setInternalCurrentSlide(next);
+    if (onSlideChange) onSlideChange(next);
+  };
 
   const settings = {
     infinite: true,
@@ -154,27 +164,28 @@ const Carousel = ({
           currentSlide={internalCurrentSlide}
           slideCount={slides.length}
         />
-      ) : null,
+      ) : undefined,
     prevArrow:
       slides.length > 1 && displayArrows ? (
         <PrevArrow
           onClick={() => sliderRef.current?.slickPrev()}
           currentSlide={internalCurrentSlide}
         />
-      ) : null,
-    beforeChange: (nextSlide: number) => {
-      setInternalCurrentSlide(nextSlide);
-      if (onSlideChange) onSlideChange(nextSlide);
+      ) : undefined,
+    beforeChange: handleSlideChange,
+    afterChange: (current: number) => {
+      // Ensure state is synced after animation completes
+      setInternalCurrentSlide(current);
     },
   };
 
-  const sliderRef = useRef<Slider>(null);
-
+  // Sync external currentSlide prop with internal state
   useEffect(() => {
-    const slideIndex = currentSlide || 0;
-    setInternalCurrentSlide(slideIndex);
-    sliderRef.current?.slickGoTo(slideIndex);
-  }, [currentSlide]);
+    if (currentSlide !== undefined && currentSlide !== internalCurrentSlide) {
+      setInternalCurrentSlide(currentSlide);
+      sliderRef.current?.slickGoTo(currentSlide);
+    }
+  }, [currentSlide, internalCurrentSlide]);
 
   return (
     <div
@@ -194,7 +205,6 @@ const Carousel = ({
                 alt={`${title} - Image ${index + 1}`}
                 className="w-full h-full max-h-[700px] object-cover transition-all duration-[4000ms] ease-in-out hover:scale-105 hover:opacity-90 rounded-[14px]"
               />
-              {/* Overlay for single slide */}
               <figcaption className="absolute bottom-0 left-0 right-0 px-4 pb-2 pt-10 z-10 bg-gradient-to-b from-transparent via-black/20 to-black/50 rounded-b-[14px]">
                 <div className="flex justify-between w-full">
                   <Paragraph
@@ -211,16 +221,14 @@ const Carousel = ({
         <div className="relative w-full h-full">
           <Slider
             {...settings}
-            ref={(slider) => {
-              sliderRef.current = slider;
-            }}
+            ref={sliderRef}
             className="w-full h-full [&_.slick-list]:h-full [&_.slick-track]:h-full [&_.slick-slide]:h-full [&_.slick-slide>div]:h-full">
             {slides.map((slide, index) => (
               <div key={index} className="w-full h-full">
                 <img
                   src={slide.url}
                   alt={`${title} - Image ${index + 1} of ${slides.length}`}
-                  className="w-full h-full  transition-all duration-[4000ms] ease-in-out hover:scale-105 hover:opacity-90 rounded-[14px] object-cover object-center"
+                  className="w-full h-full transition-all duration-[4000ms] ease-in-out hover:scale-105 hover:opacity-90 rounded-[14px] object-cover object-center"
                 />
               </div>
             ))}
@@ -241,11 +249,13 @@ const Carousel = ({
                   />
                 )}
 
-                <Paragraph
-                  text={description}
-                  customClass="!text-white !text-sm !font-bold"
-                  ariaLabel={`Project title: ${description}`}
-                />
+                {description && (
+                  <Paragraph
+                    text={description}
+                    customClass="!text-white !text-sm !font-bold"
+                    ariaLabel={`Project description: ${description}`}
+                  />
+                )}
               </div>
 
               {!isMobile && (

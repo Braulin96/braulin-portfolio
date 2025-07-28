@@ -28,11 +28,16 @@ const ProjectCard = ({
 }: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
 
-  const handleCloseModal = () => setIsModalOpen(false);
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    // Reset to first slide when modal closes
+    setCurrentSlide(0);
+  };
 
   const handlePlusClick = () => {
     setIsModalOpen(true);
@@ -43,6 +48,10 @@ const ProjectCard = ({
       event.preventDefault();
       handlePlusClick();
     }
+  };
+
+  const handleSlideChange = (nextSlide: number) => {
+    setCurrentSlide(nextSlide);
   };
 
   const projectPositionLabel =
@@ -126,7 +135,8 @@ const ProjectCard = ({
           slides={project.moreImages?.map((image) => ({ url: image })) || []}
           customClasses="w-full h-[400px]"
           displayArrows={true}
-          currentSlide={0}
+          currentSlide={currentSlide}
+          onSlideChange={handleSlideChange}
           title={project.title}
           description={project.description}
           ariaLabel={`Image carousel for ${project.title} project`}

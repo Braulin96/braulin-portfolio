@@ -6,12 +6,9 @@ import Button from "components/Button/Button";
 import Subtitle from "components/Subtitle/Subtitle";
 import Paragraph from "components/Paragraph/Paragraph";
 import FadeOnScroll from "utils/FadeOnScroll";
-
 import { useProjects } from "../../datocms/hooks/useProjects";
 import { transformDatoCMSProject } from "../../datocms/helper/transformProject";
 import { LoadingSpinner } from "components/LoadingSpinner/Loading";
-
-import { PROJECT_LIST_DATA } from "constants/ProjectListData";
 
 import "./Projects.styles.scss";
 
@@ -49,7 +46,7 @@ const Projects = () => {
     AOS.refresh();
   }, [showMoreProjects]);
 
-  const visibleProjectsCount = showMoreProjects ? PROJECT_LIST_DATA.length : 3;
+  const visibleProjectsCount = showMoreProjects ? projects.length : 3;
 
   return (
     <section
@@ -83,7 +80,7 @@ const Projects = () => {
             <div
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
               role="grid"
-              aria-label={`Portfolio projects grid showing ${visibleProjectsCount} of ${PROJECT_LIST_DATA.length} projects`}>
+              aria-label={`Portfolio projects grid showing ${visibleProjectsCount} of ${projects.length} projects`}>
               {/* Initial 3 projects - always visible */}
               {projects.slice(0, 3).map((project, index) => (
                 <FadeOnScroll
@@ -132,8 +129,8 @@ const Projects = () => {
                 text={showMoreProjects ? "Show Less" : "Show More"}
                 ariaLabel={
                   showMoreProjects
-                    ? `Show less projects. Currently showing ${PROJECT_LIST_DATA.length} projects`
-                    : `Show more projects. Currently showing 3 of ${PROJECT_LIST_DATA.length} projects`
+                    ? `Show less projects. Currently showing ${projects.length} projects`
+                    : `Show more projects. Currently showing 3 of ${projects.length} projects`
                 }
                 ariaDescribedBy="projects-grid"
               />

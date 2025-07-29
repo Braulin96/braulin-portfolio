@@ -28,9 +28,9 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
           delay={100}
           className="md:w-1/2 mb-12 md:mb-0 md:space-y-[12px] space-y-[8px]">
           <div role="banner" aria-label="Personal introduction">
-            <Title size="lg" firstText="Hi, I'm" secondText="Braulin" />
+            <Title size="lg" firstText="Hi, I'm Braulin" />
             <Title
-              size="md"
+              size="lg"
               firstText="Front-End"
               secondText="React Developer"
             />

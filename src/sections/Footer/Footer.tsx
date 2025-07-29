@@ -29,10 +29,10 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div
-            className="text-2xl font-bold mb-4 md:mb-0"
+            className="text-2xl font-bold mb-4 md:mb-0 text-gray-400"
             role="banner"
             aria-label="DevPortfolio brand logo">
-            <span className="primary-blue">Braulin</span>Portfolio
+            Braulin Pires
           </div>
 
           <div

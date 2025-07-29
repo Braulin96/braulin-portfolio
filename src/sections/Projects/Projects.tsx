@@ -7,6 +7,10 @@ import Subtitle from "components/Subtitle/Subtitle";
 import Paragraph from "components/Paragraph/Paragraph";
 import FadeOnScroll from "utils/FadeOnScroll";
 
+import { useProjects } from "../../datocms/hooks/useProjects";
+import { transformDatoCMSProject } from "../../datocms/helper/transformProject";
+import { LoadingSpinner } from "components/LoadingSpinner/Loading";
+
 import { PROJECT_LIST_DATA } from "constants/ProjectListData";
 
 import "./Projects.styles.scss";
@@ -14,6 +18,9 @@ import "./Projects.styles.scss";
 const Projects = () => {
   const [showMoreProjects, setShowMoreProjects] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+
+  const { projects: datocmsProjects, loading } = useProjects();
+  const projects = datocmsProjects.map(transformDatoCMSProject);
 
   const handleShowMoreClick = () => {
     setShowMoreProjects(!showMoreProjects);
@@ -67,61 +74,72 @@ const Projects = () => {
           />
         </FadeOnScroll>
 
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          role="grid"
-          aria-label={`Portfolio projects grid showing ${visibleProjectsCount} of ${PROJECT_LIST_DATA.length} projects`}>
-          {/* Initial 3 projects - always visible */}
-          {PROJECT_LIST_DATA.slice(0, 3).map((project, index) => (
+        {loading ? (
+          <FadeOnScroll delay={500} className="flex justify-center">
+            <LoadingSpinner />
+          </FadeOnScroll>
+        ) : (
+          <div>
+            <div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              role="grid"
+              aria-label={`Portfolio projects grid showing ${visibleProjectsCount} of ${PROJECT_LIST_DATA.length} projects`}>
+              {/* Initial 3 projects - always visible */}
+              {projects.slice(0, 3).map((project, index) => (
+                <FadeOnScroll
+                  key={index}
+                  data="fade-up"
+                  duration={600}
+                  delay={200 + index * 100}
+                  offset={150}>
+                  <ProjectCard
+                    project={project}
+                    projectIndex={index + 1}
+                    totalProjects={datocmsProjects.length}
+                  />
+                </FadeOnScroll>
+              ))}
+
+              {/* Additional projects - conditionally rendered */}
+              {showMoreProjects &&
+                projects.slice(3).map((project, index) => (
+                  <FadeOnScroll
+                    key={`extra-${index + 3}`}
+                    data="fade-up"
+                    duration={500}
+                    delay={index * 100}
+                    offset={100}
+                    className={`transition-all duration-300 ${
+                      showMoreProjects ? "opacity-100" : "opacity-0"
+                    }`}>
+                    <ProjectCard
+                      project={project}
+                      projectIndex={index + 4}
+                      totalProjects={datocmsProjects.length}
+                    />
+                  </FadeOnScroll>
+                ))}
+            </div>
+
             <FadeOnScroll
-              key={index}
-              data="fade-up"
-              duration={600}
-              delay={200 + index * 100}
-              offset={150}>
-              <ProjectCard
-                project={project}
-                projectIndex={index + 1}
-                totalProjects={PROJECT_LIST_DATA.length}
+              offset={-100}
+              delay={800}
+              className="text-center mt-12">
+              <Button
+                onClick={handleShowMoreClick}
+                className="mx-auto"
+                variant="secondary"
+                text={showMoreProjects ? "Show Less" : "Show More"}
+                ariaLabel={
+                  showMoreProjects
+                    ? `Show less projects. Currently showing ${PROJECT_LIST_DATA.length} projects`
+                    : `Show more projects. Currently showing 3 of ${PROJECT_LIST_DATA.length} projects`
+                }
+                ariaDescribedBy="projects-grid"
               />
             </FadeOnScroll>
-          ))}
-
-          {/* Additional projects - conditionally rendered */}
-          {showMoreProjects &&
-            PROJECT_LIST_DATA.slice(3).map((project, index) => (
-              <FadeOnScroll
-                key={`extra-${index + 3}`}
-                data="fade-up"
-                duration={500}
-                delay={index * 100}
-                offset={100}
-                className={`transition-all duration-300 ${
-                  showMoreProjects ? "opacity-100" : "opacity-0"
-                }`}>
-                <ProjectCard
-                  project={project}
-                  projectIndex={index + 4}
-                  totalProjects={PROJECT_LIST_DATA.length}
-                />
-              </FadeOnScroll>
-            ))}
-        </div>
-
-        <FadeOnScroll offset={-100} delay={800} className="text-center mt-12">
-          <Button
-            onClick={handleShowMoreClick}
-            className="mx-auto"
-            variant="secondary"
-            text={showMoreProjects ? "Show Less" : "Show More"}
-            ariaLabel={
-              showMoreProjects
-                ? `Show less projects. Currently showing ${PROJECT_LIST_DATA.length} projects`
-                : `Show more projects. Currently showing 3 of ${PROJECT_LIST_DATA.length} projects`
-            }
-            ariaDescribedBy="projects-grid"
-          />
-        </FadeOnScroll>
+          </div>
+        )}
       </div>
     </section>
   );

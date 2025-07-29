@@ -13,7 +13,7 @@ type ProjectCardProps = {
     title: string;
     description: string;
     technologies: string[];
-    gradient: string;
+    gradient?: string;
     mainImage?: string;
     moreImages?: string[];
   };
@@ -28,16 +28,11 @@ const ProjectCard = ({
 }: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    // Reset to first slide when modal closes
-    setCurrentSlide(0);
-  };
+  const handleCloseModal = () => setIsModalOpen(false);
 
   const handlePlusClick = () => {
     setIsModalOpen(true);
@@ -48,10 +43,6 @@ const ProjectCard = ({
       event.preventDefault();
       handlePlusClick();
     }
-  };
-
-  const handleSlideChange = (nextSlide: number) => {
-    setCurrentSlide(nextSlide);
   };
 
   const projectPositionLabel =
@@ -99,7 +90,7 @@ const ProjectCard = ({
           />
 
           <div
-            className="mb-12"
+            className="mb-6"
             role="group"
             aria-label="Technologies used in this project">
             <TechList
@@ -135,8 +126,7 @@ const ProjectCard = ({
           slides={project.moreImages?.map((image) => ({ url: image })) || []}
           customClasses="w-full h-[400px]"
           displayArrows={true}
-          currentSlide={currentSlide}
-          onSlideChange={handleSlideChange}
+          currentSlide={0}
           title={project.title}
           description={project.description}
           ariaLabel={`Image carousel for ${project.title} project`}

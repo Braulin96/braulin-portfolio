@@ -9,7 +9,7 @@ import Contact from "../../sections/Contact/Contact";
 import Footer from "../../sections/Footer/Footer";
 import OverlayHeader from "components/OverlayHeader/OverlayHeader";
 
-const PortfolioTest = () => {
+const Portfolio = () => {
   const [activeNav, setActiveNav] = useState("home");
 
   useEffect(() => {
@@ -55,8 +55,7 @@ const PortfolioTest = () => {
           onProjectsClick={() => scrollToSection("projects")}
           onContactClick={() => scrollToSection("contact")}
         />
-        <About onContactClick={() => scrollToSection("contact")} />
-        {/* <Skills /> */}
+        <About />
         <Projects />
         <Contact />
       </main>
@@ -66,4 +65,4 @@ const PortfolioTest = () => {
   );
 };
 
-export default PortfolioTest;
+export default Portfolio;

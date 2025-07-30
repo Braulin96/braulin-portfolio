@@ -48,7 +48,7 @@ const Contact = () => {
             aria-label="Contact information and social media">
             <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 h-full border border-indigo-500/20">
               <Title
-                firstText="Contact Information"
+                firstText="Contact information"
                 customClass="mb-6"
                 size="xs"
                 headingLevel="h3"
@@ -58,7 +58,7 @@ const Contact = () => {
 
               <div className="mt-12">
                 <Paragraph
-                  text="Follow Me"
+                  text="Follow me"
                   customClass="!font-bold !text-white mb-4"
                   ariaLabel="Social media links heading"
                   role="heading"

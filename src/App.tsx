@@ -1,11 +1,11 @@
-import PortfolioTest from "./components/PortfolioTest/PortfolioTest";
+import Portfolio from "./components/Portfolio/Portfolio";
 
 import "./App.css";
 
 function App() {
   return (
     <div className="">
-      <PortfolioTest />
+      <Portfolio />
     </div>
   );
 }

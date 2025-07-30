@@ -61,7 +61,7 @@ const ProjectCard = ({
         data-testid="ProjectCard"
         className="ProjectCard relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-500/30 border border-indigo-500/20 group focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-slate-900">
         <div
-          className={`h-48 bg-gradient-to-r bg-black flex items-center justify-center`}
+          className={`h-48 bg-gradient-to-r flex items-center justify-center relative`}
           role="img"
           aria-label={`${project.title} project preview image`}>
           {project.mainImage && (
@@ -71,6 +71,7 @@ const ProjectCard = ({
               className="w-full h-full object-cover object-center rounded-t-2xl opacity-80 group-hover:opacity-90 transition-opacity duration-300"
             />
           )}
+          <div className="absolute inset-0 bg-[#1A2437]/30 group-hover:bg-transparent transition-all duration-500"></div>
         </div>
 
         <div className="p-6">

@@ -39,10 +39,7 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
             className="mb-8 max-w-[650px]"
             role="complementary"
             aria-label="Professional summary">
-            <Paragraph
-              text="Passionate about creating intuitive user
-              experiences with clean, efficient code with React and other frameworks."
-            />
+            <Paragraph text="Mainly React. Always user-focused. Never just one way." />
           </div>
           <div
             className="flex space-x-4"
@@ -81,15 +78,12 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
         <FadeOnScroll
           data="fade-up"
           delay={800}
-          // style={{
-          //   animation: "smoothFloat 3s ease-in-out infinite",
-          // }}
           className="w-full md:w-1/2 flex lg:justify-end justify-center">
           <Asset
             image={Profile}
             customClass="!rounded-full !overflow-hidden"
             variant="default"
-            specialization="Built with Vite + React + TypeScript and TailwindCSS"
+            // specialization="Built with Vite + React + TypeScript and TailwindCSS"
             alt="Braulin - Front-End React Developer"
           />
         </FadeOnScroll>

@@ -1,6 +1,8 @@
 import Button from "components/Button/Button";
 import Input from "components/Input/Input";
 
+import Send from "assets/images/send.svg";
+
 import "./InputForm.styles.scss";
 
 type InputFormProps = {
@@ -78,6 +80,7 @@ const InputForm = ({
 
       <Button
         disabled={isLoading}
+        icon={Send}
         variant="secondary"
         onClick={handleContactSubmit}
         text={isLoading ? "Sending..." : "Send Message"}

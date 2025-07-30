@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
-import { useMediaQuery } from "react-responsive";
 import { motion, AnimatePresence } from "framer-motion";
 
 import Paragraph from "components/Paragraph/Paragraph";
-import Button from "components/Button/Button";
 
 import Arrow from "assets/images/prev_arrow.svg";
 import RectangleNextArrow from "assets/images/prev_arrow.svg";
@@ -142,7 +140,6 @@ const Carousel = ({
   );
   const [showDescription, setShowDescription] = useState(false);
 
-  const isMobile = useMediaQuery({ maxWidth: 768 });
   const sliderRef = useRef<Slider>(null);
 
   // Create a stable reference to the current slide for arrows

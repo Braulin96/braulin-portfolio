@@ -26,7 +26,7 @@ const FadeOnScroll = ({
   useEffect(() => {
     AOS.init({
       disable: "phone",
-      once: "true",
+      once: true,
     });
   }, []);
   const offsetValue = offset || 200;

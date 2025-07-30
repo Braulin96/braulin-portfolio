@@ -10,6 +10,9 @@ import { useProjects } from "../../datocms/hooks/useProjects";
 import { transformDatoCMSProject } from "../../datocms/helper/transformProject";
 import { LoadingSpinner } from "components/LoadingSpinner/Loading";
 
+import Plus from "assets/images/plus.svg";
+import Minus from "assets/images/minus.svg";
+
 import "./Projects.styles.scss";
 
 const Projects = () => {
@@ -127,6 +130,7 @@ const Projects = () => {
                 className="mx-auto"
                 variant="secondary"
                 text={showMoreProjects ? "Show Less" : "Show More"}
+                icon={showMoreProjects ? Minus : Plus}
                 ariaLabel={
                   showMoreProjects
                     ? `Show less projects. Currently showing ${projects.length} projects`

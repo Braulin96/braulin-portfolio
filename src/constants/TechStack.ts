@@ -28,14 +28,14 @@
     title: "Next.js",
     customClass: "bg-white p-1",
   },
-  {
-    id: "vuejs",
-    name: "Vue.js",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
-    alt: "Vue.js",
-    title: "Vue.js",
-    customClass: "bg-navbar-bg",
-  },
+  // {
+  //   id: "vuejs",
+  //   name: "Vue.js",
+  //   src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
+  //   alt: "Vue.js",
+  //   title: "Vue.js",
+  //   customClass: "bg-navbar-bg",
+  // },
 ];
 
 export default TECH_STACK_DATA;

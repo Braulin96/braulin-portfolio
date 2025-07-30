@@ -39,7 +39,7 @@ const Footer = () => {
             className="text-gray-400 text-center mb-4 md:mb-0"
             role="text"
             aria-label={`Copyright ${currentYear} Braulin Pires. All rights reserved`}>
-            &copy; {currentYear} Braulin Pires. All Rights Reserved.
+            &copy; {currentYear} Braulin Pires. All rights reserved.
           </div>
 
           <button
@@ -53,7 +53,7 @@ const Footer = () => {
               src={GoUp}
               width="30"
               height="30"
-              alt=""
+              alt="go up"
               className="transition-transform group-hover:scale-110 group-hover:translate-y-[-4px] duration-300"
               aria-hidden="true"
             />

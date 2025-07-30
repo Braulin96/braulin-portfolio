@@ -127,7 +127,6 @@ const ProjectCard = ({
           slides={project.moreImages?.map((image) => ({ url: image })) || []}
           customClasses="w-full h-[400px]"
           displayArrows={true}
-          currentSlide={0}
           title={project.title}
           description={project.description}
           ariaLabel={`Image carousel for ${project.title} project`}

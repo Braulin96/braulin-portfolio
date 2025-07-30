@@ -17,8 +17,8 @@ const Contact = () => {
       <div className="container mx-auto px-4">
         <FadeOnScroll delay={100} className="text-center md:mb-16 mb-8">
           <Subtitle
-            firstText="Let’s Build "
-            secondText="Something Together"
+            firstText="Let’s build "
+            secondText="something together"
             customClass="mx-auto"
             ariaLabel="Get in touch section heading"
             headingLevel="h2"

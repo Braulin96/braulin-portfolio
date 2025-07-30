@@ -1,6 +1,5 @@
 import Paragraph from "components/Paragraph/Paragraph";
 import FadeOnScroll from "utils/FadeOnScroll";
-import Button from "components/Button/Button";
 
 import ToolsBlock from "components/ToolsBlock/ToolsBlock";
 import Subtitle from "components/Subtitle/Subtitle";
@@ -11,11 +10,7 @@ import { PROFESSIONAL_SKILLS } from "constants/ProfessionalSkillsData";
 
 import "./About.styles.scss";
 
-type AboutProps = {
-  onContactClick: () => void;
-};
-
-const About = ({ onContactClick }: AboutProps) => {
+const About = () => {
   return (
     <section
       id="about"
@@ -26,7 +21,7 @@ const About = ({ onContactClick }: AboutProps) => {
           <FadeOnScroll delay={100} className=" flex justify-center">
             <Subtitle
               firstText="What I bring "
-              secondText="to the Table"
+              secondText="to the table"
               ariaLabel="About me section heading"
             />
           </FadeOnScroll>
@@ -54,14 +49,6 @@ const About = ({ onContactClick }: AboutProps) => {
             <ProfissionalSkills
               tools={PROFESSIONAL_SKILLS}
               ariaLabel="Core professional skills and competencies"
-            />
-          </FadeOnScroll>
-          <FadeOnScroll offset={-40} delay={1400} className="mt-16 mx-auto">
-            <Button
-              onClick={onContactClick}
-              text="Get In Touch"
-              ariaLabel="Contact me for collaboration or inquiries"
-              className="w-fit mx-auto"
             />
           </FadeOnScroll>
         </div>

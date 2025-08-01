@@ -6,6 +6,8 @@ import Paragraph from "components/Paragraph/Paragraph";
 import Modal from "components/Modal/Modal";
 import Carousel from "components/Carousel/Carousel";
 
+import { MOBILE_APP_LIST } from "constants/AppMobileList";
+
 import "./ProjectCard.styles.scss";
 
 type ProjectCardProps = {
@@ -68,7 +70,7 @@ const ProjectCard = ({
             <img
               src={project.mainImage}
               alt={`Screenshot of ${project.title} project showing the main interface`}
-              className="w-full h-full object-cover object-center rounded-t-2xl opacity-80 group-hover:opacity-90 transition-opacity duration-300"
+              className="w-full h-full object-cover object-top rounded-t-2xl opacity-80 group-hover:opacity-90 transition-opacity duration-300"
             />
           )}
           <div className="absolute inset-0 bg-[#1A2437]/30 group-hover:bg-transparent transition-all duration-500"></div>
@@ -124,6 +126,7 @@ const ProjectCard = ({
         onClose={handleCloseModal}
         ariaLabel={`${project.title} project image gallery`}>
         <Carousel
+          isMobileApp={MOBILE_APP_LIST.includes(project.title)}
           slides={project.moreImages?.map((image) => ({ url: image })) || []}
           customClasses="w-full h-[400px]"
           displayArrows={true}

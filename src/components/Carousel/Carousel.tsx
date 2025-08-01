@@ -24,6 +24,7 @@ type CarouselProps = {
   title: string;
   description?: string;
   ariaLabel?: string;
+  isMobileApp?: boolean;
 };
 
 const isFirstSlide = (currentSlide: number) => currentSlide === 0;
@@ -134,6 +135,7 @@ const Carousel = ({
   title,
   description,
   ariaLabel,
+  isMobileApp = false,
 }: CarouselProps) => {
   const [internalCurrentSlide, setInternalCurrentSlide] = useState(
     currentSlide || 0
@@ -223,13 +225,19 @@ const Carousel = ({
             <Slider
               {...settings}
               ref={sliderRef}
-              className={`w-full h-full [&_.slick-list]:h-full [&_.slick-track]:h-full [&_.slick-slide]:h-full [&_.slick-slide>div]:h-full`}>
+              className={`w-full h-full [&_.slick-list]:h-full [&_.slick-track]:h-full [&_.slick-slide]:h-full [&_.slick-slide>div]:h-full ${
+                isMobileApp ? "bg-[#1A2437]" : ""
+              }`}>
               {slides.map((slide, index) => (
                 <div key={index} className="w-full h-full">
                   <img
                     src={slide.url}
                     alt={`${title} - Image ${index + 1} of ${slides.length}`}
-                    className="w-full h-full transition-all duration-[4000ms] ease-in-out hover:scale-105 hover:opacity-90 rounded-[14px] object-cover object-center"
+                    className={`w-full h-full transition-all duration-[4000ms] ease-in-out hover:scale-105 hover:opacity-90 rounded-[14px]  ${
+                      isMobileApp
+                        ? "object-contain object-center"
+                        : "object-cover object-top-left"
+                    }`}
                   />
                 </div>
               ))}
@@ -297,7 +305,7 @@ const Carousel = ({
                 ) : (
                   <button
                     key="show-button"
-                    className="bg-white text-[#1A2437] px-4 py-2 rounded-lg font-medium md:text-sm text-xs"
+                    className="bg-white text-[#1A2437] px-4 py-2 rounded-lg font-medium md:text-sm text-xs shad"
                     onClick={() => setShowDescription(true)}>
                     Show Details
                   </button>

@@ -6,6 +6,7 @@ import FadeOnScroll from "utils/FadeOnScroll";
 import Code from "assets/images/code.svg";
 
 import { TECH_STACK_DATA } from "constants/TechStack";
+import { STATS_DATA } from "constants/StatsData";
 
 import "./Hero.styles.scss";
 
@@ -45,6 +46,26 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
             </div>
           </FadeOnScroll>
 
+          <FadeOnScroll
+            data="fade-up"
+            delay={1200}
+            duration={600}
+            offset={50}
+            className="flex flex-wrap gap-8 mb-8">
+            {STATS_DATA.map((stat) => (
+              <div key={stat.id} className="text-center">
+                <Paragraph
+                  text={stat.value}
+                  customClass={`!text-2xl !font-bold ${stat.colorClass} !mb-1`}
+                />
+                <Paragraph
+                  text={stat.label}
+                  customClass="!text-sm !text-gray-400"
+                />
+              </div>
+            ))}
+          </FadeOnScroll>
+
           <FadeOnScroll data="fade-up" delay={500} duration={600} offset={100}>
             <div
               className="flex space-x-4"
@@ -65,25 +86,6 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
               />
             </div>
           </FadeOnScroll>
-
-          <FadeOnScroll data="fade-up" delay={700} duration={600} offset={100}>
-            <div className="flex items-center gap-1 mt-10">
-              <div className="flex -space-x-2">
-                {TECH_STACK_DATA.map((tech) => (
-                  <img
-                    key={tech.id}
-                    src={tech.src}
-                    className={`size-8 rounded-full border-2 border-slate-700 ${
-                      tech.customClass || ""
-                    }`}
-                    alt={tech.alt}
-                    title={tech.title}
-                  />
-                ))}
-              </div>
-              <div className="text-xs text-gray-400">+more</div>
-            </div>
-          </FadeOnScroll>
         </div>
 
         <div className="w-full md:w-fit justify-end">
@@ -101,41 +103,22 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
             />
           </FadeOnScroll>
 
-          <FadeOnScroll
-            data="fade-up"
-            delay={1200}
-            duration={600}
-            offset={50}
-            className="flex flex-wrap gap-8 mt-4 justify-center">
-            <div className="text-center">
-              <Paragraph
-                text="4+"
-                customClass="!text-2xl !font-bold !text-indigo-400 !mb-1"
-              />
-              <Paragraph
-                text="Years Experience"
-                customClass="!text-sm !text-gray-400"
-              />
-            </div>
-            <div className="text-center">
-              <Paragraph
-                text="30+"
-                customClass="!text-2xl !font-bold !text-purple-400 !mb-1"
-              />
-              <Paragraph
-                text="Projects Built"
-                customClass="!text-sm !text-gray-400"
-              />
-            </div>
-            <div className="text-center">
-              <Paragraph
-                text="100%"
-                customClass="!text-2xl !font-bold !text-blue-400 !mb-1"
-              />
-              <Paragraph
-                text="Client Satisfaction"
-                customClass="!text-sm !text-gray-400"
-              />
+          <FadeOnScroll data="fade-up" delay={700} duration={600} offset={100}>
+            <div className="flex items-center justify-end gap-1 ml-auto  ">
+              <div className="flex -space-x-2">
+                {TECH_STACK_DATA.map((tech) => (
+                  <img
+                    key={tech.id}
+                    src={tech.src}
+                    className={`size-8 rounded-full border-2 border-slate-700 ${
+                      tech.customClass || ""
+                    }`}
+                    alt={tech.alt}
+                    title={tech.title}
+                  />
+                ))}
+              </div>
+              <div className="text-xs text-gray-400">+more</div>
             </div>
           </FadeOnScroll>
         </div>

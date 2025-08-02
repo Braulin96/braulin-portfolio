@@ -13,8 +13,8 @@ export const STATS_DATA = [
   },
   {
     id: 3,
-    value: "100%",
-    label: "Client Satisfaction",
+    value: "24/ 7",
+    label: "Learning Mindset",
     colorClass: "!text-blue-400"
   }
 ];

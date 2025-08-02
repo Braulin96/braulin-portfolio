@@ -26,7 +26,7 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
       aria-label="Hero section - Introduction and main call to action">
       <div className="container justify-between mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
         <div className="md:w-1/2 mb-12 md:mb-0 md:space-y-[12px] space-y-[8px]">
-          <FadeOnScroll data="fade-up" delay={100} duration={600} offset={100}>
+          <FadeOnScroll data="fade-up" delay={100} offset={100}>
             <div role="banner" aria-label="Personal introduction">
               <Title size="lg" firstText="Hi, I'm Braulin" />
               <Title
@@ -37,7 +37,7 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
             </div>
           </FadeOnScroll>
 
-          <FadeOnScroll data="fade-up" delay={300} duration={600} offset={150}>
+          <FadeOnScroll data="fade-up" delay={300} offset={150}>
             <div
               className="mb-8 max-w-[650px]"
               role="complementary"
@@ -48,8 +48,7 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
 
           <FadeOnScroll
             data="fade-up"
-            delay={1200}
-            duration={600}
+            delay={600}
             offset={50}
             className="flex flex-wrap gap-8 mb-8">
             {STATS_DATA.map((stat) => (
@@ -66,7 +65,7 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
             ))}
           </FadeOnScroll>
 
-          <FadeOnScroll data="fade-up" delay={500} duration={600} offset={100}>
+          <FadeOnScroll data="fade-up" delay={900} offset={100}>
             <div
               className="flex space-x-4"
               role="group"
@@ -91,8 +90,7 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
         <div className="w-full md:w-fit justify-end">
           <FadeOnScroll
             data="fade-up"
-            delay={800}
-            duration={700}
+            delay={1200}
             offset={100}
             className="flex lg:justify-end justify-center">
             <Asset
@@ -103,7 +101,7 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
             />
           </FadeOnScroll>
 
-          <FadeOnScroll data="fade-up" delay={700} duration={600} offset={100}>
+          <FadeOnScroll data="fade-up" delay={1500} offset={100}>
             <div className="flex items-center justify-end gap-1 ml-auto  ">
               <div className="flex -space-x-2">
                 {TECH_STACK_DATA.map((tech) => (

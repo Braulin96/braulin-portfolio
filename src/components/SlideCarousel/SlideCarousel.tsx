@@ -1,5 +1,6 @@
 import { useRef, memo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
 
 // Import Swiper styles
 import "swiper/css";
@@ -7,14 +8,16 @@ import "swiper/css";
 // import required modules
 import { Autoplay } from "swiper/modules";
 
+type Slide = {
+  name: string;
+  icon?: string;
+  type?: string;
+};
+
 type SlideCarouselProps = {
-  slides: {
-    name: string;
-    icon?: string;
-    type?: string;
-  }[];
+  slides: Slide[];
   variant?: string;
-  children?: (slide: any, index: number) => React.ReactNode;
+  children?: (slide: Slide, index: number) => React.ReactNode;
   ariaLabel?: string;
 };
 
@@ -25,7 +28,7 @@ const SlideCarousel = memo(
     slides,
     variant = "default",
   }: SlideCarouselProps) => {
-    const swiperRef = useRef<any>(null);
+    const swiperRef = useRef<SwiperType | null>(null);
 
     // Duplicate slides for seamless infinite loop
     const duplicatedSlides = [...slides, ...slides, ...slides];

@@ -28,6 +28,8 @@ export const getColorClass = (type?: string) => {
       return "text-green-100"; 
     case "cms":
       return "text-blue-300"; 
+       case "dev-tool":
+      return "text-yellow-300/60"; 
     default:
       return "text-white";
   }

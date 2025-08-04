@@ -24,6 +24,10 @@ export const getColorClass = (type?: string) => {
       return "text-stone-400"; 
     case "api-integration":
       return "text-violet-300"; 
+    case "service-integration":
+      return "text-green-100"; 
+    case "cms":
+      return "text-blue-300"; 
     default:
       return "text-white";
   }

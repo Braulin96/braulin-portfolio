@@ -28,13 +28,11 @@ const Projects = () => {
     setTimeout(() => {
       if (sectionRef.current) {
         if (!showMoreProjects) {
-          // Expanding: scroll down 450px from current position
           window.scrollTo({
             top: window.scrollY + 450,
             behavior: "smooth",
           });
         } else {
-          // Collapsing: scroll to top of section
           window.scrollTo({
             top: sectionRef.current.offsetTop - 60,
             behavior: "smooth",

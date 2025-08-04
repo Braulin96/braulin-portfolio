@@ -6,7 +6,7 @@ import FadeOnScroll from "utils/FadeOnScroll";
 import Code from "assets/images/code.svg";
 
 import { TECH_STACK_DATA } from "constants/TechStack";
-import { STATS_DATA } from "constants/StatsData";
+// import { STATS_DATA } from "constants/StatsData";
 
 import "./Hero.styles.scss";
 
@@ -42,10 +42,10 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
               className="mb-8 max-w-[650px]"
               role="complementary"
               aria-label="Professional summary">
-              <Paragraph text="I create exceptional digital experiences through clean, efficient React applications. From concept to reality, I focus on performance, accessibility, and user delight." />
+              <Paragraph text="4+ years of building fast, accessible web & mobile apps. 30+ projects shipped, driven by a 24/7 learning mindset and a passion for user-focused experiences." />
             </div>
           </FadeOnScroll>
-
+          {/* 
           <FadeOnScroll
             data="fade-up"
             delay={600}
@@ -63,7 +63,7 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
                 />
               </div>
             ))}
-          </FadeOnScroll>
+          </FadeOnScroll> */}
 
           <FadeOnScroll data="fade-up" delay={900} offset={100}>
             <div
@@ -95,7 +95,7 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
             className="flex lg:justify-end justify-center">
             <Asset
               image={Profile}
-              customClass="!rounded-full !overflow-hidden"
+              customClass="!rounded-full !overflow-hidden !border-primary-blue border-4 opacity-80"
               variant="default"
               alt="Braulin - Front-End React Developer"
             />

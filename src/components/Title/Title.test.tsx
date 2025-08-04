@@ -178,7 +178,9 @@ describe("Title Component", () => {
     render(<Title firstText="Test" size="lg" />);
 
     const heading = screen.getByRole("heading");
-    expect(heading).toHaveClass("text-4xl");
+    expect(heading).toHaveClass("text-3xl");
+    expect(heading).toHaveClass("md:text-5xl");
+    expect(heading).toHaveClass("font-bold");
   });
 
   test("lg size uses primary-blue class for secondText", () => {

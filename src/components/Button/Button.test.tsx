@@ -50,7 +50,7 @@ describe("Button Component", () => {
     expect(button).toHaveClass("bg-transparent");
     expect(button).toHaveClass("border-2");
     expect(button).toHaveClass("border-indigo-500");
-    expect(button).toHaveClass("text-white");
+    expect(button).toHaveClass("text-indigo-500");
   });
 
   test("is disabled when disabled prop is true", () => {
@@ -145,12 +145,11 @@ describe("Button Component", () => {
 
     const button = screen.getByRole("button");
     expect(button).toHaveClass(
-      "px-8",
+      "px-6",
       "py-3",
       "rounded-lg",
       "font-semibold",
       "transition-all",
-      "text-white",
       "cursor-pointer"
     );
   });

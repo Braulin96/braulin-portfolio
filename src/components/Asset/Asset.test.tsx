@@ -5,62 +5,59 @@ import Asset from "./Asset";
 describe("Asset Component", () => {
   test("renders correctly", () => {
     render(<Asset />);
-
     const component = screen.getByTestId("Asset");
     expect(component).toBeInTheDocument();
   });
 
   test("has correct CSS classes", () => {
     render(<Asset />);
-
     const component = screen.getByTestId("Asset");
     expect(component).toHaveClass("Asset");
     expect(component).toHaveClass("group");
     expect(component).toHaveClass("relative");
   });
 
-  // Fixed: Updated selectors for new structure
   test("renders with default variant", () => {
     render(<Asset />);
-
-    // Find the first div child inside the figure (the main container)
     const imageContainer = screen.getByTestId("Asset").children[0];
-    expect(imageContainer).toHaveClass("rounded-lg");
-    expect(imageContainer).toHaveClass("transform");
-    expect(imageContainer).toHaveClass("rotate-3");
-    expect(imageContainer).toHaveClass("size-[220px]");
-    expect(imageContainer).toHaveClass("md:size-[250px]");
+    expect(imageContainer).toHaveClass("size-[300px]");
+    expect(imageContainer).toHaveClass("lg:size-[400px]");
+    expect(imageContainer).toHaveClass("relative");
+    expect(imageContainer).toHaveClass("overflow-hidden");
   });
 
   test("renders with fullRounded variant", () => {
     render(<Asset variant="fullRounded" />);
-
     const imageContainer = screen.getByTestId("Asset").children[0];
-    expect(imageContainer).toHaveClass("rounded-full");
+    expect(imageContainer).toHaveClass("rounded-2xl");
     expect(imageContainer).toHaveClass("size-[300px]");
     expect(imageContainer).toHaveClass("md:size-[350px]");
-    expect(imageContainer).not.toHaveClass("transform");
-    expect(imageContainer).not.toHaveClass("rotate-3");
+    expect(imageContainer).toHaveClass("lg:mr-[80px]");
+    expect(imageContainer).toHaveClass("border-4");
+  });
+
+  test("renders with flexible variant", () => {
+    render(<Asset variant="flexible" />);
+    const imageContainer = screen.getByTestId("Asset").children[0];
+    expect(imageContainer).toHaveClass("w-full");
+    expect(imageContainer).toHaveClass("h-full");
+    expect(imageContainer).toHaveClass("min-h-[300px]");
   });
 
   test("applies custom class when provided", () => {
     render(<Asset customClass="custom-asset" />);
-
     const component = screen.getByTestId("Asset");
     expect(component).toHaveClass("Asset", "custom-asset");
   });
 
   test("applies multiple custom classes when provided", () => {
     render(<Asset customClass="custom-asset another-class" />);
-
     const component = screen.getByTestId("Asset");
     expect(component).toHaveClass("Asset", "custom-asset", "another-class");
   });
 
-  // Fixed: Use more specific selector to target the actual img element, not the figure
   test("renders image when provided", () => {
     render(<Asset image="/test-image.jpg" />);
-
     const image = screen.getByAltText("Profile image");
     expect(image).toBeInTheDocument();
     expect(image.tagName).toBe("IMG");
@@ -68,79 +65,45 @@ describe("Asset Component", () => {
     expect(image).toHaveAttribute("alt", "Profile image");
   });
 
-  test("renders image with hover and transition classes", () => {
+  test("renders image with correct classes", () => {
     render(<Asset image="/test-image.jpg" />);
-
     const image = screen.getByAltText("Profile image");
-    expect(image.tagName).toBe("IMG");
-    expect(image).toHaveClass("group-hover:scale-105");
     expect(image).toHaveClass("transition-transform");
     expect(image).toHaveClass("duration-500");
+    expect(image).toHaveClass("h-full");
+    expect(image).toHaveClass("object-cover");
   });
 
-  // Fixed: Specialization is now in figcaption with different styling
   test("renders specialization badge when provided", () => {
     render(<Asset specialization="React Developer" />);
-
     expect(screen.getByText("React Developer")).toBeInTheDocument();
     const badge = screen.getByText("React Developer");
-    expect(badge).toHaveClass("bg-primary-blue/80");
-    expect(badge).toHaveClass("text-[#121B2D]");
-    expect(badge).toHaveClass("rounded-lg");
+    expect(badge.tagName).toBe("FIGCAPTION");
+    expect(badge).toHaveClass("absolute");
+    expect(badge).toHaveClass("text-center");
+    expect(badge).toHaveClass("bg-white");
+    expect(badge).toHaveClass("text-primary-blue");
+    expect(badge).toHaveClass("rounded-full");
     expect(badge).toHaveClass("font-bold");
   });
 
   test("does not render specialization badge when not provided", () => {
     render(<Asset />);
-
     const badge = screen.queryByText(/React Developer|Frontend|Backend/);
     expect(badge).not.toBeInTheDocument();
   });
 
-  // Fixed: Updated to match new structure and default variant sizing
   test("has correct container structure", () => {
     render(<Asset />);
-
     const component = screen.getByTestId("Asset");
-    expect(component.tagName).toBe("FIGURE"); // Now uses figure element
+    expect(component.tagName).toBe("FIGURE");
     expect(component).toHaveAttribute("role", "img");
 
     const mainContainer = component.children[0];
-    expect(mainContainer).toHaveClass("size-[220px]"); // Default variant sizing
-    expect(mainContainer).toHaveClass("md:size-[250px]");
-    expect(mainContainer).toHaveClass("border-4");
-    expect(mainContainer).toHaveClass("border-primary-blue/10");
+    expect(mainContainer).toHaveClass("relative");
+    expect(mainContainer).toHaveClass("overflow-hidden");
   });
 
-  test("has background overlay", () => {
-    render(<Asset />);
-
-    const overlay = screen
-      .getByTestId("Asset")
-      .querySelector('[aria-hidden="true"]');
-    expect(overlay).toBeInTheDocument();
-    expect(overlay).toHaveClass("absolute");
-    expect(overlay).toHaveClass("inset-0");
-    expect(overlay).toHaveClass("bg-black/30");
-    expect(overlay).toHaveClass("pointer-events-none");
-  });
-
-  test("inner container has correct styling", () => {
-    render(<Asset />);
-
-    const innerContainer = screen
-      .getByTestId("Asset")
-      .querySelector(".bg-slate-200");
-    expect(innerContainer).toBeInTheDocument();
-    expect(innerContainer).toHaveClass("w-full");
-    expect(innerContainer).toHaveClass("h-full");
-    expect(innerContainer).toHaveClass("border-2");
-    expect(innerContainer).toHaveClass("border-dashed");
-    expect(innerContainer).toHaveClass("rounded-full");
-    expect(innerContainer).toHaveClass("text-slate-500");
-  });
-
-  // Fixed: Updated to match new component structure
   test("works with all props together", () => {
     render(
       <Asset
@@ -164,14 +127,12 @@ describe("Asset Component", () => {
     expect(screen.getByText("Full Stack Developer")).toBeInTheDocument();
 
     const imageContainer = component.children[0];
-    expect(imageContainer).toHaveClass("rounded-full");
+    expect(imageContainer).toHaveClass("rounded-2xl");
     expect(imageContainer).toHaveClass("size-[300px]");
   });
 
-  // New tests for accessibility features
   test("has correct accessibility attributes", () => {
     render(<Asset alt="Custom profile image" />);
-
     const component = screen.getByTestId("Asset");
     expect(component).toHaveAttribute("role", "img");
     expect(component).toHaveAttribute("aria-label", "Custom profile image");
@@ -179,7 +140,6 @@ describe("Asset Component", () => {
 
   test("specialization has correct accessibility label", () => {
     render(<Asset specialization="React Developer" />);
-
     const specialization = screen.getByText("React Developer");
     expect(specialization.tagName).toBe("FIGCAPTION");
     expect(specialization).toHaveAttribute(
@@ -190,42 +150,43 @@ describe("Asset Component", () => {
 
   test("image has loading='lazy' attribute", () => {
     render(<Asset image="/test.jpg" />);
-
     const image = screen.getByAltText("Profile image");
-    expect(image.tagName).toBe("IMG");
     expect(image).toHaveAttribute("loading", "lazy");
-  });
-
-  test("overlay has aria-hidden attribute", () => {
-    render(<Asset />);
-
-    const overlay = screen
-      .getByTestId("Asset")
-      .querySelector('[aria-hidden="true"]');
-    expect(overlay).toBeInTheDocument();
-    expect(overlay).toHaveAttribute("aria-hidden", "true");
   });
 
   test("uses default alt text when not provided", () => {
     render(<Asset image="/test.jpg" />);
-
     const component = screen.getByTestId("Asset");
     const image = screen.getByAltText("Profile image");
-
     expect(component).toHaveAttribute("aria-label", "Profile image");
-    expect(image.tagName).toBe("IMG");
     expect(image).toHaveAttribute("alt", "Profile image");
   });
 
   test("does not render image element when image prop is not provided", () => {
     render(<Asset />);
-
-    // Should not find any img element when no image is provided
     expect(screen.queryByAltText("Profile image")).not.toBeInTheDocument();
-
-    // But the figure should still exist
     const figure = screen.getByTestId("Asset");
     expect(figure).toBeInTheDocument();
     expect(figure.tagName).toBe("FIGURE");
+  });
+
+  test("has animation style for default variant", () => {
+    render(<Asset variant="default" />);
+    const component = screen.getByTestId("Asset");
+    expect(component).toHaveStyle(
+      "animation: smoothFloat 3s ease-in-out infinite"
+    );
+  });
+
+  test("does not have animation for non-default variants", () => {
+    render(<Asset variant="fullRounded" />);
+    const component = screen.getByTestId("Asset");
+    expect(component).toHaveStyle("animation: ");
+  });
+
+  test("uses ariaLabel prop when provided", () => {
+    render(<Asset ariaLabel="Custom aria label" alt="Alt text" />);
+    const component = screen.getByTestId("Asset");
+    expect(component).toHaveAttribute("aria-label", "Custom aria label");
   });
 });

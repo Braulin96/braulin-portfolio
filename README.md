@@ -28,6 +28,7 @@ A modern, responsive portfolio website built with React, TypeScript, and Vite, s
 - **Performance Optimized**: Fast loading with Vite's lightning-fast build tool
 - **Accessibility**: WCAG compliant with proper ARIA labels and keyboard navigation
 - **Type Safety**: Full TypeScript implementation for better code reliability
+- **CMS Integration**: Dynamic content management with DatoCMS
 
 ## 🛠 Tech Stack
 
@@ -45,7 +46,12 @@ A modern, responsive portfolio website built with React, TypeScript, and Vite, s
 
 ### Components & Interactions
 - **React Slick** - Carousel component for image galleries
+- **Swiper** - Modern slider component
 - **React Responsive** - Media queries in React component
+
+### Content Management
+- **DatoCMS** - Headless CMS for content management
+- **GraphQL Request** - GraphQL client for data fetching
 
 ### Development Tools
 - **ESLint** - Code linting and quality assurance
@@ -80,7 +86,7 @@ src/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/my-portfolio.git
+   git clone https://github.com/Braulin96/my-portfolio.git
    cd my-portfolio
    ```
 
@@ -93,7 +99,7 @@ src/
    ```bash
    cp .env.example .env.local
    ```
-   Update the environment variables with your EmailJS configuration.
+   Update the environment variables with your EmailJS and DatoCMS configuration.
 
 4. **Start the development server**
    ```bash
@@ -108,7 +114,7 @@ src/
 | Command | Description |
 |---------|-------------|
 | `npm run dev` | Start development server with hot reload |
-| `npm run build` | Build the project for production |
+| `npm run build` | Build the project for production (includes TypeScript compilation) |
 | `npm run preview` | Preview the production build locally |
 | `npm run lint` | Run ESLint to check code quality |
 | `npm run test` | Run Jest tests |
@@ -135,7 +141,7 @@ npx grc section SectionName
 
 ### Testing
 
-The project includes comprehensive testing setup:
+The project includes comprehensive testing setup with Jest and React Testing Library:
 
 ```bash
 # Run all tests
@@ -169,13 +175,18 @@ The built files will be in the `dist` directory, ready for deployment to any sta
 
 ### Tailwind CSS
 
-The project uses Tailwind CSS 4 with custom color variables defined in the main CSS file. Modify the color palette in `src/styles/globals.css`.
+The project uses Tailwind CSS 4 with the new Vite plugin (`@tailwindcss/vite`) for improved performance. Custom color variables are defined in the main CSS file.
 
 ### TypeScript
 
-TypeScript configuration is split between:
-- `tsconfig.app.json` - App-specific settings
-- `tsconfig.node.json` - Node.js/build tool settings
+TypeScript configuration uses the latest TypeScript 5.8 with strict type checking enabled.
+
+### Testing
+
+Jest is configured with:
+- **jsdom** environment for DOM testing
+- **@testing-library/jest-dom** for enhanced assertions
+- **identity-obj-proxy** for CSS module mocking
 
 ## 📱 Browser Support
 
@@ -194,10 +205,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-**Your Name**
+**Braulin Pires**
 - Email: braulinpires.email@hotmail.com
-- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/braulin-pires-7a13b3145/)
-- GitHub: [@yourusername](https://github.com/Braulin96)
+- LinkedIn: [Braulin Pires](https://www.linkedin.com/in/braulin-pires-7a13b3145/)
+- GitHub: [@Braulin96](https://github.com/Braulin96)
 - Portfolio: [your-portfolio-url.com](https://your-portfolio-url.com)
 
 ---

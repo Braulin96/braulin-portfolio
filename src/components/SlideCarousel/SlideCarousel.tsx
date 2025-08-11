@@ -1,9 +1,9 @@
 import { useRef, memo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import type { Swiper as SwiperType } from "swiper";
+import type { SwiperRef } from "swiper/react";
 
 // Import Swiper styles
-import "swiper/css";
+import "swiper/swiper-bundle.css";
 
 // import required modules
 import { Autoplay } from "swiper/modules";
@@ -28,7 +28,7 @@ const SlideCarousel = memo(
     slides,
     variant = "default",
   }: SlideCarouselProps) => {
-    const swiperRef = useRef<SwiperType | null>(null);
+    const swiperRef = useRef<SwiperRef | null>(null);
 
     // Duplicate slides for seamless infinite loop
     const duplicatedSlides = [...slides, ...slides, ...slides];
@@ -51,7 +51,9 @@ const SlideCarousel = memo(
           modules={[Autoplay]}
           className="tools-swiper w-full"
           onBeforeInit={(swiper) => {
-            swiperRef.current = swiper;
+            if (swiperRef.current) {
+              swiperRef.current.swiper = swiper;
+            }
           }}
           role="grid"
           aria-label={

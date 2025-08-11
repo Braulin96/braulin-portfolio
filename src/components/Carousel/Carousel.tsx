@@ -148,7 +148,7 @@ const Carousel = ({
   const currentSlideRef = useRef(internalCurrentSlide);
   currentSlideRef.current = internalCurrentSlide;
 
-  const handleSlideChange = (current: number, next: number) => {
+  const handleSlideChange = (_current: number, next: number) => {
     setInternalCurrentSlide(next);
     if (onSlideChange) onSlideChange(next);
   };

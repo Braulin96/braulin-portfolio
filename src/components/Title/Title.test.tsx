@@ -71,7 +71,7 @@ describe("Title Component", () => {
 
     expect(screen.getByText("First")).toBeInTheDocument();
     // Empty secondText should not render the span
-    const spanWithGradient = screen.queryByText((content, element) => {
+    const spanWithGradient = screen.queryByText((_content, element) => {
       return (
         element?.tagName === "SPAN" &&
         element?.classList.contains("bg-gradient-to-r")

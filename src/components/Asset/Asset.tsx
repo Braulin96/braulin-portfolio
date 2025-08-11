@@ -50,7 +50,7 @@ const Asset = ({
               <img
                 src={image}
                 alt={alt}
-                className={`transition-transform duration-500 not-only-of-type:w-full h-full object-cover`}
+                className={`transition-transform duration-500 w-full h-full object-cover`}
                 loading="lazy"
               />
             )}

@@ -10,7 +10,7 @@ import { TECH_STACK_DATA } from "constants/TechStack";
 
 import "./Hero.styles.scss";
 
-import Profile from "assets/images/linkedinProfile2.png";
+import Profile from "assets/images/profile2.jpg";
 import Send from "assets/images/send.svg";
 
 type HeroProps = {
@@ -95,7 +95,7 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
             className="flex lg:justify-end justify-center">
             <Asset
               image={Profile}
-              customClass="!rounded-full !overflow-hidden !border-primary-blue border-4 opacity-80"
+              customClass="!rounded-full !overflow-hidden !border-primary-blue border-4 opacity-70"
               variant="default"
               alt="Braulin - Front-End React Developer"
             />

@@ -1,9 +1,0 @@
-{
-  "extends": "./tsconfig.app.json",
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "verbatimModuleSyntax": false
-  },
-  "include": ["src", "grc", "**/*.test.ts", "**/*.test.tsx"]
-}

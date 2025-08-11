@@ -6,6 +6,11 @@ import { resolve } from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  base: '/my-portfolio/',
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+  },
   resolve: { 
     alias: {
       'components': resolve(__dirname, './src/components'),

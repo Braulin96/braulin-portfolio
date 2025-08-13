@@ -6,6 +6,7 @@ import { resolve } from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  base: '/braulin-portfolio/',
   resolve: { 
     alias: {
       'components': resolve(__dirname, './src/components'),

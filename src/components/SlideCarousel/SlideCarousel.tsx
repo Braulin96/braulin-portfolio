@@ -51,7 +51,7 @@ const SlideCarousel = memo(
           modules={[Autoplay]}
           className="tools-swiper w-full"
           onBeforeInit={(swiper) => {
-            swiperRef.current = swiper;
+            swiperRef.current = { swiper };
           }}
           role="grid"
           aria-label={

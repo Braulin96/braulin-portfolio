@@ -17,7 +17,7 @@ type HeroProps = {
   onProjectsClick: () => void;
   onContactClick: () => void;
 };
-// note to trigger the  build
+// note to trigger the  build and deploy preview, this file was edited but no changes were made to the code. Ignore the changes in this file when reviewing the code.
 const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
   return (
     <section

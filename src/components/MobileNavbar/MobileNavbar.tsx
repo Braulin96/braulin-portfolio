@@ -26,9 +26,7 @@ const MobileNavbar = () => {
     <div data-testid="MobileNavbar" className="MobileNavbar">
       <nav className="fixed w-full z-50 bg-slate-800/80 backdrop-blur-sm py-4 border-b border-indigo-500/20">
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <div className="text-[22px] font-bold">
-            <span className="primary-blue">Dev</span>PortfolioTest
-          </div>
+          <div className="text-[22px] font-bold">Braulin Pires</div>
           <button
             className="text-white focus:outline-none z-50"
             onClick={() => setIsMenuOpen((prev) => !prev)}

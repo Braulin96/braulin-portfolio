@@ -7,7 +7,7 @@ import Subtitle from "components/Subtitle/Subtitle";
 import Paragraph from "components/Paragraph/Paragraph";
 import FadeOnScroll from "utils/FadeOnScroll";
 import { useProjects } from "../../datocms/hooks/useProjects";
-import { transformDatoCMSProject } from "../../datocms/helper/transformProject";
+import { transformDatoCMSProject } from "datocms/helper/transformProject";
 import { LoadingSpinner } from "components/LoadingSpinner/Loading";
 
 import Plus from "assets/images/plus.svg";

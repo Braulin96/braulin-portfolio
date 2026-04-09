@@ -25,7 +25,8 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
       className="md:min-h-[850px] flex items-center py-20 relative bg-slate-800/50 "
       aria-label="Hero section - Introduction and main call to action">
       <div className="container justify-between mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
-        <p>API URL: {import.meta.env.VITE_API_URL || "undefined"}</p>
+        <p>API URL: {import.meta.env.VITE_API_URL || "undefined"}</p> //trigger
+        env variable usage to verify it's working correctly
         <div className="md:w-1/2 mb-12 md:mb-0 md:space-y-[12px] space-y-[8px]">
           <FadeOnScroll data="fade-up" delay={100} offset={100}>
             <div role="banner" aria-label="Personal introduction">
@@ -83,7 +84,6 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
             </div>
           </FadeOnScroll>
         </div>
-
         <div className="w-full md:w-fit justify-end">
           <FadeOnScroll
             data="fade-up"

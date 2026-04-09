@@ -29,11 +29,7 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
           <FadeOnScroll data="fade-up" delay={100} offset={100}>
             <div role="banner" aria-label="Personal introduction">
               <Title size="lg" firstText="Hi, I'm Braulin" />
-              <Title
-                size="lg"
-                firstText="Front-End"
-                secondText="React Developer"
-              />
+              <Title size="lg" firstText="Front-End" secondText="Engineer" />
             </div>
           </FadeOnScroll>
 
@@ -97,7 +93,7 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
               image={Profile}
               customClass="!rounded-full !overflow-hidden !border-primary-blue border-4 opacity-70"
               variant="default"
-              alt="Braulin - Front-End React Developer"
+              alt="Braulin - Front-End Engineer"
             />
           </FadeOnScroll>
 

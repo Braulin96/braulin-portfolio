@@ -19,7 +19,6 @@ type HeroProps = {
 };
 
 const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
-  const x =;
   return (
     <section
       id="home"

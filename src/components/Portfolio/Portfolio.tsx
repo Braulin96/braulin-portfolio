@@ -12,6 +12,8 @@ import OverlayHeader from "components/OverlayHeader/OverlayHeader";
 const Portfolio = () => {
   const [activeNav, setActiveNav] = useState("home");
 
+  const user: any = undefined;
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["home", "about", "skills", "projects", "contact"];
@@ -49,6 +51,7 @@ const Portfolio = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-slate-50 font-['Poppins',sans-serif]">
       <OverlayHeader />
       <Navbar activeNav={activeNav} onNavClick={scrollToSection} />
+      <p>{user.name}</p>
 
       <main id="main-content" tabIndex={-1}>
         <Hero

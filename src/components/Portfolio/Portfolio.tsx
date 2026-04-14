@@ -12,6 +12,16 @@ import OverlayHeader from "components/OverlayHeader/OverlayHeader";
 const Portfolio = () => {
   const [activeNav, setActiveNav] = useState("home");
 
+  //test azure
+  const [data, setData] = useState<any>(null);
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users/999999") // não existe
+      .then((res) => res.json())
+      .then(setData);
+  }, []);
+
+  console.log("data", data);
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["home", "about", "skills", "projects", "contact"];
@@ -54,6 +64,7 @@ const Portfolio = () => {
           onProjectsClick={() => scrollToSection("projects")}
           onContactClick={() => scrollToSection("contact")}
         />
+        {data.name}
         <About />
         <Projects />
         <Contact />

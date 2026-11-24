@@ -54,7 +54,7 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
               className="mb-8 max-w-[650px]"
               role="complementary"
               aria-label="Professional summary">
-              <Paragraph text="4+ years of building fast, accessible web & mobile apps. 30+ projects shipped, driven by a 24/7 learning mindset and a passion for user-focused experiences." />
+              <Paragraph text="5+ years of building fast, accessible web & mobile apps. 30+ projects shipped, driven by a 24/7 learning mindset and a passion for user-focused experiences." />
             </div>
           </FadeOnScroll>
           {/* 

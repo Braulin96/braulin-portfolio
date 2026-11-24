@@ -1,7 +1,7 @@
 export const STATS_DATA = [
   {
     id: 1,
-    value: "4+",
+    value: "5+",
     label: "Years Experience",
     colorClass: "!text-indigo-500"
   },

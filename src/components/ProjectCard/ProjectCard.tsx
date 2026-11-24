@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-import TechList from "components/TechList/TechList";
+// import TechList from "components/TechList/TechList"; // re-enable with the technologies block below
 import Paragraph from "components/Paragraph/Paragraph";
 import Modal from "components/Modal/Modal";
 import Carousel from "components/Carousel/Carousel";
@@ -95,6 +95,7 @@ const ProjectCard = ({
             ariaLabel={`Project description: ${project.description}`}
           />
 
+          {/* Technologies hidden for now
           <div
             className="mb-6"
             role="group"
@@ -104,6 +105,7 @@ const ProjectCard = ({
               ariaLabel={`Technologies: ${project.technologies.join(", ")}`}
             />
           </div>
+          */}
 
           {isHovered && (
             <motion.button

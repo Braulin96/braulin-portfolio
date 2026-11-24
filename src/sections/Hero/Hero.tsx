@@ -12,7 +12,7 @@ import "./Hero.styles.scss";
 
 import Profile from "assets/images/profile2.jpg";
 import Send from "assets/images/send.svg";
-import VideoBackground from "assets/video/video1.mp4";
+import VideoBackground from "assets/video/video3.mp4";
 
 type HeroProps = {
   onProjectsClick: () => void;
@@ -23,9 +23,24 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
   return (
     <section
       id="home"
-      className="md:min-h-[850px] flex items-center py-20 relative bg-slate-800/50 "
+      className="md:min-h-[850px] flex items-center py-20 relative overflow-hidden bg-slate-800/50 "
       aria-label="Hero section - Introduction and main call to action">
-      <div className="container justify-between mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
+      {/* Decorative background video (hidden for users who prefer reduced motion) */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none motion-reduce:hidden"
+        src={VideoBackground}
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-hidden="true"
+      />
+      {/* Dark overlay to keep the text readable over the video */}
+      <div
+        className="absolute inset-0 bg-slate-900/75 pointer-events-none"
+        aria-hidden="true"
+      />
+      <div className="container relative z-10 justify-between mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
         <div className="md:w-1/2 mb-12 md:mb-0 md:space-y-[12px] space-y-[8px]">
           <FadeOnScroll data="fade-up" delay={100} offset={100}>
             <div role="banner" aria-label="Personal introduction">
@@ -91,9 +106,9 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
             className="flex lg:justify-end justify-center">
             <Asset
               image={Profile}
-              customClass="!rounded-full !overflow-hidden opacity-70 !border-0"
+              customClass="!rounded-full !overflow-hidden opacity-30 !border-0"
               variant="default"
-              overlayClass="bg-gradient-to-br from-white/50 via-slate-800/50 to-slate-800/100"
+              // overlayClass="bg-gradient-to-br from-white/50 via-slate-800/50 to-slate-800/100"
               alt="Braulin - Front-End Engineer"
             />
           </FadeOnScroll>

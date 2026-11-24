@@ -6,8 +6,6 @@ import Paragraph from "components/Paragraph/Paragraph";
 import Modal from "components/Modal/Modal";
 import Carousel from "components/Carousel/Carousel";
 
-import { MOBILE_APP_LIST } from "constants/AppMobileList";
-
 import "./ProjectCard.styles.scss";
 
 type ProjectCardProps = {
@@ -18,6 +16,7 @@ type ProjectCardProps = {
     gradient?: string;
     mainImage?: string;
     moreImages?: string[];
+    isMobileApp?: boolean;
   };
   projectIndex?: number;
   totalProjects?: number;
@@ -70,7 +69,11 @@ const ProjectCard = ({
             <img
               src={project.mainImage}
               alt={`Screenshot of ${project.title} project showing the main interface`}
-              className="w-full h-full object-cover object-top rounded-t-2xl opacity-80 group-hover:opacity-90 transition-opacity duration-300"
+              className={`h-full opacity-80 group-hover:opacity-90 transition-opacity duration-300 ${
+                project.isMobileApp
+                  ? "w-auto object-contain py-3"
+                  : "w-full object-cover object-top rounded-t-2xl"
+              }`}
             />
           )}
           <div className="absolute inset-0 bg-[#1A2437]/30 group-hover:bg-transparent transition-all duration-500"></div>
@@ -112,7 +115,7 @@ const ProjectCard = ({
               transition={{ duration: 0.3, ease: "easeInOut" }}
               onClick={handlePlusClick}
               onKeyDown={handleKeyDown}
-              className="text-slate-300 absolute bottom-[12px] right-[12px] size-[44px] text-2xl rounded-full bg-primary-blue/50 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+              className="text-[#141D30] absolute bottom-[12px] right-[12px] size-[34px] text-2xl rounded-full bg-white/80 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-900"
               aria-label={`View more images of ${project.title} project`}
               tabIndex={0}>
               +
@@ -126,7 +129,7 @@ const ProjectCard = ({
         onClose={handleCloseModal}
         ariaLabel={`${project.title} project image gallery`}>
         <Carousel
-          isMobileApp={MOBILE_APP_LIST.includes(project.title)}
+          isMobileApp={project.isMobileApp}
           slides={project.moreImages?.map((image) => ({ url: image })) || []}
           customClasses="w-full h-[400px]"
           displayArrows={true}

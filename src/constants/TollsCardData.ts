@@ -9,7 +9,7 @@ export const TOOLS_CARD_DATA = [
 
   // Frameworks & Libraries
   { name: "React", type: "framework" },
-  { name: "Vue", type: "framework" },
+  // { name: "Vue", type: "framework" },
   { name: "Next.js", type: "framework" },
   { name: "React Native", type: "framework" },
 

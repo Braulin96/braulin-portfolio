@@ -8,6 +8,8 @@ export const GET_PROJECTS = `
       mainImage {
         url
         alt
+        width
+        height
       }
       moreImages {
         url

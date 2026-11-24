@@ -1,6 +1,8 @@
 export interface DatoCmsImage {
     url: string;
-    alt?: string;    
+    alt?: string;
+    width?: number;
+    height?: number;
 }
 
 export interface DatoCmsProject {

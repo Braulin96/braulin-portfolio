@@ -1,1 +1,0 @@
-export const MOBILE_APP_LIST = ["Edgex App"]

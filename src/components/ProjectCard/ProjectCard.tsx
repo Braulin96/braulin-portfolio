@@ -115,10 +115,19 @@ const ProjectCard = ({
               transition={{ duration: 0.3, ease: "easeInOut" }}
               onClick={handlePlusClick}
               onKeyDown={handleKeyDown}
-              className="text-[#141D30] absolute bottom-[12px] right-[12px] size-[34px] text-2xl rounded-full bg-white/80 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+              className="text-[#141D30] absolute bottom-[12px] right-[12px] size-[34px] flex items-center justify-center p-0 rounded-full bg-white/80 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-900"
               aria-label={`View more images of ${project.title} project`}
               tabIndex={0}>
-              +
+              <svg
+                viewBox="0 0 24 24"
+                className="size-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.5}
+                strokeLinecap="round"
+                aria-hidden="true">
+                <path d="M12 5v14M5 12h14" />
+              </svg>
             </motion.button>
           )}
         </div>

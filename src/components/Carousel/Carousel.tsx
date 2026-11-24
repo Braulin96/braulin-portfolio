@@ -7,7 +7,6 @@ import Paragraph from "components/Paragraph/Paragraph";
 import Arrow from "assets/images/prev_arrow.svg";
 import RectangleNextArrow from "assets/images/prev_arrow.svg";
 import RectanglePrevArrow from "assets/images/prev_arrow.svg";
-import Close from "assets/images/close.svg";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -275,7 +274,7 @@ const Carousel = ({
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="w-full relative overflow-hidden">
+                    className="w-full relative overflow-hidden pr-12">
                     {title && (
                       <Paragraph
                         text={title}
@@ -292,30 +291,65 @@ const Carousel = ({
                     )}
 
                     <button
-                      className="absolute cursor-pointer top-0 right-0 p-2 rounded-full bg-black/10 shadow-2xl"
+                      className="absolute top-0 right-0 flex items-center justify-center size-9 rounded-full bg-white/10 text-white border border-white/20 backdrop-blur-md cursor-pointer transition-all duration-200 hover:bg-white/20 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
                       onClick={() => setShowDescription(false)}
-                      aria-label="Close project description">
-                      <img
-                        src={Close}
-                        alt="Close description"
-                        className="size-4"
-                      />
+                      aria-label="Hide project details">
+                      <svg
+                        viewBox="0 0 24 24"
+                        className="size-5"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2.25}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true">
+                        <path d="M6 9l6 6 6-6" />
+                      </svg>
                     </button>
                   </motion.div>
                 ) : (
-                  <button
+                  <motion.button
                     key="show-button"
-                    className="bg-white text-[#1A2437] px-4 py-2 rounded-lg font-medium md:text-sm text-xs shad"
-                    onClick={() => setShowDescription(true)}>
-                    Show Details
-                  </button>
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                    transition={{ duration: 0.2 }}
+                    className="group/details flex items-center gap-2 pl-3 pr-4 py-2 rounded-full bg-[#1A2437] text-white border border-white/15 shadow-lg font-medium md:text-sm text-xs cursor-pointer transition-colors duration-200 hover:bg-[#243150] focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
+                    onClick={() => setShowDescription(true)}
+                    aria-expanded={showDescription}
+                    aria-label="Show project details">
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="size-4 shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true">
+                      <circle cx="12" cy="12" r="9" />
+                      <path d="M12 11v5M12 8h.01" />
+                    </svg>
+                    Project details
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="size-4 shrink-0 transition-transform duration-200 group-hover/details:-translate-y-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2.25}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true">
+                      <path d="M6 15l6-6 6 6" />
+                    </svg>
+                  </motion.button>
                 )}
               </AnimatePresence>
 
               {!showDescription && (
                 <Paragraph
                   text={`${internalCurrentSlide + 1}/${slides.length}`}
-                  customClass="!text-white !text-sm !font-bold shrink-0 mt-auto"
+                  customClass="!text-white !text-sm !font-bold absolute right-4 bottom-4"
                   ariaLabel={`Image ${internalCurrentSlide + 1} of ${
                     slides.length
                   }`}

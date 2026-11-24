@@ -7,6 +7,8 @@ type AssetProps = {
   specialization?: string;
   alt?: string;
   ariaLabel?: string;
+  /** Tailwind classes for a colour overlay on top of the image, e.g. "bg-slate-800/60". */
+  overlayClass?: string;
 };
 
 const Asset = ({
@@ -16,6 +18,7 @@ const Asset = ({
   variant = "default",
   alt = "Profile image",
   ariaLabel,
+  overlayClass,
 }: AssetProps) => {
   // Dynamic sizing based on variant
   const getSizeClasses = () => {
@@ -55,6 +58,12 @@ const Asset = ({
               />
             )}
           </div>
+          {overlayClass && (
+            <div
+              className={`absolute inset-0 pointer-events-none ${overlayClass}`}
+              aria-hidden="true"
+            />
+          )}
         </div>
       </figure>
       {specialization && (

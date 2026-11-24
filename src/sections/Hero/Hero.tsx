@@ -12,6 +12,7 @@ import "./Hero.styles.scss";
 
 import Profile from "assets/images/profile2.jpg";
 import Send from "assets/images/send.svg";
+import VideoBackground from "assets/video/video1.mp4";
 
 type HeroProps = {
   onProjectsClick: () => void;
@@ -90,8 +91,9 @@ const Hero = ({ onProjectsClick, onContactClick }: HeroProps) => {
             className="flex lg:justify-end justify-center">
             <Asset
               image={Profile}
-              customClass="!rounded-full !overflow-hidden !border-primary-blue border-4 opacity-70"
+              customClass="!rounded-full !overflow-hidden opacity-70 !border-0"
               variant="default"
+              overlayClass="bg-gradient-to-br from-white/50 via-slate-800/50 to-slate-800/100"
               alt="Braulin - Front-End Engineer"
             />
           </FadeOnScroll>

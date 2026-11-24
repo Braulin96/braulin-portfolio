@@ -5,6 +5,7 @@ import Navbar from "components/Navbar/Navbar";
 import Hero from "../../sections/Hero/Hero";
 import About from "../../sections/About/About";
 import Projects from "../../sections/Projects/Projects";
+import Articles from "../../sections/Articles/Articles";
 import Contact from "../../sections/Contact/Contact";
 import Footer from "../../sections/Footer/Footer";
 import OverlayHeader from "components/OverlayHeader/OverlayHeader";
@@ -14,7 +15,7 @@ const Portfolio = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "skills", "projects", "contact"];
+      const sections = ["home", "about", "skills", "projects", "writing", "contact"];
       const scrollPosition = window.scrollY + 100;
 
       sections.forEach((section) => {
@@ -56,6 +57,7 @@ const Portfolio = () => {
         />
         <About />
         <Projects />
+        <Articles />
         <Contact />
       </main>
 

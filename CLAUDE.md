@@ -38,7 +38,7 @@ Read via `import.meta.env` (Vite, so must be `VITE_`-prefixed): `VITE_EMAILJS_PU
 ## Conventions and gotchas
 
 - **Import aliases**: `components/*`, `constants/*`, `utils/*`, `assets/*`, `types/*`, `hooks/*`, `styles/*`, `pages/*` resolve to `src/…`. They are defined in **both** `vite.config.ts` (`resolve.alias`) and `tsconfig.app.json` (`paths`, with `baseUrl: "src"`) — keep them in sync. `baseUrl` also lets type-only imports like `datocms/types/project` resolve in tsc, but Vite has no `datocms` alias, so use relative paths for runtime imports from `src/datocms`.
-- **Jest does not know the aliases**: `jest.config.ts` only maps style files (`identity-obj-proxy`). A test for a component that imports via an alias will fail to resolve unless a `moduleNameMapper` entry is added.
+- **Jest needs its own copy of the aliases**: `jest.config.ts` `moduleNameMapper` mirrors them (plus style files → `identity-obj-proxy`, images/video → `src/__mocks__/fileMock.ts`). A new alias must be added there too.
 - **Styling**: Tailwind CSS 4 via `@tailwindcss/vite` (no tailwind.config file). Theme colors and the custom `1280` breakpoint are declared with `@theme` in `src/index.css`. Per-component SCSS files are imported for side effects.
 - TypeScript is strict with `noUnusedLocals`/`noUnusedParameters` and `verbatimModuleSyntax` — use `import type` for type-only imports or `npm run build` fails.
 - `assets/index-*.js|css` at the repo root are stale committed build artifacts, not source; real assets are in `src/assets/`.

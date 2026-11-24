@@ -23,7 +23,7 @@ const Footer = () => {
 
   return (
     <footer
-      className="py-10 border-t border-gray-800 bg-slate-800/50 relative"
+      className="py-10 border-t border-gray-800 relative"
       role="contentinfo"
       aria-label="Website footer with copyright and navigation">
       <div className="container mx-auto px-4">

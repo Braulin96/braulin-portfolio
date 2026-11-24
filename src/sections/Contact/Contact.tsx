@@ -12,7 +12,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-20 relative"
+      className="py-20 relative bg-slate-800/50"
       aria-label="Contact information and message form">
       <div className="container mx-auto px-4">
         <FadeOnScroll delay={100} className="text-center md:mb-16 mb-8">

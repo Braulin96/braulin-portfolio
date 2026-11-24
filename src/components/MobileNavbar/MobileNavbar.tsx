@@ -24,7 +24,7 @@ const MobileNavbar = () => {
 
   return (
     <div data-testid="MobileNavbar" className="MobileNavbar">
-      <nav className="fixed w-full z-50 bg-slate-800/80 backdrop-blur-sm py-4 border-b border-indigo-500/20">
+      <nav className="fixed w-full z-50 bg-transparent backdrop-blur-sm py-4 border-b border-indigo-500/20">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="text-[22px] font-bold">Braulin Pires</div>
           <button
